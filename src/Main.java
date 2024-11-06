@@ -5,5 +5,6 @@ public class Main {
         PantallaPrincipal pantallaPrincipal = new PantallaPrincipal();
         pantallaPrincipal.menu();
 
+        System.out.println("hola");
     }
 }
