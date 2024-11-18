@@ -1,4 +1,4 @@
-package Personajes;
+package JUEGO.Personajes;
 
 import java.util.Objects;
 
@@ -71,17 +71,17 @@ public abstract class Personaje implements Movimientos {
     }
 
     @Override
-    public void atacar() {
+    public void muerte() {
 
     }
 
-    @Override
-    public void curarse() {
-
-    }
-
-    @Override
     public void subirNivel() {
+        int nivel = getLevel() + 1;
+        System.out.println("Subiste al nivel "+ nivel+ "\n todos tus stats subieron en 20 puntos\n");
+        setPH(getPH() + 20);
+        setFuerza(getFuerza() + 20);
+        setMagia(getMagia() + 20);
+        setResistencia(getResistencia()+ 20);
 
     }
 }

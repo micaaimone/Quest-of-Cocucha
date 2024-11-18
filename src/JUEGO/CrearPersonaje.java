@@ -1,6 +1,8 @@
-import Personajes.Asesino;
-import Personajes.Guerrero;
-import Personajes.Mago;
+package JUEGO;
+
+import JUEGO.Personajes.Clases.Asesino;
+import JUEGO.Personajes.Clases.Guerrero;
+import JUEGO.Personajes.Clases.Mago;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package Nivel;
+package JUEGO.Nivel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +15,5 @@ public class Nivel {
         System.out.println("Que puerta deseas elegir \n"
         +"1-");
     }
-
 
 }
