@@ -1,8 +1,8 @@
-package Nivel;
+package JUEGO.Nivel;
 
-import Personajes.Personaje;
+import JUEGO.Personajes.Personaje;
 
-public class Puerta {
+public class Puerta  {
     //por cada nivel hay 3 puertas, una en la que se enfrenta a un enemigo
     //otra donde aumentas un atributo en particular
     //otra q hay 3 opciones (1 q pase directamente al siguiente nivel,

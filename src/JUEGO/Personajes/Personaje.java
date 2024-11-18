@@ -1,4 +1,4 @@
-package Personajes;
+package JUEGO.Personajes;
 
 import java.util.Objects;
 
@@ -68,6 +68,11 @@ public abstract class Personaje implements Movimientos {
     @Override
     public int hashCode() {
         return Objects.hashCode(level);
+    }
+
+    @Override
+    public void muerte() {
+
     }
 
     public void subirNivel() {

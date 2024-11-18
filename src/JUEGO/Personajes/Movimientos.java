@@ -1,4 +1,4 @@
-package Personajes;
+package JUEGO.Personajes;
 
 public interface Movimientos {
     public void atacar(Personaje enemy);

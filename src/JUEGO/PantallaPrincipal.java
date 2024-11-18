@@ -1,3 +1,5 @@
+package JUEGO;
+
 import java.util.Scanner;
 
 public class PantallaPrincipal {

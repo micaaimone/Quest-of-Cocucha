@@ -1,6 +1,8 @@
-package Personajes;
+package JUEGO.Personajes.Clases;
 
-public class Mago extends Personaje{
+import JUEGO.Personajes.Personaje;
+
+public class Mago extends Personaje {
     public Mago() {
         super(100, 10, 150, 50, 0);
     }
@@ -34,11 +36,5 @@ public class Mago extends Personaje{
         }
 
         setPH(vida);
-    }
-
-
-    @Override
-    public void muerte() {
-
     }
 }
