@@ -99,6 +99,22 @@ public abstract class Personaje implements Movimientos {
         this.poderAtaque = poderAtaque;
     }
 
+    public Armas getArma() {
+        return arma;
+    }
+
+    public void setArma(Armas arma) {
+        this.arma = arma;
+    }
+
+    public int getMonedas() {
+        return monedas;
+    }
+
+    public void setMonedas(int monedas) {
+        this.monedas = monedas;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -144,6 +160,8 @@ public abstract class Personaje implements Movimientos {
     }
 
     //ya que los personajes tanto asesino como mago pueden curarse hacemos el metodo public en la clase padre
+
+    //----IMP cuando se llame a esta funcion hay que hacer una excepcion que corrobore que CANTIDAD no sea negativa. Solo puede ingresar nros positivos
     public void curarAtributo(String atributo, int cantidad) throws CorroborarException {
         int actual = 0, maximo = 0, curacionReal = 0;
 
@@ -195,6 +213,18 @@ public abstract class Personaje implements Movimientos {
             suma = 0;
         }
         return suma;
+    }
+
+
+    //imprimir info del personaje
+    public void mostrarInfo() {
+        System.out.println("Nivel: " + getLevel());
+        System.out.println("PH: " + getPH() + "/" + getPHMax());
+        System.out.println("Magia: " + getMagia() + "/" + getMagiaMax());
+        System.out.println("Resistencia: " + getResistencia() + "/" + getResistenciaMax());
+        System.out.println("Poder de ataque: " + getPoderAtaque());
+        System.out.println("Arma: " + getArma());
+        System.out.println("Monedas: " + getMonedas());
     }
 
 }
