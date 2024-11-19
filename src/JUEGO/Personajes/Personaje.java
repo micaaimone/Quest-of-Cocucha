@@ -203,6 +203,7 @@ public abstract class Personaje implements Movimientos {
         System.out.println(atributo + " aumentado en " + curacionReal + ". " + atributo + " actual: " + (actual + curacionReal));
     }
 
+    //mandar a validacion? como validacion atributo o algo asi????
     public int corroborarAtributo(int actual, int maximo, int cantidad) throws CorroborarException {
         int suma = 0;
 
