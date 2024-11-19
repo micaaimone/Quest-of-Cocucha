@@ -20,11 +20,11 @@ public class Nivel {
         this.puertas.add(puerta);
     }
 
-    public void mostrarPuertas() {
-        for(Puerta puerta : puertas){
-            System.out.println(puerta);
-        }
-    }
+//    public void mostrarPuertas() {
+//        for(Puerta puerta : puertas){
+//            System.out.println(puerta);
+//        }
+//    }
 
 
 }
