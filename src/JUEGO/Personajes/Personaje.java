@@ -8,6 +8,12 @@ public abstract class Personaje implements Movimientos {
     private int magia;
     private int resistencia;
     private int level;
+    private int PHMax;
+    private int fuerzaMax;
+    private int magiaMax;
+    private int resistenciaMax;
+
+
 
     public Personaje(int PH, int fuerza, int magia, int resistencia, int level) {
         this.PH = PH;
@@ -15,6 +21,14 @@ public abstract class Personaje implements Movimientos {
         this.magia = magia;
         this.resistencia = resistencia;
         this.level = level;
+        this.PHMax = PH;
+        this.fuerzaMax = fuerza;
+        this.magiaMax = magia;
+        this.resistenciaMax = resistencia;
+    }
+
+
+    public Personaje() {
     }
 
     public int getLevel() {
@@ -55,6 +69,38 @@ public abstract class Personaje implements Movimientos {
 
     public void setResistencia(int resistencia) {
         this.resistencia = resistencia;
+    }
+
+    public int getPHMax() {
+        return PHMax;
+    }
+
+    public void setPHMax(int PHMax) {
+        this.PHMax = PHMax;
+    }
+
+    public int getFuerzaMax() {
+        return fuerzaMax;
+    }
+
+    public void setFuerzaMax(int fuerzaMax) {
+        this.fuerzaMax = fuerzaMax;
+    }
+
+    public int getMagiaMax() {
+        return magiaMax;
+    }
+
+    public void setMagiaMax(int magiaMax) {
+        this.magiaMax = magiaMax;
+    }
+
+    public int getResistenciaMax() {
+        return resistenciaMax;
+    }
+
+    public void setResistenciaMax(int resistenciaMax) {
+        this.resistenciaMax = resistenciaMax;
     }
 
     @Override
