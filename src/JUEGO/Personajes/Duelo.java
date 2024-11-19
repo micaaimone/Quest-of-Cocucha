@@ -12,14 +12,18 @@ public class Duelo {
     public static void combate(Enemigo enemigo, Personaje personaje) {
         Scanner sc = new Scanner(System.in);
         while (enemigo.getPH()<= 0 || personaje.getPH()<= 0) {
-            System.out.println("Cual es tu proximo movimiento?");
-            System.out.println("1. Atacar \n 2. Curarse");
+            System.out.println("⚔️💥 ¡El combate comienza! 💥⚔️");
+            System.out.println("¿Cuál es tu próximo movimiento?");
+            System.out.println("1. 🗡️ Atacar");
+            System.out.println("2. 💊 Curarse");
+            System.out.println("\nSelecciona tu acción (1 o 2):");
+
 
             try {
                 decision = sc.nextInt();
                 sc.nextLine();
             }catch (NumberFormatException e) {
-                System.out.println("Error: ingrese solo numeros");
+                System.out.println("\u001B[31m❌ Error: ingrese solo números ❌\u001B[0m");
             }
 
 

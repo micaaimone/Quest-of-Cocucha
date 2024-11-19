@@ -13,7 +13,27 @@ public class Asesino extends Personaje {
     @Override
     public void atacar(Personaje enemy) throws CorroborarException {
         if (getResistencia() < getResistenciaMax()){
-            System.out.println("Lanzando ataque de fuerza...");
+            System.out.println("\n🖤🗡️ ¡El asesino se acerca y clava su daga! 🗡️🖤\n");
+
+            System.out.println(
+                            "        ^\n" +
+                            "       |||\n" +
+                            "       |||\n" +
+                            "       |||\n" +
+                            "      [|||]\n" +
+                            "      [|||]\n" +
+                            "      [|||]\n" +
+                            "   (=========)\n" +
+                            "    +       /\n" +
+                            "     +     /\n" +
+                            "      +   /\n" +
+                            "       + /\n" +
+                            "        |\n" +
+                            "        |\n" +
+                            "        |"   +
+                            "        *    "
+            );
+
             //aca llamamos al ataque
             setMagia(getResistencia()- 10);
             enemy.setPH(enemy.getPH() - getPoderAtaque());

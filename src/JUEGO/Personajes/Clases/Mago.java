@@ -12,7 +12,19 @@ public class Mago extends Personaje {
     @Override
     public void atacar(Personaje enemy) throws CorroborarException {
         if (getMagia() < getMagiaMax()){
-            System.out.println("Lanzando ataque magico");
+            System.out.println("\n✨🔮 ¡Ataque Mágico! ¡La magia se desata! 🔮✨\n");
+            System.out.println(
+                            "         @\n" +
+                            "        @@@\n" +
+                            "         |\n" +
+                            "        ( )\n" +
+                            "         |\n" +
+                            "        ( )\n" +
+                            "         |\n" +
+                            "         | \n" +
+                            "         | \n" +
+                            "         | \"
+            );
             setMagia(getMagia() - 15);
 
             enemy.setPH(enemy.getPH() - getPoderAtaque());

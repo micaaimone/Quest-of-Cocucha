@@ -13,8 +13,23 @@ public class Enemigo extends Personaje {
 
     @Override
     public void atacar(Personaje enemy) {
+        System.out.println("\n🔪 ¡El enemigo ataca con una daga afilada! 🔪\n");
+        System.out.println(
+                        "      //\\n" +
+                        "     /  /\\n" +
+                        "     /  /\n" +
+                        "      ||\n" +
+                        "      ||\n" +
+                        "      ||\n" +
+                        "      ||\n" +
+                        "    <====> \n" +
+                        "     ||||\n" +
+                        "     ||||\n" +
+                        "      ||");
 
+        enemy.setPH(getPH()-10);
     }
+
 
     @Override
     public void curarse() {

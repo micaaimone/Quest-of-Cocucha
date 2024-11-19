@@ -119,26 +119,43 @@ public abstract class Personaje implements Movimientos {
     public void subirNivel() throws CorroborarException {
         int nivel = getLevel() + 1;
         int sumarAtributo = 0;
-        System.out.println("Subiste al nivel "+ nivel+ "\n todos tus stats subieron en 20 puntos\n");
+        System.out.println();System.out.println(
+                "🎮✨ ¡Felicidades! Has subido al nivel " + nivel + " ✨🎮"+
+                        "       *      *      *\n" +
+                        "     *   *  *   *  *   *\n" +
+                        "    *     **     **     *\n" +
+                        "   *************************\n" +
+                        "  *         Nivel Up!       *\n" +
+                        "   *************************\n" +
+                        "    *     **     **     *\n" +
+                        "     *   *  *   *  *  *\n" +
+                        "       *      *      *\n" +
+                        "💪 Ahora eres más fuerte que nunca. ¡A seguir avanzando! 💪"
+        );
+        System.out.println("⚡ Todos tus stats subieron en 20 puntos. ¡Estás más fuerte que nunca! ⚡");
+
         sumarAtributo = corroborarAtributo(getPH(), getPHMax(), 20);
         if (sumarAtributo > 0 ){
             setPH(getPH() + sumarAtributo);
         } else {
-            throw new CorroborarException("El PH ya está al máximo.");
+            throw new CorroborarException("⚠️ ¡Error! El PH ya está al máximo. ⚠️");
+
         }
 
         sumarAtributo = corroborarAtributo(getMagia(), getMagiaMax(), 20);
         if (sumarAtributo > 0 ){
             setMagia(getMagia() + sumarAtributo);
         } else {
-            throw new CorroborarException("La magia ya está al máximo.");
+            throw new CorroborarException("⚠️ ¡Error! La magia ya está al máximo. ⚠️");
+
         }
 
         sumarAtributo = corroborarAtributo(getResistencia(), getResistenciaMax(), 20);
         if (sumarAtributo > 0 ){
             setResistencia(getResistencia() + sumarAtributo);
         } else {
-            throw new CorroborarException("La resistencia ya está al máximo.");
+            throw new CorroborarException("⚠️ ¡Error! La resistencia ya está al máximo. ⚠️");
+
         }
     }
 
@@ -154,7 +171,7 @@ public abstract class Personaje implements Movimientos {
             if (curacionReal > 0){
                 setPH(actual + curacionReal);
             } else {
-                throw new CorroborarException("El " + atributo + " ya está al máximo.");
+                throw new CorroborarException("⚠️ ¡Advertencia! El " + atributo + " ya está al máximo. ⚠️");
             }
 
         } else if (atributo.equalsIgnoreCase("resistencia")) {
@@ -165,7 +182,7 @@ public abstract class Personaje implements Movimientos {
             if (curacionReal > 0){
                 setResistencia(actual + curacionReal);
             } else {
-                throw new CorroborarException("El " + atributo + " ya está al máximo.");
+                throw new CorroborarException("⚠️ ¡Advertencia! El " + atributo + " ya está al máximo. ⚠️");
             }
         } else if (atributo.equalsIgnoreCase("magia")) {
             actual = getMagia();
@@ -174,14 +191,15 @@ public abstract class Personaje implements Movimientos {
             if (curacionReal > 0){
                 setMagia(actual + curacionReal);
             } else {
-                throw new CorroborarException("El " + atributo + " ya está al máximo.");
+                throw new CorroborarException("⚠️ ¡Advertencia! El " + atributo + " ya está al máximo. ⚠️");
             }
         } else {
-            throw new IllegalArgumentException("Atributo no válido: " + atributo);
+            throw new IllegalArgumentException("❌ Atributo no válido: " + atributo + " ❌");
         }
 
+        System.out.println("✨ " + atributo + " ha aumentado en +" + curacionReal + "! ✨");
+        System.out.println("🔋 " + atributo + " actual: " + (actual + curacionReal));
 
-        System.out.println(atributo + " aumentado en " + curacionReal + ". " + atributo + " actual: " + (actual + curacionReal));
     }
 
     public int corroborarAtributo(int actual, int maximo, int cantidad) throws CorroborarException {
