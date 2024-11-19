@@ -6,25 +6,21 @@ import java.util.Objects;
 
 public abstract class Personaje implements Movimientos {
     private int PH;
-    private int fuerza;
     private int magia;
     private int resistencia;
     private int level;
     private int PHMax;
-    private int fuerzaMax;
     private int magiaMax;
     private int resistenciaMax;
     private int poderAtaque;
 
 
-    public Personaje(int PH, int fuerza, int magia, int resistencia, int level, int poderAtaque) {
+    public Personaje(int PH, int magia, int resistencia, int level, int poderAtaque) {
         this.PH = PH;
-        this.fuerza = fuerza;
         this.magia = magia;
         this.resistencia = resistencia;
         this.level = level;
         this.PHMax = PH;
-        this.fuerzaMax = fuerza;
         this.magiaMax = magia;
         this.resistenciaMax = resistencia;
         this.poderAtaque = poderAtaque;
@@ -50,14 +46,6 @@ public abstract class Personaje implements Movimientos {
         this.PH = PH;
     }
 
-    public int getFuerza() {
-        return fuerza;
-    }
-
-    public void setFuerza(int fuerza) {
-        this.fuerza = fuerza;
-    }
-
     public int getMagia() {
         return magia;
     }
@@ -80,14 +68,6 @@ public abstract class Personaje implements Movimientos {
 
     public void setPHMax(int PHMax) {
         this.PHMax = PHMax;
-    }
-
-    public int getFuerzaMax() {
-        return fuerzaMax;
-    }
-
-    public void setFuerzaMax(int fuerzaMax) {
-        this.fuerzaMax = fuerzaMax;
     }
 
     public int getMagiaMax() {
@@ -132,14 +112,31 @@ public abstract class Personaje implements Movimientos {
 
     }
 
-    //corroborar parte de subir nivel
-    public void subirNivel() {
+
+    public void subirNivel() throws CorroborarException {
         int nivel = getLevel() + 1;
+        int sumarAtributo = 0;
         System.out.println("Subiste al nivel "+ nivel+ "\n todos tus stats subieron en 20 puntos\n");
-        setPH(getPH() + 20);
-        setFuerza(getFuerza() + 20);
-        setMagia(getMagia() + 20);
-        setResistencia(getResistencia()+ 20);
+        sumarAtributo = corroborarAtributo(getPH(), getPHMax(), 20);
+        if (sumarAtributo > 0 ){
+            setPH(getPH() + sumarAtributo);
+        } else {
+            throw new CorroborarException("El PH ya está al máximo.");
+        }
+
+        sumarAtributo = corroborarAtributo(getMagia(), getMagiaMax(), 20);
+        if (sumarAtributo > 0 ){
+            setMagia(getMagia() + sumarAtributo);
+        } else {
+            throw new CorroborarException("La magia ya está al máximo.");
+        }
+
+        sumarAtributo = corroborarAtributo(getResistencia(), getResistenciaMax(), 20);
+        if (sumarAtributo > 0 ){
+            setResistencia(getResistencia() + sumarAtributo);
+        } else {
+            throw new CorroborarException("La resistencia ya está al máximo.");
+        }
     }
 
     //ya que los personajes tanto asesino como mago pueden curarse hacemos el metodo public en la clase padre
@@ -150,7 +147,7 @@ public abstract class Personaje implements Movimientos {
             actual = getPH();
             maximo = getPHMax();
 
-            curacionReal = corroborarCuracion(actual, maximo, cantidad);
+            curacionReal = corroborarAtributo(actual, maximo, cantidad);
             if (curacionReal > 0){
                 setPH(actual + curacionReal);
             } else {
@@ -161,7 +158,7 @@ public abstract class Personaje implements Movimientos {
             actual = getResistencia();
             maximo = getResistenciaMax();
 
-            curacionReal = corroborarCuracion(actual, maximo, cantidad);
+            curacionReal = corroborarAtributo(actual, maximo, cantidad);
             if (curacionReal > 0){
                 setResistencia(actual + curacionReal);
             } else {
@@ -170,7 +167,7 @@ public abstract class Personaje implements Movimientos {
         } else if (atributo.equalsIgnoreCase("magia")) {
             actual = getMagia();
             maximo = getMagiaMax();
-            curacionReal = corroborarCuracion(actual, maximo, cantidad);
+            curacionReal = corroborarAtributo(actual, maximo, cantidad);
             if (curacionReal > 0){
                 setMagia(actual + curacionReal);
             } else {
@@ -184,16 +181,16 @@ public abstract class Personaje implements Movimientos {
         System.out.println(atributo + " aumentado en " + curacionReal + ". " + atributo + " actual: " + (actual + curacionReal));
     }
 
-    public int corroborarCuracion(int actual, int maximo, int cantidad) throws CorroborarException {
-        int curacion = 0;
+    public int corroborarAtributo(int actual, int maximo, int cantidad) throws CorroborarException {
+        int suma = 0;
 
         if (actual<maximo){
-            curacion = Math.min(cantidad, maximo - actual);
+            suma = Math.min(cantidad, maximo - actual);
         } else
         {
-            curacion = 0;
+            suma = 0;
         }
-        return curacion;
+        return suma;
     }
 
 }
