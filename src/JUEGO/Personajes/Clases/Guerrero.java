@@ -31,16 +31,14 @@ public class Guerrero extends Personaje {
                             "         || \n   "
             );
             System.out.println("\n🔥 El enemigo recibe un impacto devastador. 🔥");
+            setMagia(getResistencia()- 20);
+
+            enemy.setPH(enemy.getPH() - 30);
         }else{
-        throw new CorroborarException("No tiene suficinete resistencia\n");
-    }
-
-        setMagia(getResistencia()- 20);
-
-        enemy.setPH(enemy.getPH() - 30);
+        throw new CorroborarException("No tiene suficinete resistencia\n");}
     }
 
     @Override
-    public void curarse() throws CorroborarException {
+    public void curarse() {
     }
 }
