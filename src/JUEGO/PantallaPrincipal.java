@@ -21,6 +21,7 @@ public class PantallaPrincipal {
         switch (opcion){
             case 1:
                 CrearPersonaje crearPersonaje = new CrearPersonaje();
+                crearPersonaje.Seleccionar();
                 break;
             case 2:
                 //llevaria a mostrar punt
