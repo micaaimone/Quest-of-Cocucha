@@ -1,5 +1,7 @@
 package JUEGO.Personajes;
 
+import JUEGO.Personajes.Clases.Armas.Armas;
+
 import java.util.Objects;
 
 public abstract class Personaje implements Movimientos {
@@ -12,10 +14,11 @@ public abstract class Personaje implements Movimientos {
     private int fuerzaMax;
     private int magiaMax;
     private int resistenciaMax;
+    private Armas arma;
 
 
 
-    public Personaje(int PH, int fuerza, int magia, int resistencia, int level) {
+    public Personaje(int PH, int fuerza, int magia, int resistencia, int level , Armas arma) {
         this.PH = PH;
         this.fuerza = fuerza;
         this.magia = magia;
@@ -25,7 +28,11 @@ public abstract class Personaje implements Movimientos {
         this.fuerzaMax = fuerza;
         this.magiaMax = magia;
         this.resistenciaMax = resistencia;
+        this.arma = arma;
+
+
     }
+
 
 
     public Personaje() {
