@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Nivel {
-    private List puertas;
+    private List <Puerta> puertas;
     private int dificultad;
 
-    public Nivel(List puertas, int dificultad) {
-        this.puertas = puertas;
+    public Nivel(int dificultad) {
+        this.puertas = new ArrayList<>();
         this.dificultad = dificultad;
     }
 
@@ -18,7 +18,6 @@ public class Nivel {
 
     public void agregarPuerta(Puerta puerta) {
         this.puertas.add(puerta);
-
     }
 
     public void mostrarPuertas() {

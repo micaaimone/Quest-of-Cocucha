@@ -9,6 +9,9 @@ public class Enemigo extends Personaje {
         super(PH, fuerza, magia, resistencia, level);
     }
 
+    public Enemigo() {
+    }
+
     @Override
     public void atacar(Personaje enemy) {
 
