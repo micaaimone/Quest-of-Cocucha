@@ -15,7 +15,7 @@ public class Asesino extends Personaje {
         if (getResistencia() < getResistenciaMax()){
             System.out.println("Lanzando ataque de fuerza...");
             //aca llamamos al ataque
-            setMagia(getResistencia()- 10);
+            setResistencia(getResistencia()- 10);
             enemy.setPH(enemy.getPH() - getPoderAtaque());
             //corroborar que el enemigo muera, lanzar un msj dependiendo de eso. (iria en enemigo?)
 
