@@ -5,9 +5,10 @@ import JUEGO.Personajes.Personaje;
 
 public class Enemigo extends Personaje {
 
+    private Armas arma;
 
     public Enemigo(int PH, int fuerza, int magia, int resistencia, int level) {
-        super(PH, fuerza, magia, resistencia, level );
+        super(PH, fuerza, magia, resistencia, level , Armas.cuchillo );
     }
 
     @Override
