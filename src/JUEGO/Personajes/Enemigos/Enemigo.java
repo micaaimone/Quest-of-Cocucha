@@ -14,6 +14,9 @@ public class Enemigo extends Personaje {
     public Enemigo() {
     }
 
+    public Enemigo() {
+    }
+
     @Override
     public void atacar(Personaje enemy) {
 
