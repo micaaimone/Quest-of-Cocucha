@@ -1,6 +1,7 @@
 package JUEGO.Personajes;
 
 import JUEGO.Exceptions.CorroborarException;
+import JUEGO.Personajes.Clases.Armas.Armas;
 
 import java.util.Objects;
 
@@ -13,9 +14,10 @@ public abstract class Personaje implements Movimientos {
     private int magiaMax;
     private int resistenciaMax;
     private int poderAtaque;
+    private Armas arma;
 
 
-    public Personaje(int PH, int magia, int resistencia, int level, int poderAtaque) {
+    public Personaje(int PH, int magia, int resistencia, int level, int poderAtaque, Armas arma) {
         this.PH = PH;
         this.magia = magia;
         this.resistencia = resistencia;
@@ -24,6 +26,7 @@ public abstract class Personaje implements Movimientos {
         this.magiaMax = magia;
         this.resistenciaMax = resistencia;
         this.poderAtaque = poderAtaque;
+        this.arma = arma;
     }
 
 
