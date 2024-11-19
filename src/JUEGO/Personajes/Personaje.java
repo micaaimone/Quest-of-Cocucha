@@ -114,8 +114,7 @@ public abstract class Personaje implements Movimientos {
     public void muerte() {
 
     }
-
-
+    
     public void subirNivel() throws CorroborarException {
         int nivel = getLevel() + 1;
         int sumarAtributo = 0;
