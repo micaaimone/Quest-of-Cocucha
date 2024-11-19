@@ -1,6 +1,10 @@
 package JUEGO.Nivel;
 
-import JUEGO.Personajes.Enemigos.Enemigo;
+import JUEGO.Personajes.Enemigos.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 //por cada nivel hay 3 puertas, una en la que se enfrenta a un enemigo
 //otra donde aumentas un atributo en particular
