@@ -57,7 +57,7 @@ public class Asesino extends Personaje {
         //primero corroborar que tenga suficiente magia
 
         if (getMagia()>=costo){
-            System.out.println("El coste de aumentar PH y resistencia es de 15 de magia");
+            System.out.println("El coste de aumentar PH y resistencia es de 20 de magia");
             setMagia(getMagia() - costo);
             System.out.println("Magia actual: " + getMagia());
             puedeCurarse = true;
@@ -90,42 +90,6 @@ public class Asesino extends Personaje {
             }
         }
     }
-
-//    //Resistencia es algo que se puede hacer en todos los niveles lo hacemos un metodo
-//
-//    public void curarResistencia(int cantCurar) throws CorroborarException {
-//        int diferenciaResistencia = 0;
-//        if ((getResistencia()) < getResistenciaMax()){
-//            diferenciaResistencia = getResistenciaMax() - getResistencia();
-//            if (diferenciaResistencia >= 10){
-//                setResistencia(getResistencia() + 10);
-//            } else if (diferenciaResistencia < 10){
-//                setResistencia(getResistencia() + diferenciaResistencia);
-//            } else{
-//                throw new CorroborarException("No es posible aumentar la resistencia ya esta al maximo\n");
-//            }
-//            System.out.println("Aumentaste la resistencia. \n" +
-//                    "Resistencia actual: " + getResistencia());
-//        }
-//    }
-//
-//    //ya que curar PH es algo que se puede hacer en todos los niveles lo hacemos un metodo
-//    public void curarPH(int cantCurar) throws CorroborarException {
-//        int diferenciaPH = 0;
-//
-//        if ((getPH())<getPHMax()){
-//            diferenciaPH = getPHMax() - getPH();
-//            if (diferenciaPH >= cantCurar) {
-//                setPH((getPH()) + cantCurar);
-//            } else if (diferenciaPH < cantCurar){
-//                setPH(getPH() + diferenciaPH);
-//            } else{
-//                throw new CorroborarException("No es posible aumentar el PH ya que ya esta al maximo\n");
-//            }
-//            System.out.println("Aumentaste el PH. \n" +
-//                    "PH actual: " + getPH());
-//        }
-//    }
 
 
 }
