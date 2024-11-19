@@ -3,6 +3,11 @@ import JUEGO.Personajes.*;
 import JUEGO.Personajes.Enemigos.Enemigo;
 
 public class GestionNivel {
+    private Personaje personaje;
+
+    public GestionNivel(Personaje personaje) {
+        this.personaje = personaje;
+    }
 
     public void crearNivel (){
         //----------------ENEMIGOS------------------------------------
@@ -25,6 +30,7 @@ public class GestionNivel {
         //-------niveles--------------------------------------------
         Nivel nivel1 = new Nivel(1);
         nivel1.agregarPuerta(puertaEnemigo1);
+
         //--
         Nivel nivel2 = new Nivel(2);
         nivel2.agregarPuerta(puertaEnemigo2);
