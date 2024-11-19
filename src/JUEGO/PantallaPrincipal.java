@@ -32,5 +32,6 @@ public class PantallaPrincipal {
                 System.out.println("No ingresaste una opcion correcta \n");
                 break;
         }
+
     }
 }
