@@ -1,38 +1,33 @@
 package JUEGO.Personajes;
 
+import JUEGO.Exceptions.CorroborarException;
 import JUEGO.Personajes.Clases.Armas.Armas;
 
 import java.util.Objects;
 
 public abstract class Personaje implements Movimientos {
     private int PH;
-    private int fuerza;
     private int magia;
     private int resistencia;
     private int level;
     private int PHMax;
-    private int fuerzaMax;
     private int magiaMax;
     private int resistenciaMax;
+    private int poderAtaque;
     private Armas arma;
 
 
-
-    public Personaje(int PH, int fuerza, int magia, int resistencia, int level , Armas arma) {
+    public Personaje(int PH, int magia, int resistencia, int level, int poderAtaque, Armas arma) {
         this.PH = PH;
-        this.fuerza = fuerza;
         this.magia = magia;
         this.resistencia = resistencia;
         this.level = level;
         this.PHMax = PH;
-        this.fuerzaMax = fuerza;
         this.magiaMax = magia;
         this.resistenciaMax = resistencia;
+        this.poderAtaque = poderAtaque;
         this.arma = arma;
-
-
     }
-
 
 
     public Personaje() {
@@ -52,14 +47,6 @@ public abstract class Personaje implements Movimientos {
 
     public void setPH(int PH) {
         this.PH = PH;
-    }
-
-    public int getFuerza() {
-        return fuerza;
-    }
-
-    public void setFuerza(int fuerza) {
-        this.fuerza = fuerza;
     }
 
     public int getMagia() {
@@ -86,14 +73,6 @@ public abstract class Personaje implements Movimientos {
         this.PHMax = PHMax;
     }
 
-    public int getFuerzaMax() {
-        return fuerzaMax;
-    }
-
-    public void setFuerzaMax(int fuerzaMax) {
-        this.fuerzaMax = fuerzaMax;
-    }
-
     public int getMagiaMax() {
         return magiaMax;
     }
@@ -108,6 +87,14 @@ public abstract class Personaje implements Movimientos {
 
     public void setResistenciaMax(int resistenciaMax) {
         this.resistenciaMax = resistenciaMax;
+    }
+
+    public int getPoderAtaque() {
+        return poderAtaque;
+    }
+
+    public void setPoderAtaque(int poderAtaque) {
+        this.poderAtaque = poderAtaque;
     }
 
     @Override
@@ -128,13 +115,85 @@ public abstract class Personaje implements Movimientos {
 
     }
 
-    public void subirNivel() {
-        int nivel = getLevel() + 1;
-        System.out.println("Subiste al nivel "+ nivel+ "\n todos tus stats subieron en 20 puntos\n");
-        setPH(getPH() + 20);
-        setFuerza(getFuerza() + 20);
-        setMagia(getMagia() + 20);
-        setResistencia(getResistencia()+ 20);
 
+    public void subirNivel() throws CorroborarException {
+        int nivel = getLevel() + 1;
+        int sumarAtributo = 0;
+        System.out.println("Subiste al nivel "+ nivel+ "\n todos tus stats subieron en 20 puntos\n");
+        sumarAtributo = corroborarAtributo(getPH(), getPHMax(), 20);
+        if (sumarAtributo > 0 ){
+            setPH(getPH() + sumarAtributo);
+        } else {
+            throw new CorroborarException("El PH ya está al máximo.");
+        }
+
+        sumarAtributo = corroborarAtributo(getMagia(), getMagiaMax(), 20);
+        if (sumarAtributo > 0 ){
+            setMagia(getMagia() + sumarAtributo);
+        } else {
+            throw new CorroborarException("La magia ya está al máximo.");
+        }
+
+        sumarAtributo = corroborarAtributo(getResistencia(), getResistenciaMax(), 20);
+        if (sumarAtributo > 0 ){
+            setResistencia(getResistencia() + sumarAtributo);
+        } else {
+            throw new CorroborarException("La resistencia ya está al máximo.");
+        }
     }
+
+    //ya que los personajes tanto asesino como mago pueden curarse hacemos el metodo public en la clase padre
+    public void curarAtributo(String atributo, int cantidad) throws CorroborarException {
+        int actual = 0, maximo = 0, curacionReal = 0;
+
+        if (atributo.equalsIgnoreCase("ph")) {
+            actual = getPH();
+            maximo = getPHMax();
+
+            curacionReal = corroborarAtributo(actual, maximo, cantidad);
+            if (curacionReal > 0){
+                setPH(actual + curacionReal);
+            } else {
+                throw new CorroborarException("El " + atributo + " ya está al máximo.");
+            }
+
+        } else if (atributo.equalsIgnoreCase("resistencia")) {
+            actual = getResistencia();
+            maximo = getResistenciaMax();
+
+            curacionReal = corroborarAtributo(actual, maximo, cantidad);
+            if (curacionReal > 0){
+                setResistencia(actual + curacionReal);
+            } else {
+                throw new CorroborarException("El " + atributo + " ya está al máximo.");
+            }
+        } else if (atributo.equalsIgnoreCase("magia")) {
+            actual = getMagia();
+            maximo = getMagiaMax();
+            curacionReal = corroborarAtributo(actual, maximo, cantidad);
+            if (curacionReal > 0){
+                setMagia(actual + curacionReal);
+            } else {
+                throw new CorroborarException("El " + atributo + " ya está al máximo.");
+            }
+        } else {
+            throw new IllegalArgumentException("Atributo no válido: " + atributo);
+        }
+
+
+        System.out.println(atributo + " aumentado en " + curacionReal + ". " + atributo + " actual: " + (actual + curacionReal));
+    }
+
+    public int corroborarAtributo(int actual, int maximo, int cantidad) throws CorroborarException {
+        int suma = 0;
+
+        if (actual<maximo){
+            suma = Math.min(cantidad, maximo - actual);
+        } else
+        {
+            suma = 0;
+        }
+        return suma;
+    }
+
 }

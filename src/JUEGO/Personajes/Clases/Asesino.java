@@ -7,15 +7,23 @@ import JUEGO.Exceptions.*;
 public class Asesino extends Personaje {
 
     public Asesino() {
-        super(100, 80, 80, 80, 0 , Armas.cuchillo);
+        super(100, 80, 80, 0, 30, Armas.espadaCorta);
     }
 
     @Override
-    public void atacar(Personaje enemy) {
-        System.out.println("lanzando ataque de fuerza");
-        setMagia(getResistencia()- 10);
+    public void atacar(Personaje enemy) throws CorroborarException {
+        if (getResistencia() < getResistenciaMax()){
+            System.out.println("Lanzando ataque de fuerza...");
+            //aca llamamos al ataque
+            setMagia(getResistencia()- 10);
+            enemy.setPH(enemy.getPH() - getPoderAtaque());
+            //corroborar que el enemigo muera, lanzar un msj dependiendo de eso. (iria en enemigo?)
 
-        enemy.setPH(enemy.getPH() - 30);
+            System.out.println("Ataque realizado. Resistencia actual: " + getResistencia() + ", PH enemigo: " + enemy.getPH());
+
+        } else {
+            throw new CorroborarException("No tienes suficiente resistencia para realizar este ataque \n");
+        }
     }
 
 
@@ -26,8 +34,6 @@ public class Asesino extends Personaje {
         int nivel = getLevel();
         int costo = 20;
         boolean puedeCurarse = false;
-        int diferenciaPH = 0;
-        int diferenciaResistencia = 0;
         //primero corroborar que tenga suficiente magia
 
         if (getMagia()>=costo){
@@ -45,46 +51,62 @@ public class Asesino extends Personaje {
             //al ser personaje asesino, recupera tanto vida como resistencia
 
             //crear excepcion para corrobar que no sea negativo el nro
-            switch (nivel){
-                case 1:
-                    if ((getPH())<getPHMax()){
-                        diferenciaPH = getPHMax() - getPH();
-                        if (diferenciaPH >= 10) {
-                            setPH((getPH()) + 10);
-                        } else if (diferenciaPH < 10){
-                            setPH(getPH() + diferenciaPH);
-                        } else{
-                            throw new CorroborarException("No es posible aumentar el PH ya que ya esta al maximo\n");
-                        }
-                        System.out.println("Aumentaste el PH. \n" +
-                                "PH actual: " + getPH());
-                    }
 
-                    if ((getResistencia()) < getResistenciaMax()){
-                        diferenciaResistencia = getResistenciaMax() - getResistencia();
-                        if (diferenciaResistencia >= 10){
-                            setResistencia(getResistencia() + 10);
-                        } else if (diferenciaPH < 10){
-                            setResistencia(getResistencia() + diferenciaPH);
-                        } else{
-                            throw new CorroborarException("No es posible aumentar la resistencia ya esta al maximo\n");
-                        }
-                        System.out.println("Aumentaste la resistencia. \n" +
-                                "Resistencia actual: " + getResistencia());
-                    }
-
-
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-
+            if (nivel <= 2){
+                curarAtributo("ph",10);
+                curarAtributo("resistencia", 10);
+            } else if (nivel > 2 && nivel <= 4){
+                curarAtributo("ph",15);
+                curarAtributo("resistencia", 15);
+            } else if(nivel > 4 && nivel <=6){
+                curarAtributo("ph",20);
+                curarAtributo("resistencia", 20);
+            } else if(nivel > 6 && nivel<= 8){
+                curarAtributo("ph",25);
+                curarAtributo("resistencia", 25);
+            } else {
+                curarAtributo("ph",30);
+                curarAtributo("resistencia", 30);
             }
         }
-
     }
+
+//    //Resistencia es algo que se puede hacer en todos los niveles lo hacemos un metodo
+//
+//    public void curarResistencia(int cantCurar) throws CorroborarException {
+//        int diferenciaResistencia = 0;
+//        if ((getResistencia()) < getResistenciaMax()){
+//            diferenciaResistencia = getResistenciaMax() - getResistencia();
+//            if (diferenciaResistencia >= 10){
+//                setResistencia(getResistencia() + 10);
+//            } else if (diferenciaResistencia < 10){
+//                setResistencia(getResistencia() + diferenciaResistencia);
+//            } else{
+//                throw new CorroborarException("No es posible aumentar la resistencia ya esta al maximo\n");
+//            }
+//            System.out.println("Aumentaste la resistencia. \n" +
+//                    "Resistencia actual: " + getResistencia());
+//        }
+//    }
+//
+//    //ya que curar PH es algo que se puede hacer en todos los niveles lo hacemos un metodo
+//    public void curarPH(int cantCurar) throws CorroborarException {
+//        int diferenciaPH = 0;
+//
+//        if ((getPH())<getPHMax()){
+//            diferenciaPH = getPHMax() - getPH();
+//            if (diferenciaPH >= cantCurar) {
+//                setPH((getPH()) + cantCurar);
+//            } else if (diferenciaPH < cantCurar){
+//                setPH(getPH() + diferenciaPH);
+//            } else{
+//                throw new CorroborarException("No es posible aumentar el PH ya que ya esta al maximo\n");
+//            }
+//            System.out.println("Aumentaste el PH. \n" +
+//                    "PH actual: " + getPH());
+//        }
+//    }
+
+
 }
 
