@@ -15,8 +15,8 @@ public class Guerrero extends Personaje {
         if (getResistencia() < getResistenciaMax()) {
             System.out.println("\n⚔️ ¡El personaje ataca con una espada poderosa! ⚔️\n");
             System.out.println(
-                            "          * \n                       " +
-                            "          \n          ---⚡⚡⚡---\n" +
+                            "         * \n                       " +
+                            "         ||\n          ---⚡⚡⚡---\n" +
                             "        ||||          ¡Corte feroz!\n" +
                             "        ||||\n" +
                             "        ||||\n" +
