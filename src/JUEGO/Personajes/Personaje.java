@@ -15,6 +15,7 @@ public abstract class Personaje implements Movimientos {
     private int resistenciaMax;
     private int poderAtaque;
     private Armas arma;
+    private int monedas;
 
 
     public Personaje(int PH, int magia, int resistencia, int level, int poderAtaque, Armas arma) {
@@ -27,6 +28,7 @@ public abstract class Personaje implements Movimientos {
         this.resistenciaMax = resistencia;
         this.poderAtaque = poderAtaque;
         this.arma = arma;
+        this.monedas = 50;
     }
 
 
