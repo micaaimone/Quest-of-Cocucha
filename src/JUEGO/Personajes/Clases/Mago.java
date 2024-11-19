@@ -1,10 +1,11 @@
 package JUEGO.Personajes.Clases;
 
+import JUEGO.Personajes.Clases.Armas.Armas;
 import JUEGO.Personajes.Personaje;
 
 public class Mago extends Personaje {
     public Mago() {
-        super(100, 10, 150, 50, 0);
+        super(100, 10, 150, 50, 0 , Armas.bastonCorto);
     }
 
     @Override
