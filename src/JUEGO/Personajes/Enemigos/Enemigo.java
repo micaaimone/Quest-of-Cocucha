@@ -11,12 +11,6 @@ public class Enemigo extends Personaje {
         super(PH, fuerza, magia, resistencia, level , Armas.cuchillo );
     }
 
-    public Enemigo() {
-    }
-
-    public Enemigo() {
-    }
-
     @Override
     public void atacar(Personaje enemy) {
 
