@@ -6,13 +6,13 @@ import JUEGO.Exceptions.*;
 public class Asesino extends Personaje {
 
     public Asesino() {
-        super(100, 80, 80, 80, 0, 30);
+        super(100, 80, 80, 0, 30);
     }
 
     @Override
     public void atacar(Personaje enemy) throws CorroborarException {
         if (getResistencia() < getResistenciaMax()){
-            System.out.println("lanzando ataque de fuerza...");
+            System.out.println("Lanzando ataque de fuerza...");
             //aca llamamos al ataque
             setMagia(getResistencia()- 10);
             enemy.setPH(enemy.getPH() - getPoderAtaque());
