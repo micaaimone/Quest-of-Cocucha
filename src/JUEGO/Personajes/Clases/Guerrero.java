@@ -13,7 +13,7 @@ public class Guerrero extends Personaje {
     public void atacar(Personaje enemy) {
         System.out.println("⚔️ ¡El personaje ataca con una espada poderosa! ⚔️");
         System.out.println(
-                        "         //           ---⚡⚡⚡---\n" +
+                        "         ||           ---⚡⚡⚡---\n" +
                         "        ||||          ¡Corte feroz!\n" +
                         "        ||||\n" +
                         "        ||||\n" +
