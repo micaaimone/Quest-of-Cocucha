@@ -65,6 +65,9 @@ public class Tienda {
                 } else if (p instanceof Guerrero) {
                     mejoraDeArma(p, scanner);
                 }
+
+                eleccion = seleccionarOpcion();
+
             } else if (eleccion == 3) {
                 System.out.println("Gracias por visitar la tienda, vuelve pronto!\n");
             } else {
