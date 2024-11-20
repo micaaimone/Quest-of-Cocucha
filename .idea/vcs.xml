@@ -3,8 +3,8 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$USER_HOME$" vcs="Git" />
-    <mapping directory="$USER_HOME$/Desktop/proyecto final" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../../proyecto final" vcs="Git" />
   </component>
   <component name="VcsProjectSettings">
     <option name="detectVcsMappingsAutomatically" value="false" />
