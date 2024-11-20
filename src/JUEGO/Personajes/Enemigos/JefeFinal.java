@@ -1,7 +1,7 @@
 package JUEGO.Personajes.Enemigos;
 
 import JUEGO.Exceptions.CorroborarException;
-import JUEGO.Personajes.Clases.Armas.Armas;
+import JUEGO.Armas.Armas;
 import JUEGO.Personajes.Personaje;
 
 public class JefeFinal extends Personaje {

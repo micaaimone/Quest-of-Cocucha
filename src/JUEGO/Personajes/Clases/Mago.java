@@ -1,7 +1,7 @@
 package JUEGO.Personajes.Clases;
 
 import JUEGO.Exceptions.CorroborarException;
-import JUEGO.Personajes.Clases.Armas.Armas;
+import JUEGO.Armas.Armas;
 import JUEGO.Personajes.Personaje;
 
 public class Mago extends Personaje {
@@ -23,7 +23,7 @@ public class Mago extends Personaje {
                             "         |\n" +
                             "         | \n" +
                             "         | \n" +
-                            "         | \"
+                            "         | \n"
             );
             setMagia(getMagia() - 15);
 
