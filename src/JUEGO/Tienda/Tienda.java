@@ -34,26 +34,34 @@ public class Tienda {
             System.out.println("╔════════════════════════════════════════════════════╗");
             System.out.println("║         🌟 * Información * 🌟                      ║");
             System.out.println("╠════════════════════════════════════════════════════╣");
-            System.out.println("║ 📜 Nombre: " + a.name() + "                        ║");
+            System.out.println("║ 📜 Nombre: " + a.getNombre() + "                   ║");
             System.out.println("║ 💰 Precio: " + a.getPrecio() + " monedas de oro    ║");
-            System.out.println("║ 🪶 Descripción: " + a.getDescripcion()+            "║");
+            System.out.println("║ 🪶 Descripción: " + a.getDescripcion()+           "║");
             System.out.println("╚════════════════════════════════════════════════════╝");
             System.out.printf("\n");
         }
     }
 
-    public void mostrarArma(Armas a) {
-        System.out.printf("\n");
-        System.out.println("╔═══════════════════════════════════════════════════════════════════════════════╗");
-        System.out.println("║                 🌟 * Información del Arma * 🌟                                ║");
-        System.out.println("╠═══════════════════════════════════════════════════════════════════════════════╣");
-        System.out.println("║ 📜 Nombre del arma: " + String.format("%-30s", a.name()) +                  " ║");
-        System.out.println("║ 💰 Precio: " + String.format("%-27s", a.getPrecio() + " monedas de oro") +  " ║");
-        System.out.println("║ 🪶 Descripción: " + String.format("%-23s", a.getDescripcion()) +             " ║");
-        System.out.println("╚═══════════════════════════════════════════════════════════════════════════════╝");
-        System.out.printf("\n");
+    //poner un if que corrobore que el arma actual del personaje no sea igual al arma q vamos a mostrar
+    public void mostrarArma(Armas a, Personaje p) {
+        if (p.getNombreArma().equals(a.getNombre())){
+            System.out.println("Ya tienes la mejora de arma\n");
+        } else {
+            System.out.printf("\n");
+            System.out.println("╔═══════════════════════════════════════════════════════════════════════════════╗");
+            System.out.println("║                 🌟 * Información del Arma * 🌟                                ║");
+            System.out.println("╠═══════════════════════════════════════════════════════════════════════════════╣");
+            System.out.println("║ 📜 Nombre del arma: " + String.format("%-30s", a.getNombre()) +             " ║");
+            System.out.println("║ 💰 Precio: " + String.format("%-27s", a.getPrecio() + " monedas de oro") +  " ║");
+            System.out.println("║ 🪶 Descripción: " + String.format("%-23s", a.getDescripcion()) +            " ║");
+            System.out.println("╚═══════════════════════════════════════════════════════════════════════════════╝");
+            System.out.printf("\n");
+        }
+
     }
 
+
+    //hacer una excepcion que permita nomas que se ingresen nros validos (1,2,3)
     public void menuTienda(Personaje p) throws EntradaInvalidaException {
         Scanner scanner = new Scanner(System.in);
 
@@ -177,7 +185,7 @@ public class Tienda {
         System.out.println(p.getArma());
 
         System.out.println("Detalle de la mejora de su arma \n");
-        mostrarArma(listaArmas.get(listaArmas.size()-1));
+        mostrarArma(listaArmas.get(listaArmas.size()-1), p);
 
         System.out.println("Cantidad de monedas: " + p.getMonedas());
 
