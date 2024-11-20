@@ -1,7 +1,7 @@
 package JUEGO.Personajes;
 
 import JUEGO.Exceptions.CorroborarException;
-import JUEGO.Personajes.Clases.Armas.Armas;
+import JUEGO.Armas.Armas;
 
 import java.util.Objects;
 
@@ -99,8 +99,11 @@ public abstract class Personaje implements Movimientos {
         this.poderAtaque = poderAtaque;
     }
 
-    public Armas getArma() {
-        return arma;
+    public String  getArma() {
+        return "Nombre: " + arma.name()+
+                "\nDescripción: " + arma.getDescripcion() +
+                "\n----------------------";
+
     }
 
     public void setArma(Armas arma) {

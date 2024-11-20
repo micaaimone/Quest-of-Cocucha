@@ -1,8 +1,7 @@
 package JUEGO.Tienda;
 import JUEGO.Exceptions.EntradaInvalidaException;
-import JUEGO.Valicaciones.ValidacionBooleans;
 import JUEGO.Exceptions.CorroborarException;
-import JUEGO.Personajes.Clases.Armas.Armas;
+import JUEGO.Armas.Armas;
 import JUEGO.Personajes.Clases.Asesino;
 import JUEGO.Personajes.Clases.Guerrero;
 import JUEGO.Personajes.Clases.Mago;
@@ -54,6 +53,7 @@ public class Tienda {
             if (eleccion == 1) {
                 //metodo especifico para comprar pocion
                 comprarPocion(p, scanner);
+                eleccion = seleccionarOpcion();
             } else if (eleccion == 2) {
                 //para poder mostrar unicamente la mejora de arma de cada personaje armamos
                 // un metodo especifico que devuelva una lista de los mismos
@@ -65,6 +65,7 @@ public class Tienda {
                 } else if (p instanceof Guerrero) {
                     mejoraDeArma(p, scanner);
                 }
+                eleccion = seleccionarOpcion();
             } else if (eleccion == 3) {
                 System.out.println("Gracias por visitar la tienda, vuelve pronto!\n");
             } else {
@@ -128,25 +129,40 @@ public class Tienda {
 
     public void mejoraDeArma(Personaje p, Scanner scanner) throws EntradaInvalidaException {
         List<Armas> listaArmas = obtenerArmasDelPersonaje(p);
-        String mejorarArma;
 
         System.out.println("Detalle de tu arma actual como asesino\n");
-        mostrarArma(listaArmas.getFirst());
+        System.out.println(p.getArma());
 
         System.out.println("Detalle de la mejora de su arma \n");
-        mostrarArma(listaArmas.getLast());
+        mostrarArma(listaArmas.get(listaArmas.size()-1));
 
         System.out.println("Cantidad de monedas: " + p.getMonedas());
 
-        System.out.println("Desea comprar la mejora de arma? \n");
+        // Bucle para validar la entrada del usuario
+        boolean entradaValida = false; // Bandera para controlar el bucle
+        boolean mejorArma = false;    // Almacena el valor booleano final
+        String mejorarArma = "";
 
-        //mando a validar que ingrese bien el booleano
-        do{
-            mejorarArma = scanner.nextLine();
-        } while (validarBooleano((mejorarArma)));
+        do {
+            try {
+                System.out.println("¿Desea mejorar su arma? (si/no):");
+                mejorarArma = scanner.nextLine();
+
+                // Intentar validar el booleano
+                mejorArma = validarBooleano(mejorarArma);
+                entradaValida = true; // Si no hay excepción la entrada es válida
+            } catch (EntradaInvalidaException e) {
+                System.out.println(e.getMessage()); // Mostrar el mensaje de error
+            }
+        } while (!entradaValida); // Repetir mientras no se haya validado la entrada
+
+        if (mejorarArma.equals("no"))
+        {
+            entradaValida = false;
+        }
 
         //corroboro que mejora de arma == "true" y que el personaje tenga la cantidad de monedas necesarias
-        if (mejorarArma.equals("true") && p.getMonedas()>= listaArmas.getLast().getPrecio()){
+        if (entradaValida && p.getMonedas()>= listaArmas.getLast().getPrecio()){
             p.setArma(listaArmas.getLast());
             p.setMonedas(p.getMonedas()-listaArmas.getLast().getPrecio());
             System.out.println("Has cambiado tu arma principal \n");
@@ -162,10 +178,9 @@ public class Tienda {
                 p.setResistencia(p.getResistencia() + 10);
             }
             p.mostrarInfo();
-
-        } else if (p.getMonedas()< listaArmas.getLast().getPrecio()){
+        } else if (entradaValida && p.getMonedas()< listaArmas.getLast().getPrecio()){
             System.out.println("No tienes suficientes monedas, recoge mas monedas matando enemigos y pasando de niveles \n");
-        } else {
+        } else if (!entradaValida){
             System.out.println("Vuelve pronto...\n");
         }
     }
