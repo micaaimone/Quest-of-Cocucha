@@ -106,6 +106,10 @@ public abstract class Personaje implements Movimientos {
 
     }
 
+    public String getNombreArma(){
+        return arma.getNombre();
+    }
+
     public void setArma(Armas arma) {
         this.arma = arma;
     }
@@ -245,7 +249,7 @@ public abstract class Personaje implements Movimientos {
         System.out.println("Magia: " + getMagia() + "/" + getMagiaMax());
         System.out.println("Resistencia: " + getResistencia() + "/" + getResistenciaMax());
         System.out.println("Poder de ataque: " + getPoderAtaque());
-        System.out.println("Arma: " + getArma());
+        System.out.println("Arma: " + getNombreArma());
         System.out.println("Monedas: " + getMonedas());
     }
 
