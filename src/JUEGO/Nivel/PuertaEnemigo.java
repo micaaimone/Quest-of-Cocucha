@@ -1,9 +1,13 @@
 package JUEGO.Nivel;
 
+import JUEGO.Personajes.Duelo;
 import JUEGO.Personajes.Enemigos.*;
+import JUEGO.Personajes.Personaje;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static JUEGO.Personajes.Duelo.combate;
 
 
 //por cada nivel hay 3 puertas, una en la que se enfrenta a un enemigo
@@ -21,5 +25,11 @@ public class PuertaEnemigo extends Puerta{
         this.enemigo = enemigo;
     }
 
+    public boolean combatir(Personaje hero){
+        System.out.println("Vas a combatir con el enemigo\n");
+        boolean win = combate(enemigo, hero);
+        return win;
+
+    }
 
 }
