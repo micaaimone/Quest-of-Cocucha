@@ -1,14 +1,14 @@
-package JUEGO.Personajes.Clases.Armas;
+package JUEGO.Armas;
 
 public enum Armas {
 
-    //agregar daño? algo q les haga comprar el arma
-    espadaCorta(100, "espada normal de asesino", "Asesino"),
-    espadaGrande(100, "espada asesino pro - al comprar la mejora aumenta la resistencia maxima 10 puntos(sube esos puntos automaticamente tmbn en resistencia) y aumenta el poder de ataque por 15 pts ", "Asesino"),
-    bastonCorto(100, "bastoncito mago", "Mago"),
+    //mejorar las descripciones
+    espadaCorta(0, "espada normal de guerrero", "Guerrero"),
+    espadaGrande(100, "espada guerrero pro - al comprar la mejora aumenta la resistencia maxima 10 puntos(sube esos puntos automaticamente tmbn en resistencia) y aumenta el poder de ataque por 15 pts ", "Guerrero"),
+    bastonCorto(0, "bastoncito mago", "Mago"),
     bastonLargo(100, "baston mago pro - al comprar la mejora aumenta la magia maxima 10 puntos(sube esos puntos automaticamente tmbn en magia) y aumenta el poder de ataque por 15 pts ", "Mago"),
-    dagaFilosa(100, "daga filosa  guerrero - al comprar la mejora aumenta la resistencia maxima 10 puntos(sube esos puntos automaticamente tmbn en resistencia) y aumenta el poder de ataque por 15 pts ", "Guerrero"),
-    cuchillo(100, "cuchillo guerrero", "Guerrero");
+    cuchillo(0, "cuchillo asesino", "Asesino"),
+    dagaFilosa(100, "daga filosa  asesino - al comprar la mejora aumenta la resistencia maxima 10 puntos(sube esos puntos automaticamente tmbn en resistencia) y aumenta el poder de ataque por 15 pts ", "Asesino");
 
 
     private final int precio;
