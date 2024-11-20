@@ -9,7 +9,7 @@ public class Duelo {
     private static int decision;
     private static int turnos;
 
-    public static void combate(Enemigo enemigo, Personaje personaje) {
+    public static Boolean combate(Enemigo enemigo, Personaje personaje) {
         Scanner sc = new Scanner(System.in);
         while (enemigo.getPH()<= 0 || personaje.getPH()<= 0) {
             System.out.println("⚔️💥 ¡El combate comienza! 💥⚔️");
@@ -50,6 +50,11 @@ public class Duelo {
 
             enemigo.atacar(personaje);
             turnos++;
+        }
+        if (enemigo.getPH()<= 0){
+            return true;
+        }else{
+            return false;
         }
     }
 }
