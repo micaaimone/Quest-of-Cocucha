@@ -3,6 +3,8 @@ import JUEGO.Personajes.*;
 import JUEGO.Personajes.Enemigos.Enemigo;
 import JUEGO.Tienda.Tienda;
 
+import java.util.TreeSet;
+
 public class GestionNivel {
     private Personaje personaje;
 
@@ -51,8 +53,8 @@ public class GestionNivel {
         //--
         Nivel nivel5 = new Nivel(5);
         nivel5.agregarPuerta(puertaEnemigo5);
-        nivel5.agregarPuerta(puertaTienda1);
 
-        // set de niveles -------------------------
+
+
     }
 }
