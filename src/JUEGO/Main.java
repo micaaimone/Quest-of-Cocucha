@@ -14,7 +14,7 @@ public class Main {
 }
 
 /*
-un mapa qye va a tener la key como nombre del jugador y el valor la puntuacion total del pj
+un mapa qye va a    tener la key como nombre del jugador y el valor la puntuacion total del pj
 
 un set de enemigos
 
