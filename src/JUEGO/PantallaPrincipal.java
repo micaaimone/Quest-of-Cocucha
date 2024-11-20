@@ -41,6 +41,8 @@ public class PantallaPrincipal {
                 Tienda tienda = new Tienda();
 
                 p.setMonedas(p.getMonedas() + 100);
+                p.setResistencia(p.getResistencia() - 5);
+                p.mostrarInfo();
                 tienda.menuTienda(p);
                 //tengo q seguir probando, algo andaba mal en validacion
                 //tmbn ver precios d armas, poner ordenadas cual ya tiene, capaz agregar algun atributo para eso

@@ -23,15 +23,15 @@ public class Tienda {
     public void mostrarPociones() {
         for (Pocion p : Pocion.values()) {
             System.out.println(" Nombre de la pocion: " + p +
-                    "Precio: " + p.getPrecio());
+                    "\nPrecio: " + p.getPrecio());
         }
     }
 
     public void mostrarArmas() {
         for (Armas a : Armas.values()) {
             System.out.println("Nombre: " + a.name());
-            System.out.println("Precio: " + a.getPrecio());
-            System.out.println("Descripción: " + a.getDescripcion());
+            System.out.println("\nPrecio: " + a.getPrecio());
+            System.out.println("\nDescripción: " + a.getDescripcion());
             System.out.println("----------------------");
         }
     }
@@ -51,10 +51,20 @@ public class Tienda {
 
         do{
             if (eleccion == 1) {
+
+                System.out.println("\n-----Comprar pocion-----\n");
                 //metodo especifico para comprar pocion
                 comprarPocion(p, scanner);
+                System.out.println("\n-----Saliendo de comprar pocion-----\n");
+
+                //aca iria limpiar pantalla
+
+
                 eleccion = seleccionarOpcion();
+
             } else if (eleccion == 2) {
+
+                System.out.println("\n-----Mejorar arma-----\n");
                 //para poder mostrar unicamente la mejora de arma de cada personaje armamos
                 // un metodo especifico que devuelva una lista de los mismos
                 List<Armas> listaArmas = new ArrayList<>();
@@ -65,6 +75,11 @@ public class Tienda {
                 } else if (p instanceof Guerrero) {
                     mejoraDeArma(p, scanner);
                 }
+                System.out.println("\n-----Saliendo de mejorar arma-----\n");
+
+                //aca iria limpiar pantalla
+
+
                 eleccion = seleccionarOpcion();
             } else if (eleccion == 3) {
                 System.out.println("Gracias por visitar la tienda, vuelve pronto!\n");
