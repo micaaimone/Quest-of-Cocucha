@@ -22,25 +22,36 @@ public class Tienda {
 
     public void mostrarPociones() {
         for (Pocion p : Pocion.values()) {
-            System.out.println(" Nombre de la pocion: " + p +
-                    "Precio: " + p.getPrecio());
+            System.out.println("🧪 Nombre de la poción: " + p);
+            System.out.println("💰 Precio: " + p.getPrecio() + " monedas");
+
         }
     }
 
     public void mostrarArmas() {
         for (Armas a : Armas.values()) {
-            System.out.println("Nombre: " + a.name());
-            System.out.println("Precio: " + a.getPrecio());
-            System.out.println("Descripción: " + a.getDescripcion());
-            System.out.println("----------------------");
+            System.out.printf("\n");
+            System.out.println("╔════════════════════════════════════════════════════╗");
+            System.out.println("║         🌟 * Información * 🌟                      ║");
+            System.out.println("╠════════════════════════════════════════════════════╣");
+            System.out.println("║ 📜 Nombre: " + a.name() + "                        ║");
+            System.out.println("║ 💰 Precio: " + a.getPrecio() + " monedas de oro    ║");
+            System.out.println("║ 🪶 Descripción: " + a.getDescripcion()+            "║");
+            System.out.println("╚════════════════════════════════════════════════════╝");
+            System.out.printf("\n");
         }
     }
 
     public void mostrarArma(Armas a) {
-
-        System.out.println(" Nombre del arma: " + a +
-                "\n Descripcion: " + a.getDescripcion() +
-                "\n Precio: " + a.getPrecio());
+        System.out.printf("\n");
+        System.out.println("╔═══════════════════════════════════════════════════════════════════════════════╗");
+        System.out.println("║                 🌟 * Información del Arma * 🌟                                ║");
+        System.out.println("╠═══════════════════════════════════════════════════════════════════════════════╣");
+        System.out.println("║ 📜 Nombre del arma: " + String.format("%-30s", a.name()) +                  " ║");
+        System.out.println("║ 💰 Precio: " + String.format("%-27s", a.getPrecio() + " monedas de oro") +  " ║");
+        System.out.println("║ 🪶 Descripción: " + String.format("%-23s", a.getDescripcion()) +             " ║");
+        System.out.println("╚═══════════════════════════════════════════════════════════════════════════════╝");
+        System.out.printf("\n");
     }
 
     public void menuTienda(Personaje p) throws EntradaInvalidaException {
@@ -67,7 +78,12 @@ public class Tienda {
                 }
                 eleccion = seleccionarOpcion();
             } else if (eleccion == 3) {
-                System.out.println("Gracias por visitar la tienda, vuelve pronto!\n");
+                System.out.printf("\n");
+                System.out.println("══════════════════════════════════════════════════");
+                System.out.println("      🌟 * Gracias por visitar la tienda * 🌟      ");
+                System.out.println("        🏰 Vuelve pronto, héroe. 🏰              ");
+                System.out.println("══════════════════════════════════════════════════");
+                System.out.printf("\n");
             } else {
                 // Validación extra (aunque seleccionarOpcion debería manejarlo)
                 System.out.println("Opción inválida. Por favor, elige una opción válida.");
@@ -81,10 +97,16 @@ public class Tienda {
         Scanner scanner = new Scanner(System.in);
         int eleccion;
         do {
+            System.out.printf("\n");
+            System.out.println("══════════════════════════════════════════════════");
+            System.out.println("           🏰 ¡Bienvenido a la tienda, héroe! 🏰");
+            System.out.println("══════════════════════════════════════════════════");
             System.out.println("¿Qué desea comprar? Ingrese el número:\n");
-            System.out.println("1- Pociones\n");
-            System.out.println("2- Mejorar tu arma\n");
-            System.out.println("3- Salir de la tienda \n");
+            System.out.println("1️⃣ - Pociones");
+            System.out.println("2️⃣ - Mejorar tu arma");
+            System.out.println("3️⃣ - Salir de la tienda");
+            System.out.println("══════════════════════════════════════════════════");
+            System.out.printf("\n");
             eleccion = scanner.nextInt();
             scanner.nextLine();
         } while (eleccion != 1 && eleccion != 2 && eleccion != 3);
@@ -105,7 +127,12 @@ public class Tienda {
     }
 
     public void comprarPocion(Personaje p, Scanner scanner){
-        System.out.println("¿Que pocion desea comprar? Ingrese el nombre\n");
+        System.out.printf("\n");
+        System.out.println("══════════════════════════════════════════════════");
+        System.out.println("          🌟 ¿Qué poción desea comprar? 🌟        ");
+        System.out.println("         Ingrese el nombre de la poción:          ");
+        System.out.println("══════════════════════════════════════════════════");
+        System.out.printf("\n");
         mostrarPociones();
 
         String pocionElegida;
@@ -113,14 +140,30 @@ public class Tienda {
 
         try {
             Pocion pocion = Pocion.valueOf(pocionElegida);
-            System.out.println("Has seleccionado: " + pocion);
+            System.out.printf("\n");
+            System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+            System.out.println("   🎉 ¡Éxito! Has seleccionado la poción:   ");
+            System.out.println("                " + pocion + "                  ");
+            System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+            System.out.printf("\n");
 
             //manda a subir el atributo
             p.curarAtributo(pocionElegida, 20);
         } catch (IllegalArgumentException e) {
-            System.out.println("Entrada inválida. Por favor, elige un atributo válido.\n");
+            System.out.println("\u001B[31m══════════════════════════════════════════════════");
+            System.out.println("\u001B[31m⚠️   ¡ALERTA! Entrada inválida   ⚠️");
+            System.out.println("\u001B[31m══════════════════════════════════════════════════");
+            System.out.println("\u001B[31m   ❌ Por favor, elige un atributo válido. ❌");
+            System.out.println("\u001B[0m══════════════════════════════════════════════════");
+
         } catch (CorroborarException ex) {
-            System.out.println("Atributo al max\n");
+            System.out.printf("\n");
+            System.out.println("\u001B[31m══════════════════════════════════════════════════");
+            System.out.println("\u001B[31m⚠️  ¡Error! Atributo al máximo  ⚠️");
+            System.out.println("\u001B[31m══════════════════════════════════════════════════");
+            System.out.println("\u001B[31m    ❌ No puedes mejorar más este atributo. ❌");
+            System.out.println("\u001B[0m══════════════════════════════════════════════════");
+            System.out.printf("\n");
         } catch (Exception exception) {
             exception.printStackTrace();
         }
@@ -130,7 +173,7 @@ public class Tienda {
     public void mejoraDeArma(Personaje p, Scanner scanner) throws EntradaInvalidaException {
         List<Armas> listaArmas = obtenerArmasDelPersonaje(p);
 
-        System.out.println("Detalle de tu arma actual como asesino\n");
+        System.out.println("Detalle de tu arma actual como " + p.getClass());
         System.out.println(p.getArma());
 
         System.out.println("Detalle de la mejora de su arma \n");

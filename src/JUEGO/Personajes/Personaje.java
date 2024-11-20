@@ -158,7 +158,7 @@ public abstract class Personaje implements Movimientos {
         if (sumarAtributo > 0 ){
             setPH(getPH() + sumarAtributo);
         } else {
-            throw new CorroborarException("⚠️ ¡Error! El PH ya está al máximo. ⚠️");
+            throw new CorroborarException("\u001B[31m⚠️ ¡Error! El PH ya está al máximo. ⚠️\u001B[0m");
 
         }
 
@@ -166,7 +166,7 @@ public abstract class Personaje implements Movimientos {
         if (sumarAtributo > 0 ){
             setMagia(getMagia() + sumarAtributo);
         } else {
-            throw new CorroborarException("⚠️ ¡Error! La magia ya está al máximo. ⚠️");
+            throw new CorroborarException("\u001B[31m⚠️ ¡Error! La magia ya está al máximo. ⚠️\u001B[0m");
 
         }
 
@@ -174,7 +174,7 @@ public abstract class Personaje implements Movimientos {
         if (sumarAtributo > 0 ){
             setResistencia(getResistencia() + sumarAtributo);
         } else {
-            throw new CorroborarException("⚠️ ¡Error! La resistencia ya está al máximo. ⚠️");
+            throw new CorroborarException("\u001B[31m⚠️ ¡Error! La resistencia ya está al máximo. ⚠️\u001B[0m");
 
         }
     }
