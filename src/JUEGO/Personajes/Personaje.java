@@ -186,6 +186,7 @@ public abstract class Personaje implements Movimientos {
     //ya que los personajes tanto asesino como mago pueden curarse hacemos el metodo public en la clase padre
 
     //----IMP cuando se llame a esta funcion hay que hacer una excepcion que corrobore que CANTIDAD no sea negativa. Solo puede ingresar nros positivos
+    //cambiar el nombre del metodo y agregar que corrobore el atributo level
     public void curarAtributo(String atributo, int cantidad) throws CorroborarException {
         int actual = 0, maximo = 0, curacionReal = 0;
 

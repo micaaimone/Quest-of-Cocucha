@@ -15,12 +15,15 @@ public class Jugador {
     private String Nombre;
     private Personaje personaje;
     private int Puntuacion;
+    private int id;
+    private int idGlobal = 0;
 
 
     public Jugador(String nombre) {
         Nombre = nombre;
         this.personaje = ElegirPersonaje();
         Puntuacion = 0;
+        this.id = idGlobal ++;
     }
 
     public String getNombre() {
@@ -47,6 +50,13 @@ public class Jugador {
         Puntuacion = puntuacion;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public int getIdGlobal() {
+        return idGlobal;
+    }
 
     private String IngresarNombre(String Nombre) {
 
