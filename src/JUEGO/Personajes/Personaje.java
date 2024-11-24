@@ -245,13 +245,18 @@ public abstract class Personaje implements Movimientos {
 
     //imprimir info del personaje
     public void mostrarInfo() {
-        System.out.println("Nivel: " + getLevel());
-        System.out.println("PH: " + getPH() + "/" + getPHMax());
-        System.out.println("Magia: " + getMagia() + "/" + getMagiaMax());
-        System.out.println("Resistencia: " + getResistencia() + "/" + getResistenciaMax());
-        System.out.println("Poder de ataque: " + getPoderAtaque());
-        System.out.println("Arma: " + getNombreArma());
-        System.out.println("Monedas: " + getMonedas());
+        System.out.println("══════════════════════════════════════════════════");
+        System.out.println("             🎮 * Estado del Personaje * 🎮        ");
+        System.out.println("══════════════════════════════════════════════════");
+        System.out.println("   🧍 Nivel: " + getLevel());
+        System.out.println("   ❤️ PH: " + getPH() + " / " + getPHMax());
+        System.out.println("   ✨ Magia: " + getMagia() + " / " + getMagiaMax());
+        System.out.println("   🛡️ Resistencia: " + getResistencia() + " / " + getResistenciaMax());
+        System.out.println("   ⚔️ Poder de ataque: " + getPoderAtaque());
+        System.out.println("   🗡️ Arma equipada: " + getNombreArma());
+        System.out.println("   💰 Monedas: " + getMonedas());
+        System.out.println("══════════════════════════════════════════════════");
+
     }
 
 }

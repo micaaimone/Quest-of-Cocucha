@@ -14,12 +14,17 @@ public class CrearPersonaje {
         Personaje p = null;
         int opcion;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("\nSeleccione un personaje, elija el nro\n");
-        System.out.println("\n1-Guerrero\n");
-        //aca va la desc del guerrero
-        System.out.println("\n2-Mago\n");
-        //aca va la desc del mago
-        System.out.println("\n3-Asesino\n");
+        System.out.println("══════════════════════════════════════════════════");
+        System.out.println("       🎮 * Seleccione un personaje * 🎮         ");
+        System.out.println("══════════════════════════════════════════════════");
+        System.out.println("\n1- Guerrero");
+        System.out.println("   ⚔️ Un experto en combate cuerpo a cuerpo. Su fuerza es inigualable, ideal para enfrentar enemigos de frente.");
+        System.out.println("\n2- Mago");
+        System.out.println("   🔮 Un maestro de las artes arcanas. Su poder mágico es capaz de destruir a los enemigos desde la distancia.");
+        System.out.println("\n3- Asesino");
+        System.out.println("   🖤 Sigiloso y letal. Especialista en eliminar a sus enemigos rápidamente y en las sombras, antes de que puedan reaccionar.");
+        System.out.println("══════════════════════════════════════════════════");
+        System.out.printf("Escriba el numero y comience su historia: ");
         //aca va la desc del asesino
         opcion = scanner.nextInt();
         scanner.nextLine();
@@ -38,7 +43,12 @@ public class CrearPersonaje {
                 p = asesino;
                 break;
             default:
-                System.out.println("No ingreso una opcion correcta");
+                System.out.println("\u001B[31m══════════════════════════════════════════════════");
+                System.out.println("       ⚠️ * Error de Opción * ⚠️                   ");
+                System.out.println("══════════════════════════════════════════════════");
+                System.out.println("   ❌ No ingresó una opción correcta.");
+                System.out.println("══════════════════════════════════════════════════");
+
                 break;
         }
 

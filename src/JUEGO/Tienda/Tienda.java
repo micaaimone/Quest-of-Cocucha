@@ -182,12 +182,24 @@ public class Tienda {
         List<Armas> listaArmas = obtenerArmasDelPersonaje(p);
 
         System.out.println("Detalle de tu arma actual como " + p.getClass());
+        System.out.println("══════════════════════════════════════════════════");
+        System.out.println("        🗡️ * Detalle de tu arma actual * 🗡️        ");
+        System.out.println("══════════════════════════════════════════════════");
+        System.out.println("   🔰 Clase del portador: " + p.getClass());
+        System.out.println("   ⚔️ Una herramienta forjada para la batalla.");
+        System.out.println("══════════════════════════════════════════════════");
         System.out.println(p.getArma());
 
         System.out.println("Detalle de la mejora de su arma \n");
+
         mostrarArma(listaArmas.get(listaArmas.size()-1), p);
 
-        System.out.println("Cantidad de monedas: " + p.getMonedas());
+        System.out.println("══════════════════════════════════════════════════");
+        System.out.println("         💰 * Estado de tus riquezas * 💰         ");
+        System.out.println("══════════════════════════════════════════════════");
+        System.out.println("   🪙 Cantidad de monedas: " + p.getMonedas());
+        System.out.println("══════════════════════════════════════════════════");
+
 
         // Bucle para validar la entrada del usuario
         boolean entradaValida = false; // Bandera para controlar el bucle
@@ -196,7 +208,12 @@ public class Tienda {
 
         do {
             try {
-                System.out.println("¿Desea mejorar su arma? (si/no):");
+                System.out.println("══════════════════════════════════════════════════");
+                System.out.println("       🔧 * Menú de Mejora de Armas * 🔧         ");
+                System.out.println("══════════════════════════════════════════════════");
+                System.out.println("   ⚔️ ¿Desea mejorar su arma? (si/no):");
+                System.out.println("══════════════════════════════════════════════════");
+
                 mejorarArma = scanner.nextLine();
 
                 // Intentar validar el booleano
@@ -216,8 +233,13 @@ public class Tienda {
         if (entradaValida && p.getMonedas()>= listaArmas.getLast().getPrecio()){
             p.setArma(listaArmas.getLast());
             p.setMonedas(p.getMonedas()-listaArmas.getLast().getPrecio());
-            System.out.println("Has cambiado tu arma principal \n");
-            System.out.println("Cantidad de monedas actuales: " + p.getMonedas());
+            System.out.println("══════════════════════════════════════════════════");
+            System.out.println("       🔄 * Cambio de Arma Principal * 🔄        ");
+            System.out.println("══════════════════════════════════════════════════");
+            System.out.println("   🗡️ ¡Has cambiado tu arma principal!");
+            System.out.println("   💰 Cantidad de monedas actuales: " + p.getMonedas());
+            System.out.println("══════════════════════════════════════════════════");
+
 
             // Mejora de atributos según el tipo de personaje
             p.setPoderAtaque(p.getPoderAtaque() + 15); // Mejora común para todos
@@ -230,9 +252,21 @@ public class Tienda {
             }
             p.mostrarInfo();
         } else if (entradaValida && p.getMonedas()< listaArmas.getLast().getPrecio()){
-            System.out.println("No tienes suficientes monedas, recoge mas monedas matando enemigos y pasando de niveles \n");
+            System.out.println("\u001B[31m══════════════════════════════════════════════════");
+            System.out.println("       ⚠️ * Advertencia de Monedas * ⚠️         ");
+            System.out.println("══════════════════════════════════════════════════");
+            System.out.println("\u001B[0m   ❌ No tienes suficientes monedas.");
+            System.out.println("   💀 Consejo: Recoge más monedas matando enemigos");
+            System.out.println("             y pasando de niveles.");
+            System.out.println("══════════════════════════════════════════════════");
+
         } else if (!entradaValida){
-            System.out.println("Vuelve pronto...\n");
+            System.out.println("══════════════════════════════════════════════════");
+            System.out.println("          🌟 ¡Gracias por tu visita! 🌟           ");
+            System.out.println("══════════════════════════════════════════════════");
+            System.out.println("   😊 Vuelve pronto, siempre eres bienvenido.");
+            System.out.println("══════════════════════════════════════════════════");
+
         }
     }
 

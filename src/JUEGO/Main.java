@@ -7,6 +7,7 @@ import JUEGO.Exceptions.EntradaInvalidaException;
 //DSPS borrar corroborar exception
 public class Main {
     public static void main(String[] args) throws CorroborarException, EntradaInvalidaException {
+
         PantallaPrincipal pantallaPrincipal = new PantallaPrincipal();
         pantallaPrincipal.menu();
 

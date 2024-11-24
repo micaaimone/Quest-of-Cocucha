@@ -24,7 +24,7 @@ public class JefeFinal extends Personaje {
                 "     ||    \n" +
                 "     ||    \n" +
                 "     ||    \n "  +
-              "       $$     \n ");
+                "     $$     \n ");
         enemy.setPH(getPH()-30);
     }
 
