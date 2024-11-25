@@ -12,6 +12,14 @@ public class GestionJugador {
         PuntuacionJugador = new TreeMap<>();
     }
 
+    public Map<Integer, Jugador> getPuntuacionJugador() {
+        return PuntuacionJugador;
+    }
+
+    public void setPuntuacionJugador(Map<Integer, Jugador> puntuacionJugador) {
+        PuntuacionJugador = puntuacionJugador;
+    }
+
     public void agregarJugador(Jugador j){
         PuntuacionJugador.put(j.getId(),j);
     }
