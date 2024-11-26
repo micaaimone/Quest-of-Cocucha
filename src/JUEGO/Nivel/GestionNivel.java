@@ -1,6 +1,5 @@
 package JUEGO.Nivel;
 import JUEGO.Armas.Armas;
-import JUEGO.ControlPantalla;
 import JUEGO.Exceptions.CorroborarException;
 import JUEGO.Personajes.*;
 import JUEGO.Personajes.Enemigos.Enemigo;
@@ -110,8 +109,8 @@ public class GestionNivel {
                 System.out.println("                ¡Solo un valiente se atreve!       ");
                 System.out.println("    Tres caminos se presentan ante ti, aventurero:  ");
                 System.out.println("                                                   ");
-                System.out.println("    🏰 1️⃣ - **Puerta del Desafio**: ¿Estás listo para la batalla?");
-                System.out.println("    🛡️ 2️⃣ - **Puerta del Mercado**: ¿Que deseas comprar?");
+                System.out.println("    🏰 1️⃣ - **Puerta del Destino**: ¿Tu futuro está sellado?");
+                System.out.println("    🛡️ 2️⃣ - **Puerta del Desafío**: ¿Estás listo para la batalla?");
                 System.out.println("    🕵️ 3️⃣ - **Puerta del Misterio**: ¿Qué secretos ocultos guardará?");
                 System.out.println("                                                         ");
                 System.out.println("            Elige con sabiduría... tu destino te aguarda.");
@@ -158,7 +157,6 @@ public class GestionNivel {
                         }
                         break;
                     case 2:
-                        ControlPantalla.limpiarPantalla();
                         System.out.println("\u001B[35m" +
                                         "🛒══════════════════════════════════🛒\n" +
                                         "       ¡Bienvenido al mercado mágico!       \n" +
@@ -171,7 +169,6 @@ public class GestionNivel {
 
                         break;
                     case 3:
-                        ControlPantalla.limpiarPantalla();
                         System.out.println("\u001B[33m" +
                                 "╔═══════════════════════════════════════════════╗\n" +
                                 "║          💪 ¡POTENCIANDO TU FUERZA! 💪        ║\n" +

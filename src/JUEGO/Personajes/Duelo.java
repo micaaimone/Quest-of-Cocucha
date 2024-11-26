@@ -1,6 +1,5 @@
 package JUEGO.Personajes;
 
-import JUEGO.ControlPantalla;
 import JUEGO.Exceptions.CorroborarException;
 import JUEGO.Personajes.Enemigos.Enemigo;
 
@@ -65,12 +64,10 @@ public class Duelo {
             }
             turnos++;
         }
-
-        if (enemigo.getPH() <= 0) {
+        if (enemigo.getPH()<= 0){
             return true;
-        } else {
+        }else{
             return false;
         }
-
     }
 }
