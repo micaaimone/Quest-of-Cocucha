@@ -5,9 +5,11 @@ import JUEGO.Armas.Armas;
 import JUEGO.Personajes.Personaje;
 
 public class JefeFinal extends Personaje {
+    private String nombre;
 
-    public JefeFinal(int PH, int magia, int resistencia, int level, int poderAtaque, Armas arma) {
+    public JefeFinal(int PH, int magia, int resistencia, int level, int poderAtaque, Armas arma, String nombre) {
         super(PH, magia, resistencia, level, poderAtaque, arma);
+        this.nombre = nombre;
     }
 
     public JefeFinal() {
