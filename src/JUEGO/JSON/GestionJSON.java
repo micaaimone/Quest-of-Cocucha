@@ -1,5 +1,5 @@
 package JUEGO.JSON;
-/*
+
 import JUEGO.Jugador.GestionJugador;
 import JUEGO.Jugador.Jugador;
 import JUEGO.Personajes.Personaje;
@@ -67,4 +67,3 @@ public class GestionJSON {
         return objJugador;
     }
 }
-*/
