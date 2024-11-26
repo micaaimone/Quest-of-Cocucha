@@ -6,13 +6,13 @@ import JUEGO.Personajes.Personaje;
 
 public class Guerrero extends Personaje {
 
-    public Guerrero() {super(180, 100, 1, 120, 0, Armas.espadaGrande);
+    public Guerrero() {super(180, 10, 100, 0, 30, Armas.espadaGrande);
     }
 
 
     @Override
     public void atacar(Personaje enemy) throws CorroborarException {
-        if (getResistencia() < getResistenciaMax()) {
+        if (getResistencia() >= 20) {
             System.out.println("\n⚔️ ¡El personaje ataca con una espada poderosa! ⚔️\n");
             System.out.println(
                             "         * \n                       " +

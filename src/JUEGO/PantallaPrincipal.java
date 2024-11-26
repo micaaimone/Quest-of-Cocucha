@@ -54,7 +54,7 @@ public class PantallaPrincipal {
             switch (opcion) {
                 case 1:
                     // llamamos a funcion para crear el jugador
-                    Jugador jugador = new Jugador();
+                    Jugador jugador = new Jugador("hola");
 
                     // llevamos el jugador a recorrer el juego
 

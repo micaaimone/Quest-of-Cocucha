@@ -9,7 +9,7 @@ import JUEGO.Personajes.Clases.Mago;
 public class Main {
     public static void main(String[] args) throws CorroborarException, EntradaInvalidaException {
 
-
+        PantallaPrincipal p = new PantallaPrincipal();
 
     }
 }
