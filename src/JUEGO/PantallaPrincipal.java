@@ -8,6 +8,7 @@ import JUEGO.Nivel.GestionNivel;
 import JUEGO.Personajes.CrearPersonaje;
 import JUEGO.Personajes.Personaje;
 import JUEGO.Tienda.Tienda;
+import JUEGO.Valicaciones.ValidacionBooleans;
 
 import java.util.Scanner;
 
@@ -16,7 +17,7 @@ public class PantallaPrincipal {
     public void menu() throws EntradaInvalidaException {
         int opcion = 0;
         GestionJugador jugadores = new GestionJugador(); // mapa de jugadores para mostrar puntuacion
-        while (opcion != 3) {
+        while (opcion != 4) {
 
             System.out.printf(" " +
                     ".--..--..--..--..--..--..--..--..--..--..--..--..--..--..--. \n" +
@@ -48,7 +49,8 @@ public class PantallaPrincipal {
             System.out.println("Elija una opcion \n ");
             System.out.println("\n1-Jugar\n");
             System.out.println("\n2-Puntuacion\n");
-            System.out.println("\n3-Salir\n");
+            System.out.println("\n3-Administracion\n");
+            System.out.println("\n4-Salir\n");
             opcion = scanner.nextInt();
             scanner.nextLine();
             switch (opcion) {
@@ -75,7 +77,19 @@ public class PantallaPrincipal {
                     System.out.println("estas son las 5 puntuaciones mas altas");
                     break;
                 case 3:
-                    //sale
+                    //admin
+                    System.out.println("ingresar como administrador ya existente?");
+                    Scanner sc = new Scanner(System.in);
+                    String confirmar = sc.nextLine();
+                    if (ValidacionBooleans.validarBooleano(confirmar)){
+
+                    }else{
+
+                    }
+
+
+                    break;
+                case 4:
                     System.out.println("Salir");
                     break;
                 default:
