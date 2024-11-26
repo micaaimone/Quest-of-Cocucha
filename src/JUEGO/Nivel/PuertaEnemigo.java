@@ -28,7 +28,6 @@ public class PuertaEnemigo extends Puerta{
     public boolean combatir(Personaje hero){
         boolean win = Duelo.combate(enemigo, hero);
         return win;
-
     }
 
 }

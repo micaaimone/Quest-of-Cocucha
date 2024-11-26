@@ -114,7 +114,8 @@ public class GestionNivel {
                                 "**************************************\n\u001B[0m");
 
                         puerta = (PuertaEnemigo) nivel.getPuerta(eleccion -1);
-                        if (((PuertaEnemigo) puerta).combatir(personaje)){
+                        win = ((PuertaEnemigo) puerta).combatir(personaje);
+                        if (win == true){
                             System.out.println("\u001B[33m" +
                                     "🎉🎉🎉 ¡Has vencido al enemigo! 🎉🎉🎉\n" +
                                     "💥 Una gran victoria, valiente guerrero 💥\n" +

@@ -62,10 +62,6 @@ public class Duelo {
             return false;
         }
 
-        if(personaje.getPH()<=0){
-            return true;
-        }else{
-            return false;
-        }
     }
 }
+
