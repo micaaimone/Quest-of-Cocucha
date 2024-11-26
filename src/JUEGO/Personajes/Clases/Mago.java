@@ -6,7 +6,7 @@ import JUEGO.Personajes.Personaje;
 
 public class Mago extends Personaje {
     public Mago() {
-        super(100, 150, 50, 50, 30 , Armas.bastonCorto);
+        super(100, 150, 50, 0, 30 , Armas.bastonCorto);
     }
 
     @Override
