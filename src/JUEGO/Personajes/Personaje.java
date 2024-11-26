@@ -249,14 +249,26 @@ public abstract class Personaje implements Movimientos {
         System.out.println("             🎮 * Estado del Personaje * 🎮        ");
         System.out.println("══════════════════════════════════════════════════");
         System.out.println("   🧍 Nivel: " + getLevel());
-        System.out.println("   ❤️ PH: " + getPH() + " / " + getPHMax());
-        System.out.println("   ✨ Magia: " + getMagia() + " / " + getMagiaMax());
-        System.out.println("   🛡️ Resistencia: " + getResistencia() + " / " + getResistenciaMax());
+        System.out.println("   ❤️     PH:      " + crearBarra(getPH(), getPHMax(), "\u001B[31m█\u001B[0m", '-'));
+        System.out.println("   ✨    Magia:    " + crearBarra(getPH(), getPHMax(), "\u001B[34m█\u001B[0m", '-'));
+        System.out.println("   🛡️ Resistencia: " + crearBarra(getPH(), getPHMax(), "\u001B[32m█\u001B[0m", '-'));
         System.out.println("   ⚔️ Poder de ataque: " + getPoderAtaque());
         System.out.println("   🗡️ Arma equipada: " + getNombreArma());
         System.out.println("   💰 Monedas: " + getMonedas());
         System.out.println("══════════════════════════════════════════════════");
 
+    }
+
+    private static String crearBarra (int actual, int maximo, String lleno, char vacio){
+        double porcentaje = (double) actual / maximo;
+        int longitudBarra = 20; // Ajustar la longitud de la barra según sea necesario
+        int cantidadLlena = (int) (porcentaje * longitudBarra);
+        int cantidadVacia = longitudBarra - cantidadLlena;
+
+        StringBuilder barra = new StringBuilder();
+        barra.append(String.valueOf(lleno).repeat(cantidadLlena));
+        barra.append(String.valueOf(vacio).repeat(cantidadVacia));
+        return barra.toString();
     }
 
 }

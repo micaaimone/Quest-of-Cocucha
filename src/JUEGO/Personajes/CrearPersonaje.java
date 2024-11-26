@@ -1,10 +1,8 @@
-package JUEGO;
+package JUEGO.Personajes;
 
-import JUEGO.Exceptions.CorroborarException;
 import JUEGO.Personajes.Clases.Asesino;
 import JUEGO.Personajes.Clases.Guerrero;
 import JUEGO.Personajes.Clases.Mago;
-import JUEGO.Personajes.Personaje;
 
 import java.util.Scanner;
 
