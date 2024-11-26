@@ -7,7 +7,7 @@ import JUEGO.Personajes.Clases.Mago;
 import java.util.Scanner;
 
 public class CrearPersonaje {
-    public Personaje Seleccionar(){
+    public static Personaje Seleccionar(){
 
         Personaje p = null;
         int opcion;
