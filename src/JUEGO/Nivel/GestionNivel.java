@@ -10,10 +10,12 @@ import java.util.*;
 
 public class GestionNivel {
     private Personaje personaje;
+    private int puntuacion;
 
 
     public GestionNivel(Personaje personaje) {
         this.personaje = personaje;
+        this.puntuacion = 0;
     }
 
     public LinkedList crearTrayecto (){
@@ -83,68 +85,29 @@ public class GestionNivel {
             if (niveles != null && !niveles.isEmpty()) {
 
 
-                System.out.println("══════════════════════════════════════════════════════════");
-                System.out.println("                 🌟 * PUERTAS MISTERIOSAS * 🌟");
-                System.out.println("══════════════════════════════════════════════════════════");
-                System.out.println("                ¡Solo un valiente se atreve!       ");
-                System.out.println("    Tres caminos se presentan ante ti, aventurero:  ");
-                System.out.println("                                                   ");
-                System.out.println("    🏰 1️⃣ - **Puerta del Destino**: ¿Tu futuro está sellado?");
-                System.out.println("    🛡️ 2️⃣ - **Puerta del Desafío**: ¿Estás listo para la batalla?");
-                System.out.println("    🕵️ 3️⃣ - **Puerta del Misterio**: ¿Qué secretos ocultos guardará?");
-                System.out.println("                                                         ");
-                System.out.println("            Elige con sabiduría... tu destino te aguarda.");
-                System.out.println("══════════════════════════════════════════════════════════");
-
+                System.out.println("Elija una de las 3 puertas (1, 2 o 3):");
                 Scanner scanner = new Scanner(System.in);
                 int eleccion = scanner.nextInt();
                 switch (eleccion){
                     case 1:
-                        System.out.println("\u001B[36m**************************************\n" +
-                                "⚔️  ¡Hora de luchar!!  ⚔️\n" +
-                                "**************************************\n\u001B[0m");
-
+                        System.out.println("Hora de luchar!!\n");
                         puerta = (PuertaEnemigo) nivel.getPuerta(eleccion -1);
                         if (((PuertaEnemigo) puerta).combatir(personaje)){
-                            System.out.println("\u001B[33m" +
-                                    "🎉🎉🎉 ¡Has vencido al enemigo! 🎉🎉🎉\n" +
-                                    "💥 Una gran victoria, valiente guerrero 💥\n" +
-                                    "✨ ¡Sigue adelante, la aventura no termina aquí! ✨\n" +
-                                    "\u001B[0m"
-                            );
-
+                            System.out.println("has vencido al enemigo!\n");
                         }else {
-                            System.out.println("\u001B[31m" +
-                                    "💀═══════════════════════════════════════💀\n" +
-                                    "       Has sido derrotado...             \n" +
-                                    "   ¡Vuelve a intentarlo, guerrero valiente!  \n" +
-                                    "💀═══════════════════════════════════════💀\n" +
-                                    "\u001B[0m"
-                            );
+                            System.out.println("has sido derrotado, vuelva a intentarlo!\n");
                             win = false;
                         }
                         break;
                     case 2:
-                        System.out.println("\u001B[35m" +
-                                        "🛒══════════════════════════════════🛒\n" +
-                                        "       ¡Bienvenido al mercado mágico!       \n" +
-                                        "   ¡Prepárate para equiparte con lo mejor!  \n" +
-                                        "🛒══════════════════════════════════🛒\n" +
-                                        "\u001B[0m");
+                        System.out.println("Vamos de compras\n");
 
-                                puerta = (PuertaTienda) nivel.getPuerta(eleccion -1);
-                        ((PuertaTienda) puerta).compras(personaje);
+                        puerta = (PuertaTienda) nivel.getPuerta(eleccion -1);
+                        puntuacion = puntuacion + ((PuertaTienda) puerta).compras(personaje);
 
                         break;
                     case 3:
-                        System.out.println("\u001B[33m" +
-                                "╔═══════════════════════════════════════════════╗\n" +
-                                "║          💪 ¡POTENCIANDO TU FUERZA! 💪        ║\n" +
-                                "║     Prepárate para desatar tu poder máximo!   ║\n" +
-                                "╚═══════════════════════════════════════════════╝\n" +
-                                "\u001B[0m"
-                        );
-
+                        System.out.println("vamos a aumentar tu fuerza!\n");
 
                         try {
                             personaje.subirNivel();
@@ -158,13 +121,7 @@ public class GestionNivel {
                         break;
                 }
             } else{
-                System.out.println(
-                        "╔═══════════════════════════════════════════════════╗\n" +
-                        "║           ✨ ¡HORA DE LA BATALLA FINAL! ✨       ║\n" +
-                        "║       ¿Estás listo para enfrentarte al destino?   ║\n" +
-                        "╚═══════════════════════════════════════════════════╝\n"
-                );
-
+                System.out.println("hora de la batalla final\n");
 
                 puerta = (PuertaEnemigo) nivel.getPuerta(0);
                 if (((PuertaEnemigo) puerta).combatir(personaje)){
@@ -273,14 +230,7 @@ public class GestionNivel {
                             "..::...:...:...:...:...::..:...::..::..:::-+*#%%%%##%%%%%%%%%%%%%%%%%%%%%######*+-:..:...::..:...::.\n" +
                             "..::..::..::..::...::..::..::..::..::..::..::..::::--==+*##%%%%%%###****+-::::..::...:...::..::..::.");
                 }else {
-                    System.out.println("\u001B[31m" +
-                            "╔════════════════════════════════════════════════════════╗\n" +
-                            "║               💀 GAME OVER 💀                          ║\n" +
-                            "╠════════════════════════════════════════════════════════╣\n" +
-                            "║  Te derrotó el jefe final...                           ║\n" +
-                            "║  Pero no eres el primero que falla. ¡Sigue así! 💪     ║\n" +
-                            "╚════════════════════════════════════════════════════════╝\n" +
-                            "\u001B[0m");
+                    System.out.println("Te derroto el jefe final, pero no eres el primero que falla! sigue asi!\n");
                     win = false;
                 }            }
         }

@@ -62,7 +62,8 @@ public class Tienda {
 
 
     //hacer una excepcion que permita nomas que se ingresen nros validos (1,2,3)
-    public void menuTienda(Personaje p) throws EntradaInvalidaException {
+    public int menuTienda(Personaje p) throws EntradaInvalidaException {
+        int puntuacion = 0;
         Scanner scanner = new Scanner(System.in);
 
         //mandamos a que se seleccione la opcion
@@ -71,18 +72,18 @@ public class Tienda {
         do{
             if (eleccion == 1) {
                 //metodo especifico para comprar pocion
-                comprarPocion(p, scanner);
+                puntuacion = puntuacion + comprarPocion(p, scanner);
                 eleccion = seleccionarOpcion();
             } else if (eleccion == 2) {
                 //para poder mostrar unicamente la mejora de arma de cada personaje armamos
                 // un metodo especifico que devuelva una lista de los mismos
                 List<Armas> listaArmas = new ArrayList<>();
                 if (p instanceof Asesino) {
-                    mejoraDeArma(p, scanner);
+                    puntuacion = puntuacion + mejoraDeArma(p, scanner);
                 } else if (p instanceof Mago) {
-                    mejoraDeArma(p, scanner);
+                    puntuacion = puntuacion + mejoraDeArma(p, scanner);
                 } else if (p instanceof Guerrero) {
-                    mejoraDeArma(p, scanner);
+                    puntuacion = puntuacion + mejoraDeArma(p, scanner);
                 }
                 eleccion = seleccionarOpcion();
             } else if (eleccion == 3) {
@@ -98,6 +99,7 @@ public class Tienda {
             }
         } while (eleccion != 3);
 
+        return puntuacion;
 
     }
 
@@ -134,7 +136,8 @@ public class Tienda {
         return listaArmas;
     }
 
-    public void comprarPocion(Personaje p, Scanner scanner){
+    public int comprarPocion(Personaje p, Scanner scanner){
+        int puntuacion = 0;
         System.out.printf("\n");
         System.out.println("══════════════════════════════════════════════════");
         System.out.println("          🌟 ¿Qué poción desea comprar? 🌟        ");
@@ -157,6 +160,7 @@ public class Tienda {
 
             //manda a subir el atributo
             p.curarAtributo(pocionElegida, 20);
+            puntuacion = puntuacion + 50;
         } catch (IllegalArgumentException e) {
             System.out.println("\u001B[31m══════════════════════════════════════════════════");
             System.out.println("\u001B[31m⚠️   ¡ALERTA! Entrada inválida   ⚠️");
@@ -175,10 +179,13 @@ public class Tienda {
         } catch (Exception exception) {
             exception.printStackTrace();
         }
+
+        return puntuacion;
     }
 
 
-    public void mejoraDeArma(Personaje p, Scanner scanner) throws EntradaInvalidaException {
+    public int mejoraDeArma(Personaje p, Scanner scanner) throws EntradaInvalidaException {
+        int puntuacion = 0;
         List<Armas> listaArmas = obtenerArmasDelPersonaje(p);
 
         System.out.println("Detalle de tu arma actual como " + p.getClass());
@@ -239,7 +246,7 @@ public class Tienda {
             System.out.println("   🗡️ ¡Has cambiado tu arma principal!");
             System.out.println("   💰 Cantidad de monedas actuales: " + p.getMonedas());
             System.out.println("══════════════════════════════════════════════════");
-
+            puntuacion = puntuacion + 100;
 
             // Mejora de atributos según el tipo de personaje
             p.setPoderAtaque(p.getPoderAtaque() + 15); // Mejora común para todos
@@ -268,6 +275,8 @@ public class Tienda {
             System.out.println("══════════════════════════════════════════════════");
 
         }
+
+        return puntuacion;
     }
 
 }
