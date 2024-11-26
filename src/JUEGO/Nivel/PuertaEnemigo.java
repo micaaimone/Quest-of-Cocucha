@@ -31,4 +31,11 @@ public class PuertaEnemigo extends Puerta{
 
     }
 
+    public Personaje getEnemigo() {
+        return enemigo;
+    }
+
+    public void setEnemigo(Personaje enemigo) {
+        this.enemigo = enemigo;
+    }
 }

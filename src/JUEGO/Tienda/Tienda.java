@@ -205,16 +205,14 @@ public class Tienda {
         List<Armas> listaArmas = obtenerArmasDelPersonaje(p);
         boolean yaTieneArmaMejorada = false;
 
-        System.out.println("Detalle de tu arma actual como " + p.getClass());
         System.out.println("══════════════════════════════════════════════════");
         System.out.println("        🗡️ * Detalle de tu arma actual * 🗡️        ");
         System.out.println("══════════════════════════════════════════════════");
         System.out.println("   🔰 Clase del portador: " + p.getClass().getSimpleName());
         System.out.println("   ⚔️ Una herramienta forjada para la batalla.");
-        System.out.println("══════════════════════════════════════════════════");
         System.out.println(p.getArma());
 
-        System.out.println("Detalle de la mejora de su arma \n");
+        System.out.println("\nDetalle de la mejora de su arma \n");
 
         yaTieneArmaMejorada = mostrarArma(listaArmas.get(listaArmas.size()-1), p);
 
