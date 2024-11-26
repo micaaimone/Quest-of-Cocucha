@@ -100,9 +100,9 @@ public abstract class Personaje implements Movimientos {
     }
 
     public String  getArma() {
-        return "Nombre: " + arma.name()+
+        return "Nombre: " + arma.getNombre()+
                 "\nDescripción: " + arma.getDescripcion() +
-                "\n----------------------";
+                "\n══════════════════════════════════════════════════";
 
     }
 
@@ -137,7 +137,7 @@ public abstract class Personaje implements Movimientos {
 
     @Override
     public void muerte() {
-
+        System.out.println("💀 El personaje está fuera de combate.");
     }
     
     public void subirNivel() throws CorroborarException {
@@ -162,6 +162,7 @@ public abstract class Personaje implements Movimientos {
         sumarAtributo = corroborarAtributo(getPH(), getPHMax(), 20);
         if (sumarAtributo > 0 ){
             setPH(getPH() + sumarAtributo);
+            System.out.println("✨ El ph ha aumentado en +" + sumarAtributo + "! ✨");
         } else {
             throw new CorroborarException("\u001B[31m⚠️ ¡Error! El PH ya está al máximo. ⚠️\u001B[0m");
 
@@ -170,6 +171,7 @@ public abstract class Personaje implements Movimientos {
         sumarAtributo = corroborarAtributo(getMagia(), getMagiaMax(), 20);
         if (sumarAtributo > 0 ){
             setMagia(getMagia() + sumarAtributo);
+            System.out.println("✨ La ha aumentado en +" + sumarAtributo + "! ✨");
         } else {
             throw new CorroborarException("\u001B[31m⚠️ ¡Error! La magia ya está al máximo. ⚠️\u001B[0m");
 
@@ -178,6 +180,7 @@ public abstract class Personaje implements Movimientos {
         sumarAtributo = corroborarAtributo(getResistencia(), getResistenciaMax(), 20);
         if (sumarAtributo > 0 ){
             setResistencia(getResistencia() + sumarAtributo);
+            System.out.println("✨ La resistencia ha aumentado en +" + sumarAtributo + "! ✨");
         } else {
             throw new CorroborarException("\u001B[31m⚠️ ¡Error! La resistencia ya está al máximo. ⚠️\u001B[0m");
 
