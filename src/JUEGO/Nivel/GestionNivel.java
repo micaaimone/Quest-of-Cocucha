@@ -101,7 +101,7 @@ public class GestionNivel {
         while (!niveles.isEmpty() && win) {
             Nivel nivel = niveles.poll();
             if (niveles != null && !niveles.isEmpty()) {
-
+                try {
                 personaje.mostrarInfo();
                 System.out.println("\nEstas en el nivel " + nivel.getDificultad());
                 System.out.println("══════════════════════════════════════════════════════════");
@@ -115,10 +115,26 @@ public class GestionNivel {
                 System.out.println("    🕵️ 3️⃣ - **Puerta del Misterio**: ¿Qué secretos ocultos guardará?");
                 System.out.println("                                                         ");
                 System.out.println("            Elige con sabiduría... tu destino te aguarda.");
-                System.out.println("══════════════════════════════════════════════════════════");
+                System.out.println("══════════════════════════════════════════════════════════");}
+                catch (InputMismatchException ex){
+                    System.out.println("Solo se pueden ingresar numeros(1,2,3). Vuelve a intentarlo");
+                }
+
 
                 Scanner scanner = new Scanner(System.in);
-                int eleccion = scanner.nextInt();
+                int eleccion = 0;
+
+                boolean validar = false;
+                while (validar) {
+                    try {
+                    eleccion = scanner.nextInt();
+                    scanner.nextLine();
+                    if (eleccion < 4 && eleccion > 0) {
+                        validar = true;
+                    }} catch (InputMismatchException e ) {
+                        System.out.println("Solo se pueden ingresar numeros(1,2,3). Vuelve a intentarlo");
+                    }
+                }
                 switch (eleccion){
                     case 1:
                         ControlPantalla.limpiarPantalla();
@@ -191,6 +207,7 @@ public class GestionNivel {
                         break;
 
                 }
+
             } else{
                 System.out.println(
                         "╔═══════════════════════════════════════════════════╗\n" +
@@ -316,7 +333,10 @@ public class GestionNivel {
                             "╚════════════════════════════════════════════════════════╝\n" +
                             "\u001B[0m");
                     win = false;
-                }            }
+                }
+
+            }
+
         }
     }
 }
