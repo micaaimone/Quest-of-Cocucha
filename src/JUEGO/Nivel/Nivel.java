@@ -15,6 +15,9 @@ public class Nivel {
     public Nivel() {
     }
 
+    public Puerta getPuerta(int index) {
+        return puertas.get(index);
+    }
 
     public void agregarPuerta(Puerta puerta) {
         this.puertas.add(puerta);
@@ -25,6 +28,7 @@ public class Nivel {
 //            System.out.println(puerta);
 //        }
 //    }
+
 
 
 }
