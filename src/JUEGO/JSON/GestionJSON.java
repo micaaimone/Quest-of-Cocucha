@@ -42,7 +42,7 @@ public class GestionJSON {
             jsonJugadores = new JSONArray();
             for (Map.Entry<Integer, Jugador> map : mapJugadores.entrySet()) {
                 //aca mando a serializar a cada uno de los objetos del mapa (osea el jugador)
-                objJugador = serializacionJugador(map.getValue().getPersonaje());
+                objJugador = serializacionJugador(map.getValue());
                 jsonJugadores.put(objJugador);
             }
 
@@ -55,11 +55,11 @@ public class GestionJSON {
     }
 
     //recibe al jugador y lo manda como objeto
-    public static JSONObject serializacionJugador(Personaje j) {
+    public static JSONObject serializacionJugador(Jugador j) {
         JSONObject objJugador = null;
         try {
             objJugador = new JSONObject();
-
+            objJugador = (j.serializar());
         }
      catch (Exception e) {
             throw new RuntimeException(e);

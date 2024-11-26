@@ -2,6 +2,7 @@ package JUEGO;
 
 import JUEGO.Exceptions.CorroborarException;
 import JUEGO.Exceptions.EntradaInvalidaException;
+import JUEGO.JSON.GestionJSON;
 import JUEGO.Jugador.GestionJugador;
 import JUEGO.Jugador.Jugador;
 import JUEGO.Nivel.GestionNivel;
@@ -9,6 +10,7 @@ import JUEGO.Personajes.CrearPersonaje;
 import JUEGO.Personajes.Personaje;
 import JUEGO.Tienda.Tienda;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 //DSPS borrar corroborar excepcion
@@ -98,6 +100,11 @@ public class PantallaPrincipal {
                 throw new RuntimeException(e);
             }
         }
+
+        // JSON ----------------
+        //GestionJSON.jugadoraArchivo(jugadores);
+
+
 
     }
 }
