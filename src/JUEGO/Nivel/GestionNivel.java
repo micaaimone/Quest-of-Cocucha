@@ -89,7 +89,19 @@ public class GestionNivel {
             if (niveles != null && !niveles.isEmpty()) {
 
 
-                System.out.println("Elija una de las 3 puertas (1, 2 o 3):");
+                System.out.println("══════════════════════════════════════════════════════════");
+                System.out.println("                 🌟 * PUERTAS MISTERIOSAS * 🌟");
+                System.out.println("══════════════════════════════════════════════════════════");
+                System.out.println("                ¡Solo un valiente se atreve!       ");
+                System.out.println("    Tres caminos se presentan ante ti, aventurero:  ");
+                System.out.println("                                                   ");
+                System.out.println("    🏰 1️⃣ - **Puerta del Destino**: ¿Tu futuro está sellado?");
+                System.out.println("    🛡️ 2️⃣ - **Puerta del Desafío**: ¿Estás listo para la batalla?");
+                System.out.println("    🕵️ 3️⃣ - **Puerta del Misterio**: ¿Qué secretos ocultos guardará?");
+                System.out.println("                                                         ");
+                System.out.println("            Elige con sabiduría... tu destino te aguarda.");
+                System.out.println("══════════════════════════════════════════════════════════");
+
                 Scanner scanner = new Scanner(System.in);
                 int eleccion = scanner.nextInt();
                 switch (eleccion){
