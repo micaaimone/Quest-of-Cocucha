@@ -64,10 +64,10 @@ public class Duelo {
             }
             turnos++;
         }
-        if (enemigo.getPH()<= 0){
-            return true;
-        }else{
+        if (personaje.getPH()<= 0) {
             return false;
+        }else {
+            return true;
         }
     }
 }
