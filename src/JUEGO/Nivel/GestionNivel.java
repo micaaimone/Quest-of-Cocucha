@@ -24,16 +24,16 @@ public class GestionNivel {
     }
 
 
-    public LinkedList crearTrayecto (){
+    public Queue<Nivel> crearTrayecto (){
 
         Queue <Nivel> niveles = new LinkedList<>();
 
         //----------------ENEMIGOS------------------------------------
-        Enemigo enemigo1 = new Enemigo(60, 50, 20, 1, 15, Armas.cuchillo);
-        Enemigo enemigo2 = new Enemigo(80, 70, 20, 2, 25, Armas.bastonCorto);
-        Enemigo enemigo3 = new Enemigo(100, 70, 20, 3, 40, Armas.espadaCorta);
-        Enemigo enemigo4 = new Enemigo(120, 70, 20, 4, 50, Armas.dagaFilosa);
-        JefeFinal enemigo5 = new JefeFinal(130, 70, 20, 5, 60, Armas.espadaGrande);
+        Enemigo enemigo1 = new Enemigo(60, 50, 20, 1, 15, Armas.cuchillo, "enemigo1");
+        Enemigo enemigo2 = new Enemigo(80, 70, 20, 2, 25, Armas.bastonCorto, "enemigo2");
+        Enemigo enemigo3 = new Enemigo(100, 70, 20, 3, 40, Armas.espadaCorta,"enemigo3");
+        Enemigo enemigo4 = new Enemigo(120, 70, 20, 4, 50, Armas.dagaFilosa,"enemigo4");
+        JefeFinal enemigo5 = new JefeFinal(130, 70, 20, 5, 60, Armas.espadaGrande,"jefe final");
         //-------tienda--------------------------------------------
         Tienda tienda1 = new Tienda();
         //-------Puertas--------------------------------------------
@@ -77,8 +77,18 @@ public class GestionNivel {
         Nivel nivel5 = new Nivel(5);
         nivel5.agregarPuerta(puertaEnemigo5);
 
+        niveles.add(nivel5);
 
-        return (LinkedList) niveles;
+        return niveles;
+    }
+
+    public void mostrarNiveles(Queue<Nivel> niveles) {
+        for (Nivel nivel : niveles) {
+            System.out.println("Nivel " + nivel.getDificultad());
+            for (Puerta puerta : nivel.getPuertas()) {
+                System.out.println("    Puerta: " + puerta);
+            }
+        }
     }
 
     public void Trayecto () throws CorroborarException {
@@ -86,13 +96,14 @@ public class GestionNivel {
         Puerta puerta = null;
         Boolean win = true;
 
+        mostrarNiveles(niveles);
 
         while (!niveles.isEmpty() && win) {
             Nivel nivel = niveles.poll();
             if (niveles != null && !niveles.isEmpty()) {
 
                 personaje.mostrarInfo();
-
+                System.out.println("\nEstas en el nivel " + nivel.getDificultad());
                 System.out.println("══════════════════════════════════════════════════════════");
                 System.out.println("                 🌟 * PUERTAS MISTERIOSAS * 🌟");
                 System.out.println("══════════════════════════════════════════════════════════");
@@ -111,30 +122,39 @@ public class GestionNivel {
                 switch (eleccion){
                     case 1:
                         ControlPantalla.limpiarPantalla();
-                        System.out.println("\u001B[36m**************************************\n" +
-                                "⚔️  ¡Hora de luchar!!  ⚔️\n" +
-                                "**************************************\n\u001B[0m");
+                        System.out.println("\u001B[36m**\n" +
+                                "⚔  ¡Hora de luchar!!  ⚔\n" +
+                                "\n\u001B[0m");
 
-                        puerta = (PuertaEnemigo) nivel.getPuerta(eleccion -1);
-                        if (((PuertaEnemigo) puerta).combatir(personaje)){
-                            System.out.println("\u001B[33m" +
-                                    "🎉🎉🎉 ¡Has vencido al enemigo! 🎉🎉🎉\n" +
-                                    "💥 Una gran victoria, valiente guerrero 💥\n" +
-                                    "✨ ¡Sigue adelante, la aventura no termina aquí! ✨\n" +
-                                    "\u001B[0m"
-                            );
-                            puntuacion+= 100;
-                            personaje.setMonedas(personaje.getMonedas()+100);
-                            personaje.setLevel(personaje.getLevel()+1);
-                        }else {
-                            System.out.println("\u001B[31m" +
-                                    "💀═══════════════════════════════════════💀\n" +
-                                    "       Has sido derrotado...             \n" +
-                                    "   ¡Vuelve a intentarlo, guerrero valiente!  \n" +
-                                    "💀═══════════════════════════════════════💀\n" +
-                                    "\u001B[0m"
-                            );
-                            win = false;
+                        // accedemos a las puertas de enemigo y hacemos la batalla
+                        for (Puerta puertaEnemigo : nivel.getPuertas()) {
+                            if (puertaEnemigo instanceof PuertaEnemigo) { // Verifica si es una PuertaEnemigo
+                                PuertaEnemigo puertaEnem = (PuertaEnemigo) puertaEnemigo; // Cast a PuertaEnemigo
+                                System.out.println("Lucharas con el enemigo que tiene el arma " + puertaEnem.getEnemigo().getArma());
+                                System.out.println("Con un poder de ataque de: " + puertaEnem.getEnemigo().getPoderAtaque());
+                                if (puertaEnem.combatir(personaje)) {
+                                    ControlPantalla.limpiarPantalla();
+                                    System.out.println("\u001B[33m" +
+                                            "🎉🎉🎉 ¡Has vencido al enemigo! 🎉🎉🎉\n" +
+                                            "💥 Una gran victoria, valiente guerrero 💥\n" +
+                                            "✨ ¡Sigue adelante, la aventura no termina aquí! ✨\n" +
+                                            "\u001B[0m"
+                                    );
+                                    puntuacion += 100;
+                                    personaje.setMonedas(personaje.getMonedas() + 100);
+                                    personaje.setLevel(personaje.getLevel() + 1);
+                                } else {
+                                    System.out.println("\u001B[31m" +
+                                            "💀═══════════════════════════════════════💀\n" +
+                                            "       Has sido derrotado...             \n" +
+                                            "   ¡Vuelve a intentarlo, guerrero valiente!  \n" +
+                                            "💀═══════════════════════════════════════💀\n" +
+                                            "\u001B[0m"
+                                    );
+                                    win = false;
+                                }
+                                break; // Termina el ciclo después de la batalla
+                            }
                         }
                         break;
                     case 2:
