@@ -125,6 +125,7 @@ public class GestionNivel {
                             );
                             puntuacion+= 100;
 
+                            puntuacion += 100;
                         }else {
                             System.out.println("\u001B[31m" +
                                     "💀═══════════════════════════════════════💀\n" +
