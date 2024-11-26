@@ -1,5 +1,6 @@
 package JUEGO.Nivel;
 import JUEGO.Armas.Armas;
+import JUEGO.ControlPantalla;
 import JUEGO.Exceptions.CorroborarException;
 import JUEGO.Personajes.*;
 import JUEGO.Personajes.Enemigos.Enemigo;
@@ -109,6 +110,7 @@ public class GestionNivel {
                 int eleccion = scanner.nextInt();
                 switch (eleccion){
                     case 1:
+                        ControlPantalla.limpiarPantalla();
                         System.out.println("\u001B[36m**************************************\n" +
                                 "⚔️  ¡Hora de luchar!!  ⚔️\n" +
                                 "**************************************\n\u001B[0m");
@@ -136,6 +138,7 @@ public class GestionNivel {
                         }
                         break;
                     case 2:
+                        ControlPantalla.limpiarPantalla();
                         System.out.println("\u001B[35m" +
                                         "🛒══════════════════════════════════🛒\n" +
                                         "       ¡Bienvenido al mercado mágico!       \n" +
@@ -148,6 +151,7 @@ public class GestionNivel {
 
                         break;
                     case 3:
+                        ControlPantalla.limpiarPantalla();
                         System.out.println("\u001B[33m" +
                                 "╔═══════════════════════════════════════════════╗\n" +
                                 "║          💪 ¡POTENCIANDO TU FUERZA! 💪        ║\n" +
