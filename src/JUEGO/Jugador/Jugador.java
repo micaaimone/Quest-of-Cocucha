@@ -1,7 +1,5 @@
 package JUEGO.Jugador;
 
-import JUEGO.CrearPersonaje;
-import JUEGO.Personajes.Clases.Armas.Armas;
 import JUEGO.Personajes.Clases.Asesino;
 import JUEGO.Personajes.Clases.Guerrero;
 import JUEGO.Personajes.Clases.Mago;
@@ -24,6 +22,9 @@ public class Jugador {
         this.personaje = ElegirPersonaje();
         Puntuacion = 0;
         this.id = idGlobal ++;
+    }
+
+    public Jugador() {
     }
 
     public String getNombre() {
