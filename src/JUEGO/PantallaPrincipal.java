@@ -55,11 +55,13 @@ public class PantallaPrincipal {
                 case 1:
                     // llamamos a funcion para crear el jugador
 
-
-                    Jugador jugador = new Jugador("Mica");
-
+                    //hacer try catch hasta new jugador, sino salta error si se ingresa un nro incorrecto o letra
+                    System.out.println("Ingrese su nombre\n");
+                    String nombreJugador = scanner.nextLine();
+                    Jugador jugador = new Jugador(nombreJugador);
+                    ControlPantalla.limpiarPantalla();
+                    System.out.println("Bienvenido " + nombreJugador);
                     System.out.println("Haz elegido el personaje: ");
-                    jugador.getPersonaje().mostrarInfo();
 
                     // llevamos el jugador a recorrer el juego
 

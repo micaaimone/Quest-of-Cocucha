@@ -43,9 +43,11 @@ public class Tienda {
     }
 
     //poner un if que corrobore que el arma actual del personaje no sea igual al arma q vamos a mostrar
-    public void mostrarArma(Armas a, Personaje p) {
+    public boolean mostrarArma(Armas a, Personaje p) {
+        boolean yaTieneMejora = false;
         if (p.getNombreArma().equals(a.getNombre())){
             System.out.println("Ya tienes la mejora de arma\n");
+            yaTieneMejora = true;
         } else {
             System.out.printf("\n");
             System.out.println("╔═══════════════════════════════════════════════════════════════════════════════╗");
@@ -57,7 +59,7 @@ public class Tienda {
             System.out.println("╚═══════════════════════════════════════════════════════════════════════════════╝");
             System.out.printf("\n");
         }
-
+        return yaTieneMejora;
     }
 
 
@@ -187,6 +189,7 @@ public class Tienda {
     public int mejoraDeArma(Personaje p, Scanner scanner) throws EntradaInvalidaException {
         int puntuacion = 0;
         List<Armas> listaArmas = obtenerArmasDelPersonaje(p);
+        boolean yaTieneArmaMejorada = false;
 
         System.out.println("Detalle de tu arma actual como " + p.getClass());
         System.out.println("══════════════════════════════════════════════════");
@@ -199,7 +202,7 @@ public class Tienda {
 
         System.out.println("Detalle de la mejora de su arma \n");
 
-        mostrarArma(listaArmas.get(listaArmas.size()-1), p);
+        yaTieneArmaMejorada = mostrarArma(listaArmas.get(listaArmas.size()-1), p);
 
         System.out.println("══════════════════════════════════════════════════");
         System.out.println("         💰 * Estado de tus riquezas * 💰         ");
@@ -213,23 +216,26 @@ public class Tienda {
         boolean mejorArma = false;    // Almacena el valor booleano final
         String mejorarArma = "";
 
-        do {
-            try {
-                System.out.println("══════════════════════════════════════════════════");
-                System.out.println("       🔧 * Menú de Mejora de Armas * 🔧         ");
-                System.out.println("══════════════════════════════════════════════════");
-                System.out.println("   ⚔️ ¿Desea mejorar su arma? (si/no):");
-                System.out.println("══════════════════════════════════════════════════");
+        if (!yaTieneArmaMejorada){
+            do {
+                try {
+                    System.out.println("══════════════════════════════════════════════════");
+                    System.out.println("       🔧 * Menú de Mejora de Armas * 🔧         ");
+                    System.out.println("══════════════════════════════════════════════════");
+                    System.out.println("   ⚔️ ¿Desea mejorar su arma? (si/no):");
+                    System.out.println("══════════════════════════════════════════════════");
 
-                mejorarArma = scanner.nextLine();
+                    mejorarArma = scanner.nextLine();
 
-                // Intentar validar el booleano
-                mejorArma = validarBooleano(mejorarArma);
-                entradaValida = true; // Si no hay excepción la entrada es válida
-            } catch (EntradaInvalidaException e) {
-                System.out.println(e.getMessage()); // Mostrar el mensaje de error
-            }
-        } while (!entradaValida); // Repetir mientras no se haya validado la entrada
+                    // Intentar validar el booleano
+                    mejorArma = validarBooleano(mejorarArma);
+                    entradaValida = true; // Si no hay excepción la entrada es válida
+                } catch (EntradaInvalidaException e) {
+                    System.out.println(e.getMessage()); // Mostrar el mensaje de error
+                }
+            } while (!entradaValida); // Repetir mientras no se haya validado la entrada
+        }
+
 
         if (mejorarArma.equals("no"))
         {

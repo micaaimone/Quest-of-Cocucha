@@ -73,19 +73,19 @@ public class Asesino extends Personaje {
             //crear excepcion para corrobar que no sea negativo el nro
 
             if (nivel <= 2){
-                curarAtributo("ph",10);
+                curarAtributo("ph",20);
                 curarAtributo("resistencia", 10);
             } else if (nivel > 2 && nivel <= 4){
-                curarAtributo("ph",15);
+                curarAtributo("ph",25);
                 curarAtributo("resistencia", 15);
             } else if(nivel > 4 && nivel <=6){
-                curarAtributo("ph",20);
+                curarAtributo("ph",30);
                 curarAtributo("resistencia", 20);
             } else if(nivel > 6 && nivel<= 8){
-                curarAtributo("ph",25);
+                curarAtributo("ph",35);
                 curarAtributo("resistencia", 25);
             } else {
-                curarAtributo("ph",30);
+                curarAtributo("ph",40);
                 curarAtributo("resistencia", 30);
             }
         }

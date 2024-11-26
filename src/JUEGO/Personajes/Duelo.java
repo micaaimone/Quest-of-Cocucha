@@ -11,7 +11,7 @@ public class Duelo {
 
     public static Boolean combate(Personaje enemigo, Personaje personaje) {
         Scanner sc = new Scanner(System.in);
-        while (enemigo.getPH()>= 0 || personaje.getPH()>= 0) {
+        while (enemigo.getPH() > 0 && personaje.getPH()>= 0) {
             System.out.println("⚔️💥 ¡El combate comienza! 💥⚔️");
             System.out.println("¿Cuál es tu próximo movimiento?");
             System.out.println("1. 🗡️ Atacar");
@@ -50,12 +50,19 @@ public class Duelo {
 
             try {
                 enemigo.atacar(personaje);
+                personaje.mostrarInfo();
             } catch (CorroborarException e) {
                 System.out.println(e.getMessage());
             }
             turnos++;
         }
         if (enemigo.getPH()<= 0){
+            return true;
+        }else{
+            return false;
+        }
+
+        if(personaje.getPH()<=0){
             return true;
         }else{
             return false;

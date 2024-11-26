@@ -29,7 +29,7 @@ public class Enemigo extends Personaje {
                         "     ||||\n" +
                         "      ||");
 
-        enemy.setPH(getPH()-10);
+        enemy.setPH(enemy.getPH()-getPoderAtaque());
     }
 
 

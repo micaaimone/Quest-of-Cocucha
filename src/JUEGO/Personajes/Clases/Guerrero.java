@@ -40,5 +40,6 @@ public class Guerrero extends Personaje {
 
     @Override
     public void curarse() {
+        System.out.println("Eres un guerrero, no puedes curarte\n");
     }
 }
