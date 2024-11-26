@@ -1,15 +1,15 @@
 package JUEGO;
 
+
 import JUEGO.Exceptions.CorroborarException;
 import JUEGO.Exceptions.EntradaInvalidaException;
-
+import JUEGO.Personajes.Clases.Mago;
 
 //DSPS borrar corroborar exception
 public class Main {
     public static void main(String[] args) throws CorroborarException, EntradaInvalidaException {
 
-        PantallaPrincipal pantallaPrincipal = new PantallaPrincipal();
-        pantallaPrincipal.menu();
+
 
     }
 }
