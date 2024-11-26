@@ -6,7 +6,7 @@ import JUEGO.Personajes.Personaje;
 
 public class Guerrero extends Personaje {
 
-    public Guerrero() {super(180, 10, 100, 0, 30, Armas.espadaGrande);
+    public Guerrero() {super(180, 10, 100, 0, 30, Armas.espadaCorta);
     }
 
 
@@ -31,7 +31,7 @@ public class Guerrero extends Personaje {
                             "         || \n   "
             );
             System.out.println("\n🔥 El enemigo recibe un impacto devastador. 🔥");
-            setMagia(getResistencia()- 20);
+            setResistencia(getResistencia()- 20);
 
             enemy.setPH(enemy.getPH() - 30);
         }else{
