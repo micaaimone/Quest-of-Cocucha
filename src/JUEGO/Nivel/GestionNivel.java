@@ -16,6 +16,7 @@ public class GestionNivel {
     public GestionNivel(Personaje personaje) {
         this.personaje = personaje;
         this.puntuacion = 0;
+        this.puntuacion = 0;
     }
 
     public int getPuntuacion() {
@@ -112,13 +113,13 @@ public class GestionNivel {
 
                         puerta = (PuertaEnemigo) nivel.getPuerta(eleccion -1);
                         if (((PuertaEnemigo) puerta).combatir(personaje)){
-                            puntuacion += 100;
                             System.out.println("\u001B[33m" +
                                     "🎉🎉🎉 ¡Has vencido al enemigo! 🎉🎉🎉\n" +
                                     "💥 Una gran victoria, valiente guerrero 💥\n" +
                                     "✨ ¡Sigue adelante, la aventura no termina aquí! ✨\n" +
                                     "\u001B[0m"
                             );
+                            puntuacion+= 100;
 
                         }else {
                             System.out.println("\u001B[31m" +
