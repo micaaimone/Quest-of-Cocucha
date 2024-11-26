@@ -39,6 +39,16 @@ public enum Armas {
     public String getNombre() {
         return nombre;
     }
+
+    public static Armas getArmaByName(String nombreArma) {
+        for (Armas arma : Armas.values()) {
+            if (arma.getNombre().equalsIgnoreCase(nombreArma)) {
+                return arma;
+            }
+        }
+        return null; // O lanzar una excepción si no se encuentra el arma
+    }
+
 }
 
 
