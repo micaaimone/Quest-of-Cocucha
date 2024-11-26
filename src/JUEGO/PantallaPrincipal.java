@@ -9,7 +9,6 @@ import JUEGO.Personajes.CrearPersonaje;
 import JUEGO.Personajes.Personaje;
 import JUEGO.Tienda.Tienda;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 //DSPS borrar corroborar excepcion
@@ -66,18 +65,18 @@ public class PantallaPrincipal {
                         System.out.println("Bienvenido " + nombreJugador);
                         System.out.println("Haz elegido el personaje: " + jugador.getPersonaje().getClass().getSimpleName());
 
-                        // llevamos el jugador a recorrer el juego
+                    // llevamos el jugador a recorrer el juego
 
-                        GestionNivel juego = new GestionNivel(jugador.getPersonaje());
-                        try {
-                            juego.Trayecto();
-                        } catch (CorroborarException e) {
-                            System.out.println(e.getMessage());
+                    GestionNivel juego = new GestionNivel(jugador.getPersonaje());
+                    try {
+                        juego.Trayecto();
+                    } catch (CorroborarException e) {
+                        System.out.println(e.getMessage());
 
-                        }
-                        jugador.setPuntuacion(juego.getPuntuacion());
+                    }
+                    jugador.setPuntuacion(juego.getPuntuacion());
 
-                        jugadores.agregarJugador(jugador);
+                    jugadores.agregarJugador(jugador);
 
                         break;
                     case 2:
@@ -98,7 +97,6 @@ public class PantallaPrincipal {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-
         }
 
     }
