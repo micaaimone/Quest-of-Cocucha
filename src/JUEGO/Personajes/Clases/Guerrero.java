@@ -33,7 +33,7 @@ public class Guerrero extends Personaje {
             System.out.println("\n🔥 El enemigo recibe un impacto devastador. 🔥");
             setMagia(getResistencia()- 20);
 
-            enemy.setPH(enemy.getPH() - 30);
+            enemy.setPH(enemy.getPH()-getPoderAtaque());
         }else{
         throw new CorroborarException("No tiene suficinete resistencia\n");}
     }
