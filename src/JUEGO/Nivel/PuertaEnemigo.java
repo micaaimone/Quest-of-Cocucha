@@ -19,14 +19,13 @@ import static JUEGO.Personajes.Duelo.combate;
 //vamos a crear 3 clases de puerta (enemigos, tienda, y subir nivel)
 
 public class PuertaEnemigo extends Puerta{
-    private Enemigo enemigo;
+    private Personaje enemigo;
 
-    public PuertaEnemigo(Enemigo enemigo) {
+    public PuertaEnemigo(Personaje enemigo) {
         this.enemigo = enemigo;
     }
 
     public boolean combatir(Personaje hero){
-        System.out.println("Vas a combatir con el enemigo\n");
         boolean win = combate(enemigo, hero);
         return win;
 
