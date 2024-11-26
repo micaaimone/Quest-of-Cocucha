@@ -1,18 +1,30 @@
 package JUEGO.Personajes.Clases;
 
 import JUEGO.Exceptions.CorroborarException;
-import JUEGO.Personajes.Clases.Armas.Armas;
+import JUEGO.Armas.Armas;
 import JUEGO.Personajes.Personaje;
 
 public class Mago extends Personaje {
     public Mago() {
-        super(100, 150, 50, 50, 30 , Armas.bastonCorto);
+        super(100, 150, 50, 0, 30 , Armas.bastonCorto);
     }
 
     @Override
     public void atacar(Personaje enemy) throws CorroborarException {
-        if (getMagia() < getMagiaMax()){
-            System.out.println("Lanzando ataque magico");
+        if (getMagia() >= 15){
+            System.out.println("\n✨🔮 ¡Ataque Mágico! ¡La magia se desata! 🔮✨\n");
+            System.out.println(
+                            "         @\n" +
+                            "        @@@\n" +
+                            "         |\n" +
+                            "        ( )\n" +
+                            "         |\n" +
+                            "        ( )\n" +
+                            "         |\n" +
+                            "         | \n" +
+                            "         | \n" +
+                            "         | \n"
+            );
             setMagia(getMagia() - 15);
 
             enemy.setPH(enemy.getPH() - getPoderAtaque());

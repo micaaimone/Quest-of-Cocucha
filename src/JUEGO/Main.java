@@ -1,15 +1,22 @@
 package JUEGO;
 
+
+import JUEGO.Exceptions.CorroborarException;
+import JUEGO.Exceptions.EntradaInvalidaException;
+import JUEGO.Personajes.Clases.Mago;
+
+//DSPS borrar corroborar exception
 public class Main {
-    public static void main(String[] args) {
-        PantallaPrincipal pantallaPrincipal = new PantallaPrincipal();
-        pantallaPrincipal.menu();
+    public static void main(String[] args) throws CorroborarException, EntradaInvalidaException {
+
+        PantallaPrincipal pp = new PantallaPrincipal();
+
 
     }
 }
 
 /*
-un mapa qye va a tener la key como nombre del jugador y el valor la puntuacion total del pj
+un mapa qye va a    tener la key como nombre del jugador y el valor la puntuacion total del pj
 
 un set de enemigos
 

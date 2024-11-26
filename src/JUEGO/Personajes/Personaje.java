@@ -1,7 +1,8 @@
 package JUEGO.Personajes;
 
+import JUEGO.ControlPantalla;
 import JUEGO.Exceptions.CorroborarException;
-import JUEGO.Personajes.Clases.Armas.Armas;
+import JUEGO.Armas.Armas;
 
 import java.util.Objects;
 
@@ -15,6 +16,7 @@ public abstract class Personaje implements Movimientos {
     private int resistenciaMax;
     private int poderAtaque;
     private Armas arma;
+    private int monedas;
 
 
     public Personaje(int PH, int magia, int resistencia, int level, int poderAtaque, Armas arma) {
@@ -27,6 +29,7 @@ public abstract class Personaje implements Movimientos {
         this.resistenciaMax = resistencia;
         this.poderAtaque = poderAtaque;
         this.arma = arma;
+        this.monedas = 50;
     }
 
 
@@ -97,6 +100,29 @@ public abstract class Personaje implements Movimientos {
         this.poderAtaque = poderAtaque;
     }
 
+    public String  getArma() {
+        return "Nombre: " + arma.getNombre()+
+                "\nDescripción: " + arma.getDescripcion() +
+                "\n══════════════════════════════════════════════════";
+
+    }
+
+    public String getNombreArma(){
+        return arma.getNombre();
+    }
+
+    public void setArma(Armas arma) {
+        this.arma = arma;
+    }
+
+    public int getMonedas() {
+        return monedas;
+    }
+
+    public void setMonedas(int monedas) {
+        this.monedas = monedas;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -112,37 +138,60 @@ public abstract class Personaje implements Movimientos {
 
     @Override
     public void muerte() {
-
+        System.out.println("💀 El personaje está fuera de combate.");
     }
-
-
+    
     public void subirNivel() throws CorroborarException {
         int nivel = getLevel() + 1;
         int sumarAtributo = 0;
-        System.out.println("Subiste al nivel "+ nivel+ "\n todos tus stats subieron en 20 puntos\n");
+        setLevel(getLevel()+1);
+        System.out.println();System.out.println(
+                "🎮✨ ¡Felicidades! Has subido al nivel " + nivel + " ✨🎮"+
+                        "       *      *      *\n" +
+                        "     *   *  *   *  *   *\n" +
+                        "    *     **     **     *\n" +
+                        "   *************************\n" +
+                        "  *         Nivel Up!       *\n" +
+                        "   *************************\n" +
+                        "    *     **     **     *\n" +
+                        "     *   *  *   *  *  *\n" +
+                        "       *      *      *\n" +
+                        "💪 Ahora eres más fuerte que nunca. ¡A seguir avanzando! 💪"
+        );
+        System.out.println("⚡ Todos tus stats subieron en 20 puntos. ¡Estás más fuerte que nunca! ⚡");
+
         sumarAtributo = corroborarAtributo(getPH(), getPHMax(), 20);
         if (sumarAtributo > 0 ){
             setPH(getPH() + sumarAtributo);
+            System.out.println("✨ El ph ha aumentado en +" + sumarAtributo + "! ✨");
         } else {
-            throw new CorroborarException("El PH ya está al máximo.");
+            throw new CorroborarException("\u001B[31m⚠️ ¡Error! El PH ya está al máximo. ⚠️\u001B[0m");
+
         }
 
         sumarAtributo = corroborarAtributo(getMagia(), getMagiaMax(), 20);
         if (sumarAtributo > 0 ){
             setMagia(getMagia() + sumarAtributo);
+            System.out.println("✨ La ha aumentado en +" + sumarAtributo + "! ✨");
         } else {
-            throw new CorroborarException("La magia ya está al máximo.");
+            throw new CorroborarException("\u001B[31m⚠️ ¡Error! La magia ya está al máximo. ⚠️\u001B[0m");
+
         }
 
         sumarAtributo = corroborarAtributo(getResistencia(), getResistenciaMax(), 20);
         if (sumarAtributo > 0 ){
             setResistencia(getResistencia() + sumarAtributo);
+            System.out.println("✨ La resistencia ha aumentado en +" + sumarAtributo + "! ✨");
         } else {
-            throw new CorroborarException("La resistencia ya está al máximo.");
+            throw new CorroborarException("\u001B[31m⚠️ ¡Error! La resistencia ya está al máximo. ⚠️\u001B[0m");
+
         }
     }
 
     //ya que los personajes tanto asesino como mago pueden curarse hacemos el metodo public en la clase padre
+
+    //----IMP cuando se llame a esta funcion hay que hacer una excepcion que corrobore que CANTIDAD no sea negativa. Solo puede ingresar nros positivos
+    //cambiar el nombre del metodo y agregar que corrobore el atributo level
     public void curarAtributo(String atributo, int cantidad) throws CorroborarException {
         int actual = 0, maximo = 0, curacionReal = 0;
 
@@ -154,7 +203,7 @@ public abstract class Personaje implements Movimientos {
             if (curacionReal > 0){
                 setPH(actual + curacionReal);
             } else {
-                throw new CorroborarException("El " + atributo + " ya está al máximo.");
+                throw new CorroborarException("⚠️ ¡Advertencia! El " + atributo + " ya está al máximo. ⚠️");
             }
 
         } else if (atributo.equalsIgnoreCase("resistencia")) {
@@ -165,7 +214,7 @@ public abstract class Personaje implements Movimientos {
             if (curacionReal > 0){
                 setResistencia(actual + curacionReal);
             } else {
-                throw new CorroborarException("El " + atributo + " ya está al máximo.");
+                throw new CorroborarException("⚠️ ¡Advertencia! El " + atributo + " ya está al máximo. ⚠️");
             }
         } else if (atributo.equalsIgnoreCase("magia")) {
             actual = getMagia();
@@ -174,16 +223,18 @@ public abstract class Personaje implements Movimientos {
             if (curacionReal > 0){
                 setMagia(actual + curacionReal);
             } else {
-                throw new CorroborarException("El " + atributo + " ya está al máximo.");
+                throw new CorroborarException("⚠️ ¡Advertencia! El " + atributo + " ya está al máximo. ⚠️");
             }
         } else {
-            throw new IllegalArgumentException("Atributo no válido: " + atributo);
+            throw new IllegalArgumentException("❌ Atributo no válido: " + atributo + " ❌");
         }
 
+        System.out.println("✨ " + atributo + " ha aumentado en +" + curacionReal + "! ✨");
+        System.out.println("🔋 " + atributo + " actual: " + (actual + curacionReal));
 
-        System.out.println(atributo + " aumentado en " + curacionReal + ". " + atributo + " actual: " + (actual + curacionReal));
     }
 
+    //mandar a validacion? como validacion atributo o algo asi????
     public int corroborarAtributo(int actual, int maximo, int cantidad) throws CorroborarException {
         int suma = 0;
 
@@ -194,6 +245,41 @@ public abstract class Personaje implements Movimientos {
             suma = 0;
         }
         return suma;
+    }
+
+
+    //imprimir info del personaje
+    public void mostrarInfo() {
+        if (getPH() <= 0) {
+            muerte();
+            ControlPantalla.pausaConEnter();
+        } else {
+            System.out.println("══════════════════════════════════════════════════");
+            System.out.println("             🎮 * Estado del Personaje * 🎮        ");
+            System.out.println("══════════════════════════════════════════════════");
+            System.out.println("   🧍 Nivel: " + getLevel());
+            System.out.println("   ❤️     PH:      " + crearBarra(getPH(), getPHMax(), "\u001B[31m█\u001B[0m", '-'));
+            System.out.println("   ✨    Magia:    " + crearBarra(getMagia(), getMagiaMax(), "\u001B[34m█\u001B[0m", '-'));
+            System.out.println("   🛡️ Resistencia: " + crearBarra(getResistencia(), getResistenciaMax(), "\u001B[32m█\u001B[0m", '-'));
+            System.out.println("   ⚔️ Poder de ataque: " + getPoderAtaque());
+            System.out.println("   🗡️ Arma equipada: " + getNombreArma());
+            System.out.println("   💰 Monedas: " + getMonedas());
+            System.out.println("══════════════════════════════════════════════════");
+        }
+
+
+    }
+
+    private static String crearBarra (int actual, int maximo, String lleno, char vacio){
+        double porcentaje = (double) actual / maximo;
+        int longitudBarra = 20; // Ajustar la longitud de la barra según sea necesario
+        int cantidadLlena = (int) (porcentaje * longitudBarra);
+        int cantidadVacia = longitudBarra - cantidadLlena;
+
+        StringBuilder barra = new StringBuilder();
+        barra.append(String.valueOf(lleno).repeat(cantidadLlena));
+        barra.append(String.valueOf(vacio).repeat(cantidadVacia));
+        return barra.toString();
     }
 
 }

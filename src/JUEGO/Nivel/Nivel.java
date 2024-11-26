@@ -15,16 +15,31 @@ public class Nivel {
     public Nivel() {
     }
 
-
-    public void agregarPuerta(Puerta puerta) {
-        this.puertas.add(puerta);
+    public Puerta getPuerta(int index) {
+        return puertas.get(index);
     }
 
-    public void mostrarPuertas() {
-        for(Puerta puerta : puertas){
-            System.out.println(puerta);
+    public void agregarPuerta(Puerta puerta) {
+        if (puerta == null) {
+            throw new IllegalArgumentException("La puerta no puede ser nula.");
+        } else {
+            this.puertas.add(puerta);
         }
     }
 
+    public List<Puerta> getPuertas() {
+        return puertas;
+    }
 
+    public void setPuertas(List<Puerta> puertas) {
+        this.puertas = puertas;
+    }
+
+    public int getDificultad() {
+        return dificultad;
+    }
+
+    public void setDificultad(int dificultad) {
+        this.dificultad = dificultad;
+    }
 }
