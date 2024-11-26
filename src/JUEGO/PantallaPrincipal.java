@@ -65,6 +65,7 @@ public class PantallaPrincipal {
                         System.out.println(e.getMessage());
 
                     }
+                    jugador.setPuntuacion(juego.getPuntuacion());
 
                     jugadores.agregarJugador(jugador);
 

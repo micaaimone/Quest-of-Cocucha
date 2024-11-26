@@ -18,6 +18,10 @@ public class GestionNivel {
         this.puntuacion = 0;
     }
 
+    public int getPuntuacion() {
+        return puntuacion;
+    }
+
     public LinkedList crearTrayecto (){
 
         Queue <Nivel> niveles = new LinkedList<>();
@@ -94,6 +98,7 @@ public class GestionNivel {
                         puerta = (PuertaEnemigo) nivel.getPuerta(eleccion -1);
                         if (((PuertaEnemigo) puerta).combatir(personaje)){
                             System.out.println("has vencido al enemigo!\n");
+                            puntuacion += 100;
                         }else {
                             System.out.println("has sido derrotado, vuelva a intentarlo!\n");
                             win = false;
@@ -232,7 +237,8 @@ public class GestionNivel {
                 }else {
                     System.out.println("Te derroto el jefe final, pero no eres el primero que falla! sigue asi!\n");
                     win = false;
-                }            }
+                }
+            }
         }
     }
 }
