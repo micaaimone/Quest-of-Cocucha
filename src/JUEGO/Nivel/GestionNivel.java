@@ -88,24 +88,51 @@ public class GestionNivel {
                 int eleccion = scanner.nextInt();
                 switch (eleccion){
                     case 1:
-                        System.out.println("Hora de luchar!!\n");
+                        System.out.println("\u001B[36m**************************************\n" +
+                                "⚔️  ¡Hora de luchar!!  ⚔️\n" +
+                                "**************************************\n\u001B[0m");
+
                         puerta = (PuertaEnemigo) nivel.getPuerta(eleccion -1);
                         if (((PuertaEnemigo) puerta).combatir(personaje)){
-                            System.out.println("has vencido al enemigo!\n");
+                            System.out.println("\u001B[33m" +
+                                    "🎉🎉🎉 ¡Has vencido al enemigo! 🎉🎉🎉\n" +
+                                    "💥 Una gran victoria, valiente guerrero 💥\n" +
+                                    "✨ ¡Sigue adelante, la aventura no termina aquí! ✨\n" +
+                                    "\u001B[0m"
+                            );
+
                         }else {
-                            System.out.println("has sido derrotado, vuelva a intentarlo!\n");
+                            System.out.println("\u001B[31m" +
+                                    "💀═══════════════════════════════════════💀\n" +
+                                    "       Has sido derrotado...             \n" +
+                                    "   ¡Vuelve a intentarlo, guerrero valiente!  \n" +
+                                    "💀═══════════════════════════════════════💀\n" +
+                                    "\u001B[0m"
+                            );
                             win = false;
                         }
                         break;
                     case 2:
-                        System.out.println("Vamos de compras\n");
+                        System.out.println("\u001B[35m" +
+                                        "🛒══════════════════════════════════🛒\n" +
+                                        "       ¡Bienvenido al mercado mágico!       \n" +
+                                        "   ¡Prepárate para equiparte con lo mejor!  \n" +
+                                        "🛒══════════════════════════════════🛒\n" +
+                                        "\u001B[0m");
 
-                        puerta = (PuertaTienda) nivel.getPuerta(eleccion -1);
+                                puerta = (PuertaTienda) nivel.getPuerta(eleccion -1);
                         ((PuertaTienda) puerta).compras(personaje);
 
                         break;
                     case 3:
-                        System.out.println("vamos a aumentar tu fuerza!\n");
+                        System.out.println("\u001B[33m" +
+                                "╔═══════════════════════════════════════════════╗\n" +
+                                "║          💪 ¡POTENCIANDO TU FUERZA! 💪        ║\n" +
+                                "║     Prepárate para desatar tu poder máximo!   ║\n" +
+                                "╚═══════════════════════════════════════════════╝\n" +
+                                "\u001B[0m"
+                        );
+
 
                         try {
                             personaje.subirNivel();
@@ -119,7 +146,13 @@ public class GestionNivel {
                         break;
                 }
             } else{
-                System.out.println("hora de la batalla final\n");
+                System.out.println(
+                        "╔═══════════════════════════════════════════════════╗\n" +
+                        "║           ✨ ¡HORA DE LA BATALLA FINAL! ✨       ║\n" +
+                        "║       ¿Estás listo para enfrentarte al destino?   ║\n" +
+                        "╚═══════════════════════════════════════════════════╝\n"
+                );
+
 
                 puerta = (PuertaEnemigo) nivel.getPuerta(0);
                 if (((PuertaEnemigo) puerta).combatir(personaje)){
@@ -228,7 +261,14 @@ public class GestionNivel {
                             "..::...:...:...:...:...::..:...::..::..:::-+*#%%%%##%%%%%%%%%%%%%%%%%%%%%######*+-:..:...::..:...::.\n" +
                             "..::..::..::..::...::..::..::..::..::..::..::..::::--==+*##%%%%%%###****+-::::..::...:...::..::..::.");
                 }else {
-                    System.out.println("Te derroto el jefe final, pero no eres el primero que falla! sigue asi!\n");
+                    System.out.println("\u001B[31m" +
+                            "╔════════════════════════════════════════════════════════╗\n" +
+                            "║               💀 GAME OVER 💀                          ║\n" +
+                            "╠════════════════════════════════════════════════════════╣\n" +
+                            "║  Te derrotó el jefe final...                           ║\n" +
+                            "║  Pero no eres el primero que falla. ¡Sigue así! 💪     ║\n" +
+                            "╚════════════════════════════════════════════════════════╝\n" +
+                            "\u001B[0m");
                     win = false;
                 }            }
         }
