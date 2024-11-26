@@ -314,7 +314,7 @@ public abstract class Personaje implements Movimientos {
         pj.setResistencia(Resistencia);
         pj.setLevel(Nivel);
         pj.setPoderAtaque(PODER_ATAQUE);
-       // pj.setArma();
+        pj.setArma(Armas.getArmaByName(nombreArma));
         pj.setMonedas(monedas);
 
         return pj;
