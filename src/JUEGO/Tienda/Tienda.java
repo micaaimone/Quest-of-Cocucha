@@ -1,4 +1,5 @@
 package JUEGO.Tienda;
+import JUEGO.ControlPantalla;
 import JUEGO.Exceptions.EntradaInvalidaException;
 import JUEGO.Exceptions.CorroborarException;
 import JUEGO.Armas.Armas;
@@ -153,20 +154,32 @@ public class Tienda {
 
         try {
             Pocion pocion = Pocion.valueOf(pocionElegida);
-            System.out.printf("\n");
-            System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-            System.out.println("   🎉 ¡Éxito! Has seleccionado la poción:   ");
-            System.out.println("                " + pocion + "                  ");
-            System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-            System.out.printf("\n");
 
-            //manda a subir el atributo
-            p.curarAtributo(pocionElegida, 20);
-            puntuacion = puntuacion + 50;
+            if (p.getMonedas()>pocion.getPrecio()){
+                System.out.printf("\n");
+                System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+                System.out.println("   🎉 ¡Éxito! Has seleccionado la poción:   ");
+                System.out.println("                " + pocion + "                  ");
+                System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+                System.out.printf("\n");
+
+                //manda a subir el atributo
+                p.curarAtributo(pocionElegida, 20);
+                puntuacion = puntuacion + 50;
+                p.setMonedas(p.getMonedas()-pocion.getPrecio());
+            } else {
+                System.out.println("\u001B[31m══════════════════════════════════════════════════");
+                System.out.println("       ⚠️ * Advertencia de Monedas * ⚠️         ");
+                System.out.println("══════════════════════════════════════════════════");
+                System.out.println("\u001B[0m   ❌ No tienes suficientes monedas.");
+                System.out.println("   💀 Consejo: Recoge más monedas matando enemigos");
+                System.out.println("             y pasando de niveles.");
+                System.out.println("══════════════════════════════════════════════════");
+            }
+
         } catch (IllegalArgumentException e) {
             System.out.println("\u001B[31m══════════════════════════════════════════════════");
             System.out.println("\u001B[31m⚠️   ¡ALERTA! Entrada inválida   ⚠️");
-            System.out.println("\u001B[31m══════════════════════════════════════════════════");
             System.out.println("\u001B[31m   ❌ Por favor, elige un atributo válido. ❌");
             System.out.println("\u001B[0m══════════════════════════════════════════════════");
 
@@ -174,12 +187,13 @@ public class Tienda {
             System.out.printf("\n");
             System.out.println("\u001B[31m══════════════════════════════════════════════════");
             System.out.println("\u001B[31m⚠️  ¡Error! Atributo al máximo  ⚠️");
-            System.out.println("\u001B[31m══════════════════════════════════════════════════");
             System.out.println("\u001B[31m    ❌ No puedes mejorar más este atributo. ❌");
             System.out.println("\u001B[0m══════════════════════════════════════════════════");
             System.out.printf("\n");
         } catch (Exception exception) {
             exception.printStackTrace();
+        } finally {
+            ControlPantalla.limpiarPantalla();
         }
 
         return puntuacion;
@@ -195,7 +209,7 @@ public class Tienda {
         System.out.println("══════════════════════════════════════════════════");
         System.out.println("        🗡️ * Detalle de tu arma actual * 🗡️        ");
         System.out.println("══════════════════════════════════════════════════");
-        System.out.println("   🔰 Clase del portador: " + p.getClass());
+        System.out.println("   🔰 Clase del portador: " + p.getClass().getSimpleName());
         System.out.println("   ⚔️ Una herramienta forjada para la batalla.");
         System.out.println("══════════════════════════════════════════════════");
         System.out.println(p.getArma());
@@ -206,7 +220,6 @@ public class Tienda {
 
         System.out.println("══════════════════════════════════════════════════");
         System.out.println("         💰 * Estado de tus riquezas * 💰         ");
-        System.out.println("══════════════════════════════════════════════════");
         System.out.println("   🪙 Cantidad de monedas: " + p.getMonedas());
         System.out.println("══════════════════════════════════════════════════");
 
@@ -221,7 +234,6 @@ public class Tienda {
                 try {
                     System.out.println("══════════════════════════════════════════════════");
                     System.out.println("       🔧 * Menú de Mejora de Armas * 🔧         ");
-                    System.out.println("══════════════════════════════════════════════════");
                     System.out.println("   ⚔️ ¿Desea mejorar su arma? (si/no):");
                     System.out.println("══════════════════════════════════════════════════");
 
@@ -232,6 +244,8 @@ public class Tienda {
                     entradaValida = true; // Si no hay excepción la entrada es válida
                 } catch (EntradaInvalidaException e) {
                     System.out.println(e.getMessage()); // Mostrar el mensaje de error
+                } finally {
+                    ControlPantalla.limpiarPantalla();
                 }
             } while (!entradaValida); // Repetir mientras no se haya validado la entrada
         }
@@ -276,7 +290,6 @@ public class Tienda {
         } else if (!entradaValida){
             System.out.println("══════════════════════════════════════════════════");
             System.out.println("          🌟 ¡Gracias por tu visita! 🌟           ");
-            System.out.println("══════════════════════════════════════════════════");
             System.out.println("   😊 Vuelve pronto, siempre eres bienvenido.");
             System.out.println("══════════════════════════════════════════════════");
 
