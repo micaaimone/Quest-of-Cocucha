@@ -1,5 +1,6 @@
 package JUEGO.Personajes;
 
+import JUEGO.ControlPantalla;
 import JUEGO.Exceptions.CorroborarException;
 import JUEGO.Armas.Armas;
 
@@ -249,17 +250,23 @@ public abstract class Personaje implements Movimientos {
 
     //imprimir info del personaje
     public void mostrarInfo() {
-        System.out.println("══════════════════════════════════════════════════");
-        System.out.println("             🎮 * Estado del Personaje * 🎮        ");
-        System.out.println("══════════════════════════════════════════════════");
-        System.out.println("   🧍 Nivel: " + getLevel());
-        System.out.println("   ❤️     PH:      " + crearBarra(getPH(), getPHMax(), "\u001B[31m█\u001B[0m", '-'));
-        System.out.println("   ✨    Magia:    " + crearBarra(getMagia(), getMagiaMax(), "\u001B[34m█\u001B[0m", '-'));
-        System.out.println("   🛡️ Resistencia: " + crearBarra(getResistencia(), getResistenciaMax(), "\u001B[32m█\u001B[0m", '-'));
-        System.out.println("   ⚔️ Poder de ataque: " + getPoderAtaque());
-        System.out.println("   🗡️ Arma equipada: " + getNombreArma());
-        System.out.println("   💰 Monedas: " + getMonedas());
-        System.out.println("══════════════════════════════════════════════════");
+        if (getPH() <= 0) {
+            muerte();
+            ControlPantalla.pausaConEnter();
+        } else {
+            System.out.println("══════════════════════════════════════════════════");
+            System.out.println("             🎮 * Estado del Personaje * 🎮        ");
+            System.out.println("══════════════════════════════════════════════════");
+            System.out.println("   🧍 Nivel: " + getLevel());
+            System.out.println("   ❤️     PH:      " + crearBarra(getPH(), getPHMax(), "\u001B[31m█\u001B[0m", '-'));
+            System.out.println("   ✨    Magia:    " + crearBarra(getMagia(), getMagiaMax(), "\u001B[34m█\u001B[0m", '-'));
+            System.out.println("   🛡️ Resistencia: " + crearBarra(getResistencia(), getResistenciaMax(), "\u001B[32m█\u001B[0m", '-'));
+            System.out.println("   ⚔️ Poder de ataque: " + getPoderAtaque());
+            System.out.println("   🗡️ Arma equipada: " + getNombreArma());
+            System.out.println("   💰 Monedas: " + getMonedas());
+            System.out.println("══════════════════════════════════════════════════");
+        }
+
 
     }
 
