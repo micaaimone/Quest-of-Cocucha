@@ -9,6 +9,15 @@ import org.json.JSONObject;
 
 import java.util.Map;
 
+import JUEGO.Jugador.GestionJugador;
+import JUEGO.Jugador.Jugador;
+import JUEGO.Personajes.Personaje;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Map;
+
 public class GestionJSON {
     //vamos a serializar jugador y personajes
     public static void jugadoraArchivo(GestionJugador v) {
