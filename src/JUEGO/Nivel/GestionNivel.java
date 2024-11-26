@@ -16,7 +16,6 @@ public class GestionNivel {
     public GestionNivel(Personaje personaje) {
         this.personaje = personaje;
         this.puntuacion = 0;
-        this.puntuacion = 0;
     }
 
     public int getPuntuacion() {

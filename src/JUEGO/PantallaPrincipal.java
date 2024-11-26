@@ -45,16 +45,21 @@ public class PantallaPrincipal {
             //si apreto salir, se sale del juego
 
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Elija una opcion \n ");
-            System.out.println("\n1-Jugar\n");
-            System.out.println("\n2-Puntuacion\n");
-            System.out.println("\n3-Salir\n");
+            System.out.println("\nElija una opcion \n ");
+            System.out.println("1-Jugar\n");
+            System.out.println("2-Puntuacion\n");
+            System.out.println("3-Salir\n");
             opcion = scanner.nextInt();
             scanner.nextLine();
             switch (opcion) {
                 case 1:
                     // llamamos a funcion para crear el jugador
-                    Jugador jugador = new Jugador();
+
+
+                    Jugador jugador = new Jugador("Mica");
+
+                    System.out.println("Haz elegido el personaje: ");
+                    jugador.getPersonaje().mostrarInfo();
 
                     // llevamos el jugador a recorrer el juego
 
