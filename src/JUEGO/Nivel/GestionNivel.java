@@ -23,6 +23,10 @@ public class GestionNivel {
         return puntuacion;
     }
 
+    public int getPuntuacion() {
+        return puntuacion;
+    }
+
     public LinkedList crearTrayecto (){
 
         Queue <Nivel> niveles = new LinkedList<>();
