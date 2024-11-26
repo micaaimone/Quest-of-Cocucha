@@ -9,6 +9,7 @@ import JUEGO.Personajes.CrearPersonaje;
 import JUEGO.Personajes.Personaje;
 import JUEGO.Tienda.Tienda;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 //DSPS borrar corroborar excepcion

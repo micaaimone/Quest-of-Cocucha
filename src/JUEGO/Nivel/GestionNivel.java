@@ -188,6 +188,7 @@ public class GestionNivel {
                     default:
                         System.out.println("ingrese una de las 3 puertas\n");
                         break;
+
                 }
             } else{
                 System.out.println(
