@@ -5,6 +5,8 @@ import JUEGO.Personajes.Clases.Guerrero;
 import JUEGO.Personajes.Clases.Mago;
 import JUEGO.Personajes.CrearPersonaje;
 import JUEGO.Personajes.Personaje;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.Scanner;
 
@@ -68,6 +70,16 @@ public class Jugador {
                 ", personaje=" + personaje +
                 ", Puntuacion=" + Puntuacion +
                 '}';
+    }
+
+    // serializar ..................
+
+    public JSONObject serializar(){
+        JSONObject jugador = new JSONObject();
+        jugador.put("Nombre", Nombre);
+        jugador.put("Jugador", personaje.serializar().toString(2));
+        jugador.put("Puntuacion", Puntuacion);
+        return jugador;
     }
 }
 
