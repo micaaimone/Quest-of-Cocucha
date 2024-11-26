@@ -15,9 +15,7 @@ public class GestionNivel {
 
     public GestionNivel(Personaje personaje) {
         this.personaje = personaje;
-        this.puntuacion = 0;
-        this.puntuacion = 0;
-    }
+        this.puntuacion = 0;}
 
     public int getPuntuacion() {
         return puntuacion;
@@ -86,10 +84,12 @@ public class GestionNivel {
         Puerta puerta = null;
         Boolean win = true;
 
+
         while (!niveles.isEmpty() && win) {
             Nivel nivel = niveles.poll();
             if (niveles != null && !niveles.isEmpty()) {
 
+                personaje.mostrarInfo();
 
                 System.out.println("══════════════════════════════════════════════════════════");
                 System.out.println("                 🌟 * PUERTAS MISTERIOSAS * 🌟");
@@ -97,8 +97,8 @@ public class GestionNivel {
                 System.out.println("                ¡Solo un valiente se atreve!       ");
                 System.out.println("    Tres caminos se presentan ante ti, aventurero:  ");
                 System.out.println("                                                   ");
-                System.out.println("    🏰 1️⃣ - **Puerta del Destino**: ¿Tu futuro está sellado?");
-                System.out.println("    🛡️ 2️⃣ - **Puerta del Desafío**: ¿Estás listo para la batalla?");
+                System.out.println("    🏰 1️⃣ - **Puerta del Desafio**: ¿Estás listo para la batalla?");
+                System.out.println("    🛡️ 2️⃣ - **Puerta del Mercado**: ¿Que deseas comprar?");
                 System.out.println("    🕵️ 3️⃣ - **Puerta del Misterio**: ¿Qué secretos ocultos guardará?");
                 System.out.println("                                                         ");
                 System.out.println("            Elige con sabiduría... tu destino te aguarda.");
@@ -113,7 +113,8 @@ public class GestionNivel {
                                 "**************************************\n\u001B[0m");
 
                         puerta = (PuertaEnemigo) nivel.getPuerta(eleccion -1);
-                        if (((PuertaEnemigo) puerta).combatir(personaje)){
+                        win = ((PuertaEnemigo) puerta).combatir(personaje);
+                        if (win == true){
                             System.out.println("\u001B[33m" +
                                     "🎉🎉🎉 ¡Has vencido al enemigo! 🎉🎉🎉\n" +
                                     "💥 Una gran victoria, valiente guerrero 💥\n" +
@@ -121,7 +122,8 @@ public class GestionNivel {
                                     "\u001B[0m"
                             );
                             puntuacion+= 100;
-
+                            personaje.setMonedas(personaje.getMonedas()+100);
+                            personaje.setLevel(personaje.getLevel()+1);
                         }else {
                             System.out.println("\u001B[31m" +
                                     "💀═══════════════════════════════════════💀\n" +
@@ -130,7 +132,7 @@ public class GestionNivel {
                                     "💀═══════════════════════════════════════💀\n" +
                                     "\u001B[0m"
                             );
-                            win = false;
+                            return;
                         }
                         break;
                     case 2:
