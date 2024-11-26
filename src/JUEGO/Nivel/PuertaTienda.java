@@ -11,11 +11,13 @@ public class PuertaTienda extends Puerta{
         this.tienda = tienda;
     }
 
-    public void compras (Personaje personaje){
+    public int compras (Personaje personaje){
+        int puntuacion = 0;
         try {
-            tienda.menuTienda(personaje);
+            puntuacion = puntuacion + tienda.menuTienda(personaje);
         } catch (EntradaInvalidaException e) {
             System.out.println(e.getMessage());
         }
+        return puntuacion;
     }
 }

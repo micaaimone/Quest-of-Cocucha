@@ -10,10 +10,12 @@ import java.util.*;
 
 public class GestionNivel {
     private Personaje personaje;
+    private int puntuacion;
 
 
     public GestionNivel(Personaje personaje) {
         this.personaje = personaje;
+        this.puntuacion = 0;
     }
 
     public LinkedList crearTrayecto (){
@@ -101,7 +103,7 @@ public class GestionNivel {
                         System.out.println("Vamos de compras\n");
 
                         puerta = (PuertaTienda) nivel.getPuerta(eleccion -1);
-                        ((PuertaTienda) puerta).compras(personaje);
+                        puntuacion = puntuacion + ((PuertaTienda) puerta).compras(personaje);
 
                         break;
                     case 3:
