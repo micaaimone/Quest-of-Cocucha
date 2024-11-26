@@ -58,6 +58,7 @@ public class Duelo {
 
             try {
                 enemigo.atacar(personaje);
+                System.out.println("Haz recibido un ataque del enemigo de: " + enemigo.getPoderAtaque());
                 personaje.mostrarInfo();
             } catch (CorroborarException e) {
                 System.out.println(e.getMessage());
