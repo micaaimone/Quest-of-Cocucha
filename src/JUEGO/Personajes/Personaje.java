@@ -172,7 +172,7 @@ public abstract class Personaje implements Movimientos {
         sumarAtributo = corroborarAtributo(getMagia(), getMagiaMax(), 20);
         if (sumarAtributo > 0 ){
             setMagia(getMagia() + sumarAtributo);
-            System.out.println("✨ La ha aumentado en +" + sumarAtributo + "! ✨");
+            System.out.println("✨ La magia a aumentado en +" + sumarAtributo + "! ✨");
         } else {
             throw new CorroborarException("\u001B[31m⚠️ ¡Error! La magia ya está al máximo. ⚠️\u001B[0m");
 
@@ -265,6 +265,8 @@ public abstract class Personaje implements Movimientos {
             System.out.println("   🗡️ Arma equipada: " + getNombreArma());
             System.out.println("   💰 Monedas: " + getMonedas());
             System.out.println("══════════════════════════════════════════════════");
+            System.out.println("   ❤️     PH:      " + getPH());
+            System.out.println("   🛡️ Resistencia: " + getResistencia());
         }
 
 

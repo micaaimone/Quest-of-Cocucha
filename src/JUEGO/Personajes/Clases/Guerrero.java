@@ -6,7 +6,7 @@ import JUEGO.Personajes.Personaje;
 
 public class Guerrero extends Personaje {
 
-    public Guerrero() {super(200, 10, 100, 0, 30, Armas.espadaCorta);
+    public Guerrero() {super(200, 10, 120, 0, 30, Armas.espadaCorta);
     }
 
 

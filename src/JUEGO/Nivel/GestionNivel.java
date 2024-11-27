@@ -94,13 +94,13 @@ public class GestionNivel {
     public void Trayecto () throws CorroborarException {
         Queue<Nivel> niveles = crearTrayecto();
         Puerta puerta = null;
-        boolean win = true;
-        boolean validar = false;
+        Boolean win = true;
+
         mostrarNiveles(niveles);
 
         while (!niveles.isEmpty() && win) {
             Nivel nivel = niveles.poll();
-            if (!niveles.isEmpty()) {
+            if (niveles != null && !niveles.isEmpty()) {
 
                 personaje.mostrarInfo();
                 System.out.println("\nEstas en el nivel " + nivel.getDificultad());
@@ -117,23 +117,9 @@ public class GestionNivel {
                 System.out.println("            Elige con sabiduría... tu destino te aguarda.");
                 System.out.println("══════════════════════════════════════════════════════════");
 
-
                 Scanner scanner = new Scanner(System.in);
-                int eleccion = 0;
+                int eleccion = scanner.nextInt();
 
-                while (validar) {
-                    eleccion = scanner.nextInt();
-                    scanner.nextLine();
-                    try {
-                    if (eleccion < 4 && eleccion > 0) {
-                        validar = true;
-                    }else  {
-                        throw new InputMismatchException("Solo se pueden ingresar numeros(1,2,3). Vuelve a intentarlo");
-                    }
-                    } catch (InputMismatchException e) {
-                        throw new RuntimeException(e.getMessage());
-                    }
-                }
                 switch (eleccion){
                     case 1:
                         ControlPantalla.limpiarPantalla();
@@ -155,6 +141,11 @@ public class GestionNivel {
                                             "✨ ¡Sigue adelante, la aventura no termina aquí! ✨\n" +
                                             "\u001B[0m"
                                     );
+                                    try {
+                                        personaje.subirNivel();
+                                    } catch (CorroborarException e) {
+                                        System.out.println(e.getMessage());
+                                    }
                                     puntuacion += 100;
                                     personaje.setMonedas(personaje.getMonedas() + 100);
                                     personaje.setLevel(personaje.getLevel() + 1);
@@ -207,8 +198,7 @@ public class GestionNivel {
                         System.out.println("ingrese una de las 3 puertas\n");
                         break;
                 }
-
-            }else{
+            } else{
                 System.out.println(
                         "╔═══════════════════════════════════════════════════╗\n" +
                         "║           ✨ ¡HORA DE LA BATALLA FINAL! ✨       ║\n" +
@@ -333,10 +323,7 @@ public class GestionNivel {
                             "╚════════════════════════════════════════════════════════╝\n" +
                             "\u001B[0m");
                     win = false;
-                }
-
-            }
-
+                }            }
         }
     }
 }
