@@ -41,11 +41,6 @@ public class PantallaPrincipal {
                     "/ /\\ \\.. \\.. \\.. \\.. \\.. \\.. \\.. \\.. \\.. \\.. \\.. \\.. \\.. \\/\\ \\\n" +
                     "\\ `'\\ `'\\ `'\\ `'\\ `'\\ `'\\ `'\\ `'\\ `'\\ `'\\ `'\\ `'\\ `'\\ `'\\ `' /\n" +
                     " `--'`--'`--'`--'`--'`--'`--'`--'`--'`--'`--'`--'`--'`--'`--' ");
-
-            //estos serian botones, si apreto boton jugar llevaria a pantalla principal
-            //si apreto pantalla puntuacion, muestra las puntuaciones mas altas
-            //si apreto salir, se sale del juego
-
             Scanner scanner = new Scanner(System.in);
             System.out.println("\nElija una opcion \n ");
             System.out.println("1-Jugar\n");
@@ -97,8 +92,11 @@ public class PantallaPrincipal {
                         System.out.println("        🏆 TABLA DE HONOR: TOP 5 PUNTAJES 🏆      ");
                         System.out.println("¡Estas son las 5 puntuaciones más altas del juego!");
                         System.out.println("══════════════════════════════════════════════");
-                        jugadores.agregarPjJson();
-                        jugadores.mostrarJugadores();
+
+
+                        GestionJugador gj = new GestionJugador();
+                        gj.agregarPjJson();
+                        gj.mostrarJugadores();
 
                         break;
                     case 3:
@@ -107,7 +105,9 @@ public class PantallaPrincipal {
                         System.out.println("ingrese su nombre\n");
                         String nombreAdmin = scanner.nextLine();
 
-                        Administrador admin = new Administrador(nombreAdmin);
+                        Jugador j = new Jugador(nombreAdmin);
+
+                        Administrador admin = new Administrador(nombreAdmin, j.getPersonaje());
 
                         admin.administrar();
 

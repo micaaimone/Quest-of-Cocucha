@@ -151,6 +151,11 @@ public abstract class Personaje implements Movimientos {
         int nivel = getLevel() + 1;
         int sumarAtributo = 0;
         setLevel(getLevel()+1);
+
+        setPHMax(getPHMax()+20);
+        setMagiaMax(getMagiaMax()+20);
+        setResistenciaMax(getResistenciaMax()+20);
+
         System.out.println();System.out.println(
                 "🎮✨ ¡Felicidades! Has subido al nivel " + nivel + " ✨🎮"+
                         "       *      *      *\n" +
@@ -271,7 +276,11 @@ public abstract class Personaje implements Movimientos {
             System.out.println("   🗡️ Arma equipada: " + getNombreArma());
             System.out.println("   💰 Monedas: " + getMonedas());
             System.out.println("══════════════════════════════════════════════════");
+
         }
+        System.out.println("   ❤️     PH:      " + getPH());
+        System.out.println("   ✨    Magia:    " + getMagia());
+        System.out.println("   🛡️ Resistencia: " + getResistencia());
 
 
     }

@@ -54,7 +54,7 @@ public class GestionJugador {
 
             System.out.println("Id = " + id +
                     "\nNombre = " + nombre +
-                    "\nPersonaje = " + personaje +
+                    "\nPersonaje = " + personaje.getClass().getSimpleName() +
                     "\nPuntuacion = " + puntuacion + "\n");
         }
     }

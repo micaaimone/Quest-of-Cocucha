@@ -4,6 +4,7 @@ import JUEGO.Armas.Armas;
 import JUEGO.Personajes.Clases.Asesino;
 import JUEGO.Personajes.Clases.Guerrero;
 import JUEGO.Personajes.Clases.Mago;
+import JUEGO.Personajes.CrearPersonaje;
 import JUEGO.Personajes.Personaje;
 
 import java.util.Scanner;
@@ -13,9 +14,10 @@ public class Administrador {
     private String password;
     private Personaje personaje;
 
-    public Administrador(String nombre) {
+    public Administrador(String nombre, Personaje p) {
         this.nombre = nombre;
         this.password = crearPassword();
+        this.personaje = p;
     }
 
     public String crearPassword() {
@@ -55,11 +57,6 @@ public class Administrador {
     }
 
     public void modificarPersonaje(Personaje personaje) {
-
-
-//            mi idea aca es que se pregunte que personaje queres cambiar
-//            ese personaje entra o por teclado o por nro (mostrar antes cuales son las opciones) y de ahi
-//            preguntar el atributo q lo hice ahi abajo
 
         Scanner scanner = new Scanner(System.in);
 
@@ -132,12 +129,13 @@ public class Administrador {
                 default:
                     System.out.println("Opción no válida.");
             }
-
+            personaje.mostrarInfo();
     }
 
     // Al ser un administrador puede modificar los atributos de los diferentes personajes
 
     public void modificarPH(Personaje personaje, int nuevoPH) {
+        modificarPHMax(personaje,nuevoPH);
         personaje.setPH(nuevoPH);
     }
 
@@ -145,6 +143,7 @@ public class Administrador {
         personaje.setPHMax(nuevoPHMax);
     }
     public void modificarMagia(Personaje personaje, int nuevaMagia) {
+        modificarMagiaMax(personaje,nuevaMagia);
         personaje.setMagia(nuevaMagia);
     }
 
@@ -153,6 +152,7 @@ public class Administrador {
     }
 
     public void modificarResistencia(Personaje personaje, int nuevaResistencia) {
+        modificarResistenciaMax(personaje,nuevaResistencia);
         personaje.setResistencia(nuevaResistencia);
     }
 

@@ -31,9 +31,9 @@ public class GestionNivel {
         //----------------ENEMIGOS------------------------------------
         Enemigo enemigo1 = new Enemigo(60, 50, 20, 1, 15, Armas.cuchillo, "enemigo1");
         Enemigo enemigo2 = new Enemigo(80, 70, 20, 2, 25, Armas.bastonCorto, "enemigo2");
-        Enemigo enemigo3 = new Enemigo(100, 70, 20, 3, 40, Armas.espadaCorta,"enemigo3");
-        Enemigo enemigo4 = new Enemigo(120, 70, 20, 4, 50, Armas.dagaFilosa,"enemigo4");
-        JefeFinal enemigo5 = new JefeFinal(130, 70, 20, 5, 60, Armas.espadaGrande,"jefe final");
+        Enemigo enemigo3 = new Enemigo(100, 70, 20, 3, 30, Armas.espadaCorta,"enemigo3");
+        Enemigo enemigo4 = new Enemigo(120, 70, 20, 4, 35, Armas.dagaFilosa,"enemigo4");
+        JefeFinal enemigo5 = new JefeFinal(130, 70, 20, 5, 40, Armas.espadaGrande,"jefe final");
         //-------tienda--------------------------------------------
         Tienda tienda1 = new Tienda();
         //-------Puertas--------------------------------------------
@@ -189,6 +189,7 @@ public class GestionNivel {
 
                 puerta = (PuertaEnemigo) nivel.getPuerta(0);
                 if (((PuertaEnemigo) puerta).combatir(personaje)){
+                    puntuacion += 200;
                     System.out.println("Felicidades, has completado el ultimo nivel\n aqui tienes tu merecida cocucha de vidrio\n" +
                             " .::..::. ::. ::...:: .::..::. :: .::..::. ::. ::...:::=++=##*++++-.::..::. ::. ::...:: .:: .::..:: \n" +
                             ":: .::..::. ::...:: .:: .:: .::. :: .::..::. ::..:-=***+#####*==-:---==:..::. ::..:::..:: .:: .::. :\n" +

@@ -4,10 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONTokener;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class JSONutility {
     public static void grabar(JSONArray jsonArray, String nombreArchivo){
@@ -21,15 +18,29 @@ public class JSONutility {
     }
 }
 
-    public static JSONTokener leer(String nombreArchivo){
-        JSONTokener tokener = null;
-        try{
-            tokener = new JSONTokener(new FileReader(nombreArchivo));
-        }catch (JSONException ex) {
-            throw new RuntimeException(ex);
-        }catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+
+        public static JSONTokener leer(String nombreArchivo) {
+            File archivo = new File(nombreArchivo);
+
+            // Crear el archivo si no existe
+            if (!archivo.exists()) {
+                System.out.println("El archivo no existe. Creando uno nuevo: " + nombreArchivo);
+                try (FileWriter writer = new FileWriter(nombreArchivo)) {
+                    writer.write("{}"); // Escribir un JSON vacío por defecto
+                } catch (IOException e) {
+                    throw new RuntimeException("Error al crear el archivo JSON: " + e.getMessage(), e);
+                }
+            }
+
+            // Leer el archivo y retornar el JSONTokener
+            try {
+                return new JSONTokener(new FileReader(nombreArchivo));
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException("El archivo no pudo ser encontrado después de crearlo: " + e.getMessage(), e);
+            } catch (Exception ex) {
+                throw new RuntimeException("Error al leer el archivo JSON: " + ex.getMessage(), ex);
+            }
         }
-        return tokener;
     }
-}
+
+
