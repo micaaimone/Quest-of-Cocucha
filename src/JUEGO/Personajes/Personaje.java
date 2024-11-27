@@ -143,19 +143,6 @@ public abstract class Personaje implements Movimientos {
     }
 
     @Override
-    public String toString() {
-        return "Personaje{" +
-                "PH=" + PH +
-                ", magia=" + magia +
-                ", resistencia=" + resistencia +
-                ", level=" + level +
-                ", poderAtaque=" + poderAtaque +
-                ", arma=" + arma +
-                ", monedas=" + monedas +
-                '}';
-    }
-
-    @Override
     public void muerte() {
         System.out.println("💀 El personaje está fuera de combate.");
     }
@@ -178,10 +165,6 @@ public abstract class Personaje implements Movimientos {
                         "💪 Ahora eres más fuerte que nunca. ¡A seguir avanzando! 💪"
         );
         System.out.println("⚡ Todos tus stats subieron en 20 puntos. ¡Estás más fuerte que nunca! ⚡");
-
-        setPHMax(getPHMax()+20);
-        setMagiaMax(getMagiaMax()+20);
-        setResistenciaMax(getResistenciaMax()+20);
 
         sumarAtributo = corroborarAtributo(getPH(), getPHMax(), 20);
         if (sumarAtributo > 0 ){
@@ -288,8 +271,6 @@ public abstract class Personaje implements Movimientos {
             System.out.println("   🗡️ Arma equipada: " + getNombreArma());
             System.out.println("   💰 Monedas: " + getMonedas());
             System.out.println("══════════════════════════════════════════════════");
-            System.out.println("   ❤️     PH:      " + getPH());
-            System.out.println("   🛡️ Resistencia: " + getResistencia());
         }
 
 

@@ -85,4 +85,27 @@ public class Duelo {
             }
         }
     }
+
+
+    public static int validarEntradaParaCombate() {
+        Scanner scanner = new Scanner(System.in);
+        int opcion;
+        while (true) {
+            System.out.println("¿Cuál es tu próximo movimiento?");
+            System.out.println("1. 🗡️ Atacar");
+            System.out.println("2. 💊 Curarse");
+            System.out.println("\nSelecciona tu acción (1 o 2):");
+            try {
+                opcion = scanner.nextInt();
+                if (opcion == 1 || opcion == 2) { // valida que sea 1 o 2
+                    return opcion;
+                } else {
+                    System.out.println("Opción no válida. Solo puede ingresar 1 o 2.");
+                }
+            } catch (Exception e) {
+                System.out.println("Entrada inválida. Solo puede ingresar números.");
+                scanner.nextLine();
+            }
+        }
+    }
 }
