@@ -157,7 +157,7 @@ public abstract class Personaje implements Movimientos {
 
     @Override
     public void muerte() {
-        System.out.println("💀 El personaje está fuera de combate.💀");
+        System.out.println("💀 El personaje está fuera de combate.");
     }
     
     public void subirNivel() throws CorroborarException {
@@ -288,10 +288,8 @@ public abstract class Personaje implements Movimientos {
             System.out.println("   🗡️ Arma equipada: " + getNombreArma());
             System.out.println("   💰 Monedas: " + getMonedas());
             System.out.println("══════════════════════════════════════════════════");
-
-            System.out.println( "PHHHHH " + getPH());
-            System.out.println(" MAGICCC" + getMagia());
-            System.out.println("Resistencia: " + getResistencia());
+            System.out.println("   ❤️     PH:      " + getPH());
+            System.out.println("   🛡️ Resistencia: " + getResistencia());
         }
 
 
