@@ -124,6 +124,11 @@ public class GestionNivel {
                                     puntuacion += 100;
                                     personaje.setMonedas(personaje.getMonedas() + 100);
                                     personaje.setLevel(personaje.getLevel() + 1);
+                                    try {
+                                        personaje.subirNivel();
+                                    } catch (CorroborarException e) {
+                                        System.out.println(e.getMessage());
+                                    }
                                 } else {
                                     System.out.println("\u001B[31m" +
                                             "💀═══════════════════════════════════════💀\n" +
