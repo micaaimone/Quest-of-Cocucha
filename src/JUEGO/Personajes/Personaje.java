@@ -3,6 +3,10 @@ package JUEGO.Personajes;
 import JUEGO.ControlPantalla;
 import JUEGO.Exceptions.CorroborarException;
 import JUEGO.Armas.Armas;
+import JUEGO.Personajes.Clases.Asesino;
+import JUEGO.Personajes.Clases.Guerrero;
+import JUEGO.Personajes.Clases.Mago;
+import org.json.JSONObject;
 //import org.json.JSONException;
 //import org.json.JSONObject;
 
@@ -139,8 +143,21 @@ public abstract class Personaje implements Movimientos {
     }
 
     @Override
+    public String toString() {
+        return "Personaje{" +
+                "PH=" + PH +
+                ", magia=" + magia +
+                ", resistencia=" + resistencia +
+                ", level=" + level +
+                ", poderAtaque=" + poderAtaque +
+                ", arma=" + arma +
+                ", monedas=" + monedas +
+                '}';
+    }
+
+    @Override
     public void muerte() {
-        System.out.println("💀 El personaje está fuera de combate.");
+        System.out.println("💀 El personaje está fuera de combate.💀");
     }
     
     public void subirNivel() throws CorroborarException {
@@ -161,6 +178,10 @@ public abstract class Personaje implements Movimientos {
                         "💪 Ahora eres más fuerte que nunca. ¡A seguir avanzando! 💪"
         );
         System.out.println("⚡ Todos tus stats subieron en 20 puntos. ¡Estás más fuerte que nunca! ⚡");
+
+        setPHMax(getPHMax()+20);
+        setMagiaMax(getMagiaMax()+20);
+        setResistenciaMax(getResistenciaMax()+20);
 
         sumarAtributo = corroborarAtributo(getPH(), getPHMax(), 20);
         if (sumarAtributo > 0 ){
@@ -267,6 +288,10 @@ public abstract class Personaje implements Movimientos {
             System.out.println("   🗡️ Arma equipada: " + getNombreArma());
             System.out.println("   💰 Monedas: " + getMonedas());
             System.out.println("══════════════════════════════════════════════════");
+
+            System.out.println( "PHHHHH " + getPH());
+            System.out.println(" MAGICCC" + getMagia());
+            System.out.println("Resistencia: " + getResistencia());
         }
 
 
@@ -284,40 +309,66 @@ public abstract class Personaje implements Movimientos {
         return barra.toString();
     }
 
-//    public JSONObject serializar(){
-//        JSONObject pjJson = new JSONObject();
-//        pjJson.put("PH", getPH());
-//        pjJson.put("Magia", getMagia());
-//        pjJson.put("Resistencia", getResistencia());
-//        pjJson.put("Nivel", getLevel());
-//        pjJson.put("PODER_ATAQUE", getPoderAtaque());
-//        pjJson.put("NombreArma", getNombreArma());
-//        pjJson.put("Monedas", getMonedas());
-//
-//        return pjJson;
-//    }
-//
-//    public Personaje deserializar(JSONObject pjJson) {
-//
-//        Personaje pj = null;
-//
-//        int PH = pjJson.getInt("PH");
-//        int Magia = pjJson.getInt("Magia");
-//        int Resistencia = pjJson.getInt("Resistencia");
-//        int Nivel = pjJson.getInt("Nivel");
-//        int PODER_ATAQUE = pjJson.getInt("PODER_ATAQUE");
-//        String nombreArma = pjJson.getString("NombreArma");
-//        int monedas = pjJson.getInt("Monedas");
-//
-//        pj.setPH(PH);
-//        pj.setMagia(Magia);
-//        pj.setResistencia(Resistencia);
-//        pj.setLevel(Nivel);
-//        pj.setPoderAtaque(PODER_ATAQUE);
-//        pj.setArma(Armas.getArmaByName(nombreArma));
-//        pj.setMonedas(monedas);
-//
-//        return pj;
-//    }
+    public JSONObject serializar(){
+        JSONObject pjJson = new JSONObject();
+        pjJson.put("PH", getPH());
+        pjJson.put("Magia", getMagia());
+        pjJson.put("Resistencia", getResistencia());
+        pjJson.put("Nivel", getLevel());
+        pjJson.put("PODER_ATAQUE", getPoderAtaque());
+        pjJson.put("NombreArma", getNombreArma());
+        pjJson.put("Monedas", getMonedas());
+        pjJson.put("Tipo", getClass().getSimpleName());
+
+        return pjJson;
+    }
+
+    public static Personaje deserializar(JSONObject pjJson) {
+
+
+        int PH = pjJson.getInt("PH");
+        int Magia = pjJson.getInt("Magia");
+        int Resistencia = pjJson.getInt("Resistencia");
+        int Nivel = pjJson.getInt("Nivel");
+        int PODER_ATAQUE = pjJson.getInt("PODER_ATAQUE");
+        String nombreArma = pjJson.getString("NombreArma");
+        int monedas = pjJson.getInt("Monedas");
+        String tipo = pjJson.getString("Tipo");
+
+        if(tipo.equals("Asesino")){
+            Asesino pj = new Asesino();
+            pj.setPH(PH);
+            pj.setMagia(Magia);
+            pj.setResistencia(Resistencia);
+            pj.setLevel(Nivel);
+            pj.setPoderAtaque(PODER_ATAQUE);
+            pj.setArma(Armas.getArmaByName(nombreArma));
+            pj.setMonedas(monedas);
+            return pj;
+        } else if (tipo.equals("Guerrero")) {
+            Guerrero pj = new Guerrero();
+            pj.setPH(PH);
+            pj.setMagia(Magia);
+            pj.setResistencia(Resistencia);
+            pj.setLevel(Nivel);
+            pj.setPoderAtaque(PODER_ATAQUE);
+            pj.setArma(Armas.getArmaByName(nombreArma));
+            pj.setMonedas(monedas);
+            return pj;
+        }
+        else{
+            Mago pj = new Mago();
+            pj.setPH(PH);
+            pj.setMagia(Magia);
+            pj.setResistencia(Resistencia);
+            pj.setLevel(Nivel);
+            pj.setPoderAtaque(PODER_ATAQUE);
+            pj.setArma(Armas.getArmaByName(nombreArma));
+            pj.setMonedas(monedas);
+
+            return pj;
+        }
+
+    }
 
 }

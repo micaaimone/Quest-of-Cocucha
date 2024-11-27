@@ -3,9 +3,7 @@ package JUEGO.JSON;
 import JUEGO.Jugador.GestionJugador;
 import JUEGO.Jugador.Jugador;
 import JUEGO.Personajes.Personaje;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.json.*;
 
 import java.util.Map;
 
@@ -62,8 +60,28 @@ public class GestionJSON {
             objJugador = (j.serializar());
         }
      catch (Exception e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         return objJugador;
+    }
+
+    //leer
+    public static GestionJugador jsonAObjec(){
+        GestionJugador j = new GestionJugador();
+        try {
+            JSONTokener tokener = JSONutility.leer("jugadores.json");
+
+
+            JSONArray jugadores = new JSONArray(tokener);
+
+            for (int i = 0; i < jugadores.length(); i++) {
+                Jugador jugador = Jugador.deserializar(jugadores.getJSONObject(i));
+                j.agregarJugador(jugador);
+            }
+
+        }catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return j;
     }
 }

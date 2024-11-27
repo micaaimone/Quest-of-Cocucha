@@ -1,5 +1,8 @@
 package JUEGO.Jugador;
 
+import JUEGO.JSON.GestionJSON;
+import JUEGO.Personajes.Personaje;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -28,9 +31,32 @@ public class GestionJugador {
         PuntuacionJugador.remove(j.getId());
     }
 
-    public void mostrarPuntuaciones(){
-        for(int i = 0; i<4; i++){
-            
+    public void mostrarJugadores(){
+        for (Map.Entry<Integer, Jugador> entry : PuntuacionJugador.entrySet()) {
+            int id = entry.getKey();
+            String nombre = entry.getValue().getNombre();
+            Personaje j = entry.getValue().getPersonaje();
+            int score = entry.getValue().getPuntuacion();
+            System.out.println("Id = "+ id + " \nNombre = " + nombre + "\n Personaje = " + j + "\n Puntuacion = "+ score +"\n");
+        }
+    }
+
+    public void limitar (){
+        agregarPjJson();
+
+        for (int i = 5; i < PuntuacionJugador.size(); i++) {
+            eliminarJugador(PuntuacionJugador.get(i));
+        }
+
+        mostrarJugadores();
+
+    }
+
+    public void agregarPjJson (){
+        GestionJugador gj = GestionJSON.jsonAObjec();
+
+        for (Map.Entry<Integer, Jugador> entry : gj.getPuntuacionJugador().entrySet()) {
+            agregarJugador(entry.getValue());
         }
     }
 }
