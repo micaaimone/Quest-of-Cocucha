@@ -1,5 +1,6 @@
 package JUEGO.Nivel;
 import JUEGO.Armas.Armas;
+import JUEGO.ControlPantalla;
 import JUEGO.Exceptions.CorroborarException;
 import JUEGO.Personajes.*;
 import JUEGO.Personajes.Enemigos.Enemigo;
