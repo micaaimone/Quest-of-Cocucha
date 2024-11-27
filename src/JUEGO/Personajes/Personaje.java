@@ -284,4 +284,5 @@ public abstract class Personaje implements Movimientos {
         return barra.toString();
     }
 
+
 }
