@@ -2,8 +2,6 @@ package JUEGO;
 
 import JUEGO.Exceptions.CorroborarException;
 import JUEGO.Exceptions.EntradaInvalidaException;
-import JUEGO.JSON.GestionJSON;
-import JUEGO.Jugador.Administrador;
 import JUEGO.Jugador.GestionJugador;
 import JUEGO.Jugador.Jugador;
 import JUEGO.Nivel.GestionNivel;
@@ -19,7 +17,7 @@ public class PantallaPrincipal {
     public void menu() throws EntradaInvalidaException {
         int opcion = 0;
         GestionJugador jugadores = new GestionJugador(); // mapa de jugadores para mostrar puntuacion
-        while (opcion != 4) {
+        while (opcion != 3) {
 
             System.out.printf(" " +
                     ".--..--..--..--..--..--..--..--..--..--..--..--..--..--..--. \n" +
@@ -51,10 +49,7 @@ public class PantallaPrincipal {
             System.out.println("\nElija una opcion \n ");
             System.out.println("1-Jugar\n");
             System.out.println("2-Puntuacion\n");
-            System.out.println("3-Administrar\n");
-            System.out.println("4-Salir\n");
-
-            Jugador jugador = new Jugador();
+            System.out.println("3-Salir\n");
 
             try {
                 opcion = scanner.nextInt();
@@ -74,18 +69,18 @@ public class PantallaPrincipal {
                         System.out.println("Bienvenido " + nombreJugador);
                         System.out.println("Haz elegido el personaje: " + jugador.getPersonaje().getClass().getSimpleName());
 
-                    // llevamos el jugador a recorrer el juego
+                        // llevamos el jugador a recorrer el juego
 
-                    GestionNivel juego = new GestionNivel(jugador.getPersonaje());
-                    try {
-                        juego.Trayecto();
-                    } catch (CorroborarException e) {
-                        System.out.println(e.getMessage());
+                        GestionNivel juego = new GestionNivel(jugador.getPersonaje());
+                        try {
+                            juego.Trayecto();
+                        } catch (CorroborarException e) {
+                            System.out.println(e.getMessage());
 
-                    }
-                    jugador.setPuntuacion(juego.getPuntuacion());
+                        }
+                        jugador.setPuntuacion(juego.getPuntuacion());
 
-                    jugadores.agregarJugador(jugador);
+                        jugadores.agregarJugador(jugador);
 
 
                     //agregamos directamente al json
@@ -93,9 +88,10 @@ public class PantallaPrincipal {
                         break;
                     case 2:
                         //llevaria a mostrar punt
-                        System.out.println("estas son las 5 puntuaciones mas altas");
-
-                        jugadores.limitar();
+                        System.out.println("══════════════════════════════════════════════");
+                        System.out.println("        🏆 TABLA DE HONOR: TOP 5 PUNTAJES 🏆      ");
+                        System.out.println("¡Estas son las 5 puntuaciones más altas del juego!");
+                        System.out.println("══════════════════════════════════════════════");
 
                         break;
                     case 3:
@@ -111,7 +107,10 @@ public class PantallaPrincipal {
                         break;
                     case 4:
                         //sale
-                        System.out.println("Salir");
+                        System.out.println("═══════════════════════════════════════");
+                        System.out.println("       🛑  SALIR DEL JUEGO 🛑         ");
+                        System.out.println("      ¡Has abandonado el juego!        ");
+                        System.out.println("═══════════════════════════════════════");
                         break;
                     default:
                         System.out.println("No ingresaste una opcion correcta \n");
@@ -123,6 +122,8 @@ public class PantallaPrincipal {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
+
         }
+
     }
 }
