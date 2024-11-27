@@ -3,7 +3,7 @@ package JUEGO.Personajes.Enemigos;
 import JUEGO.Armas.Armas;
 import JUEGO.Personajes.Personaje;
 
-public class Enemigo extends Personaje {
+public final class Enemigo extends Personaje {
     private String nombre;
 
 

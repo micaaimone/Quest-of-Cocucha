@@ -4,7 +4,7 @@ import JUEGO.Exceptions.CorroborarException;
 import JUEGO.Armas.Armas;
 import JUEGO.Personajes.Personaje;
 
-public class Mago extends Personaje {
+public final class Mago extends Personaje {
     public Mago() {
         super(100, 150, 50, 0, 30 , Armas.bastonCorto);
     }

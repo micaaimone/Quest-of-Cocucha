@@ -5,6 +5,8 @@ import JUEGO.Personajes.Clases.Guerrero;
 import JUEGO.Personajes.Clases.Mago;
 import JUEGO.Personajes.CrearPersonaje;
 import JUEGO.Personajes.Personaje;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.Scanner;
 
@@ -26,6 +28,10 @@ public class Jugador {
     }
 
     public Jugador() {
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -68,6 +74,34 @@ public class Jugador {
                 ", personaje=" + personaje +
                 ", Puntuacion=" + Puntuacion +
                 '}';
+    }
+
+    // serializar ..................
+
+    public JSONObject serializar(){
+        JSONObject jugador = new JSONObject();
+        jugador.put("Id", id);
+        jugador.put("Nombre", Nombre);
+        jugador.put("Jugador", personaje.serializar());
+        jugador.put("Puntuacion", Puntuacion);
+        return jugador;
+    }
+
+    public static Jugador deserializar(JSONObject jugador){
+        Jugador personaje = new Jugador();
+
+        int id = jugador.getInt("Id");
+        String Nombre = jugador.getString("Nombre");
+        JSONObject personajeJson = jugador.getJSONObject("Jugador");
+        int puntuacion = jugador.getInt("Puntuacion");
+        Personaje personaje1 = Personaje.deserializar(personajeJson);
+
+        personaje.setId(id);
+        personaje.setNombre(Nombre);
+        personaje.setPuntuacion(puntuacion);
+        personaje.setPersonaje(personaje1);
+
+        return personaje;
     }
 }
 

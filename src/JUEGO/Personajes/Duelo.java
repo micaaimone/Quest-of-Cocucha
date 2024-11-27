@@ -15,18 +15,8 @@ public class Duelo {
         System.out.println("⚔️💥 ¡El combate comienza! 💥⚔️");
 
         while (enemigo.getPH() > 0 && personaje.getPH()> 0) {
-            System.out.println("¿Cuál es tu próximo movimiento?");
-            System.out.println("1. 🗡️ Atacar");
-            System.out.println("2. 💊 Curarse");
-            System.out.println("\nSelecciona tu acción (1 o 2):");
 
-
-            try {
-                decision = sc.nextInt();
-                sc.nextLine();
-            }catch (NumberFormatException e) {
-                System.out.println("\u001B[31m❌ Error: ingrese solo números ❌\u001B[0m");
-            }
+            int decision = validarEntradaParaCombate();
 
             if (personaje.getPH() <= 0) {
                 personaje.muerte();
@@ -65,12 +55,33 @@ public class Duelo {
             }
             turnos++;
         }
-
-        if (enemigo.getPH() <= 0) {
-            return true;
-        } else {
+        if (personaje.getPH()<= 0) {
             return false;
+        }else {
+            return true;
         }
+    }
 
+
+    public static int validarEntradaParaCombate() {
+        Scanner scanner = new Scanner(System.in);
+        int opcion;
+        while (true) {
+            System.out.println("¿Cuál es tu próximo movimiento?");
+            System.out.println("1. 🗡️ Atacar");
+            System.out.println("2. 💊 Curarse");
+            System.out.println("\nSelecciona tu acción (1 o 2):");
+            try {
+                opcion = scanner.nextInt();
+                if (opcion == 1 || opcion == 2) { // valida que sea 1 o 2
+                    return opcion;
+                } else {
+                    System.out.println("Opción no válida. Solo puede ingresar 1 o 2.");
+                }
+            } catch (Exception e) {
+                System.out.println("Entrada inválida. Solo puede ingresar números.");
+                scanner.nextLine();
+            }
+        }
     }
 }

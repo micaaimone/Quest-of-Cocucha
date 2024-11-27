@@ -2,6 +2,8 @@ package JUEGO;
 
 import JUEGO.Exceptions.CorroborarException;
 import JUEGO.Exceptions.EntradaInvalidaException;
+import JUEGO.JSON.GestionJSON;
+import JUEGO.Jugador.Administrador;
 import JUEGO.Jugador.GestionJugador;
 import JUEGO.Jugador.Jugador;
 import JUEGO.Nivel.GestionNivel;
@@ -12,12 +14,11 @@ import JUEGO.Tienda.Tienda;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-//DSPS borrar corroborar excepcion
 public class PantallaPrincipal {
     public void menu() throws EntradaInvalidaException {
         int opcion = 0;
         GestionJugador jugadores = new GestionJugador(); // mapa de jugadores para mostrar puntuacion
-        while (opcion != 3) {
+        while (opcion != 4) {
 
             System.out.printf(" " +
                     ".--..--..--..--..--..--..--..--..--..--..--..--..--..--..--. \n" +
@@ -49,7 +50,8 @@ public class PantallaPrincipal {
             System.out.println("\nElija una opcion \n ");
             System.out.println("1-Jugar\n");
             System.out.println("2-Puntuacion\n");
-            System.out.println("3-Salir\n");
+            System.out.println("3-Zona administracion\n");
+            System.out.println("4-Salir del juego\n");
 
             try {
                 opcion = scanner.nextInt();
@@ -61,7 +63,10 @@ public class PantallaPrincipal {
                         //hacer try catch hasta new jugador, sino salta error si se ingresa un nro incorrecto o letra
                         System.out.println("Ingrese su nombre\n");
                         String nombreJugador = scanner.nextLine();
+
                         Jugador jugador = new Jugador(nombreJugador);
+
+
                         ControlPantalla.limpiarPantalla();
                         System.out.println("Bienvenido " + nombreJugador);
                         System.out.println("Haz elegido el personaje: " + jugador.getPersonaje().getClass().getSimpleName());
@@ -77,16 +82,42 @@ public class PantallaPrincipal {
                         }
                         jugador.setPuntuacion(juego.getPuntuacion());
 
+                        if (!jugadores.getPuntuacionJugador().containsKey(jugador.getId())){
+                            jugadores.agregarPjJson();
+                        }
                         jugadores.agregarJugador(jugador);
 
+
+                    //agregamos directamente al json
+                        GestionJSON.jugadoraArchivo(jugadores);
                         break;
                     case 2:
                         //llevaria a mostrar punt
-                        System.out.println("estas son las 5 puntuaciones mas altas");
+                        System.out.println("══════════════════════════════════════════════");
+                        System.out.println("        🏆 TABLA DE HONOR: TOP 5 PUNTAJES 🏆      ");
+                        System.out.println("¡Estas son las 5 puntuaciones más altas del juego!");
+                        System.out.println("══════════════════════════════════════════════");
+                        jugadores.agregarPjJson();
+                        jugadores.mostrarJugadores();
+
                         break;
                     case 3:
+                        System.out.println("Zona de administracion");
+
+                        System.out.println("ingrese su nombre\n");
+                        String nombreAdmin = scanner.nextLine();
+
+                        Administrador admin = new Administrador(nombreAdmin);
+
+                        admin.administrar();
+
+                        break;
+                    case 4:
                         //sale
-                        System.out.println("Salir");
+                        System.out.println("═══════════════════════════════════════");
+                        System.out.println("       🛑  SALIR DEL JUEGO 🛑         ");
+                        System.out.println("      ¡Has abandonado el juego!        ");
+                        System.out.println("═══════════════════════════════════════");
                         break;
                     default:
                         System.out.println("No ingresaste una opcion correcta \n");

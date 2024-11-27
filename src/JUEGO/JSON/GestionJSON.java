@@ -1,11 +1,9 @@
 package JUEGO.JSON;
-/*
+
 import JUEGO.Jugador.GestionJugador;
 import JUEGO.Jugador.Jugador;
 import JUEGO.Personajes.Personaje;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.json.*;
 
 import java.util.Map;
 
@@ -42,7 +40,7 @@ public class GestionJSON {
             jsonJugadores = new JSONArray();
             for (Map.Entry<Integer, Jugador> map : mapJugadores.entrySet()) {
                 //aca mando a serializar a cada uno de los objetos del mapa (osea el jugador)
-                objJugador = serializacionJugador(map.getValue().getPersonaje());
+                objJugador = serializacionJugador(map.getValue());
                 jsonJugadores.put(objJugador);
             }
 
@@ -55,16 +53,35 @@ public class GestionJSON {
     }
 
     //recibe al jugador y lo manda como objeto
-    public static JSONObject serializacionJugador(Personaje j) {
+    public static JSONObject serializacionJugador(Jugador j) {
         JSONObject objJugador = null;
         try {
             objJugador = new JSONObject();
-
+            objJugador = (j.serializar());
         }
      catch (Exception e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         return objJugador;
     }
+
+    //leer
+    public static GestionJugador jsonAObjec(){
+        GestionJugador j = new GestionJugador();
+        try {
+            JSONTokener tokener = JSONutility.leer("jugadores.json");
+
+
+            JSONArray jugadores = new JSONArray(tokener);
+
+            for (int i = 0; i < jugadores.length(); i++) {
+                Jugador jugador = Jugador.deserializar(jugadores.getJSONObject(i));
+                j.agregarJugador(jugador);
+            }
+
+        }catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return j;
+    }
 }
-*/
