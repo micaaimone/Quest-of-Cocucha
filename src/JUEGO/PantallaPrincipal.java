@@ -2,6 +2,8 @@ package JUEGO;
 
 import JUEGO.Exceptions.CorroborarException;
 import JUEGO.Exceptions.EntradaInvalidaException;
+import JUEGO.JSON.GestionJSON;
+import JUEGO.Jugador.Administrador;
 import JUEGO.Jugador.GestionJugador;
 import JUEGO.Jugador.Jugador;
 import JUEGO.Nivel.GestionNivel;
@@ -62,8 +64,8 @@ public class PantallaPrincipal {
                         System.out.println("Ingrese su nombre\n");
                         String nombreJugador = scanner.nextLine();
 
-                        jugador.setNombre(nombreJugador);
-                        jugador.setPersonaje(CrearPersonaje.Seleccionar());
+                        Jugador jugador = new Jugador(nombreJugador);
+
 
                         ControlPantalla.limpiarPantalla();
                         System.out.println("Bienvenido " + nombreJugador);
@@ -92,6 +94,9 @@ public class PantallaPrincipal {
                         System.out.println("        🏆 TABLA DE HONOR: TOP 5 PUNTAJES 🏆      ");
                         System.out.println("¡Estas son las 5 puntuaciones más altas del juego!");
                         System.out.println("══════════════════════════════════════════════");
+
+
+                        jugadores.mostrarJugadores();
 
                         break;
                     case 3:
