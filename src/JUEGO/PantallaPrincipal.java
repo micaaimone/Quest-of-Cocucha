@@ -82,11 +82,18 @@ public class PantallaPrincipal {
                         break;
                     case 2:
                         //llevaria a mostrar punt
-                        System.out.println("estas son las 5 puntuaciones mas altas");
+                        System.out.println("══════════════════════════════════════════════");
+                        System.out.println("        🏆 TABLA DE HONOR: TOP 5 PUNTAJES 🏆      ");
+                        System.out.println("¡Estas son las 5 puntuaciones más altas del juego!");
+                        System.out.println("══════════════════════════════════════════════");
+
                         break;
                     case 3:
                         //sale
-                        System.out.println("Salir");
+                        System.out.println("═══════════════════════════════════════");
+                        System.out.println("       🛑  SALIR DEL JUEGO 🛑         ");
+                        System.out.println("      ¡Has abandonado el juego!        ");
+                        System.out.println("═══════════════════════════════════════");
                         break;
                     default:
                         System.out.println("No ingresaste una opcion correcta \n");
