@@ -94,14 +94,14 @@ public class GestionNivel {
     public void Trayecto () throws CorroborarException {
         Queue<Nivel> niveles = crearTrayecto();
         Puerta puerta = null;
-        Boolean win = true;
-
+        boolean win = true;
+        boolean validar = false;
         mostrarNiveles(niveles);
 
         while (!niveles.isEmpty() && win) {
             Nivel nivel = niveles.poll();
-            if (niveles != null && !niveles.isEmpty()) {
-                try {
+            if (!niveles.isEmpty()) {
+
                 personaje.mostrarInfo();
                 System.out.println("\nEstas en el nivel " + nivel.getDificultad());
                 System.out.println("══════════════════════════════════════════════════════════");
@@ -115,24 +115,23 @@ public class GestionNivel {
                 System.out.println("    🕵️ 3️⃣ - **Puerta del Misterio**: ¿Qué secretos ocultos guardará?");
                 System.out.println("                                                         ");
                 System.out.println("            Elige con sabiduría... tu destino te aguarda.");
-                System.out.println("══════════════════════════════════════════════════════════");}
-                catch (InputMismatchException ex){
-                    System.out.println("Solo se pueden ingresar numeros(1,2,3). Vuelve a intentarlo");
-                }
+                System.out.println("══════════════════════════════════════════════════════════");
 
 
                 Scanner scanner = new Scanner(System.in);
                 int eleccion = 0;
 
-                boolean validar = false;
                 while (validar) {
-                    try {
                     eleccion = scanner.nextInt();
                     scanner.nextLine();
+                    try {
                     if (eleccion < 4 && eleccion > 0) {
                         validar = true;
-                    }} catch (InputMismatchException e ) {
-                        System.out.println("Solo se pueden ingresar numeros(1,2,3). Vuelve a intentarlo");
+                    }else  {
+                        throw new InputMismatchException("Solo se pueden ingresar numeros(1,2,3). Vuelve a intentarlo");
+                    }
+                    } catch (InputMismatchException e) {
+                        throw new RuntimeException(e.getMessage());
                     }
                 }
                 switch (eleccion){
@@ -208,7 +207,7 @@ public class GestionNivel {
 
                 }
 
-            } else{
+            }else{
                 System.out.println(
                         "╔═══════════════════════════════════════════════════╗\n" +
                         "║           ✨ ¡HORA DE LA BATALLA FINAL! ✨       ║\n" +
