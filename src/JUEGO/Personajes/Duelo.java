@@ -1,5 +1,6 @@
 package JUEGO.Personajes;
 
+import JUEGO.ControlPantalla;
 import JUEGO.Exceptions.CorroborarException;
 import JUEGO.Personajes.Enemigos.Enemigo;
 
