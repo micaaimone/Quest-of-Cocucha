@@ -14,12 +14,11 @@ import JUEGO.Tienda.Tienda;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-//DSPS borrar corroborar excepcion
 public class PantallaPrincipal {
     public void menu() throws EntradaInvalidaException {
         int opcion = 0;
         GestionJugador jugadores = new GestionJugador(); // mapa de jugadores para mostrar puntuacion
-        while (opcion != 3) {
+        while (opcion != 4) {
 
             System.out.printf(" " +
                     ".--..--..--..--..--..--..--..--..--..--..--..--..--..--..--. \n" +
@@ -51,7 +50,8 @@ public class PantallaPrincipal {
             System.out.println("\nElija una opcion \n ");
             System.out.println("1-Jugar\n");
             System.out.println("2-Puntuacion\n");
-            System.out.println("3-Salir\n");
+            System.out.println("3-Zona administracion\n");
+            System.out.println("4-Salir del juego\n");
 
             try {
                 opcion = scanner.nextInt();
@@ -82,6 +82,9 @@ public class PantallaPrincipal {
                         }
                         jugador.setPuntuacion(juego.getPuntuacion());
 
+                        if (!jugadores.getPuntuacionJugador().containsKey(jugador.getId())){
+                            jugadores.agregarPjJson();
+                        }
                         jugadores.agregarJugador(jugador);
 
 
@@ -94,8 +97,7 @@ public class PantallaPrincipal {
                         System.out.println("        🏆 TABLA DE HONOR: TOP 5 PUNTAJES 🏆      ");
                         System.out.println("¡Estas son las 5 puntuaciones más altas del juego!");
                         System.out.println("══════════════════════════════════════════════");
-
-
+                        jugadores.agregarPjJson();
                         jugadores.mostrarJugadores();
 
                         break;

@@ -8,20 +8,5 @@ public class Main {
         pantallaPrincipal.menu();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
