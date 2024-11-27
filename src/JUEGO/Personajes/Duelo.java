@@ -15,13 +15,12 @@ public class Duelo {
         System.out.println("⚔️💥 ¡El combate comienza! 💥⚔️");
 
         while (enemigo.getPH() > 0 && personaje.getPH()> 0) {
-            System.out.println("¿Cuál es tu próximo movimiento?");
+            try {
+                System.out.println("¿Cuál es tu próximo movimiento?");
             System.out.println("1. 🗡️ Atacar");
             System.out.println("2. 💊 Curarse");
             System.out.println("\nSelecciona tu acción (1 o 2):");
 
-
-            try {
                 decision = sc.nextInt();
                 sc.nextLine();
             }catch (NumberFormatException e) {

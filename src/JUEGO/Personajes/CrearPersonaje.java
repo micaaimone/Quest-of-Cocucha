@@ -4,14 +4,17 @@ import JUEGO.Personajes.Clases.Asesino;
 import JUEGO.Personajes.Clases.Guerrero;
 import JUEGO.Personajes.Clases.Mago;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CrearPersonaje {
-    public static Personaje Seleccionar(){
+    public static Personaje Seleccionar() {
 
         Personaje p = null;
         int opcion;
+        boolean vali = true;
         Scanner scanner = new Scanner(System.in);
+
         System.out.println("══════════════════════════════════════════════════");
         System.out.println("       🎮 * Seleccione un personaje * 🎮         ");
         System.out.println("══════════════════════════════════════════════════");
@@ -22,12 +25,25 @@ public class CrearPersonaje {
         System.out.println("\n3- Asesino");
         System.out.println("   🖤 Sigiloso y letal. Especialista en eliminar a sus enemigos rápidamente y en las sombras, antes de que puedan reaccionar.");
         System.out.println("══════════════════════════════════════════════════");
-        System.out.printf("Escriba el numero y comience su historia: ");
-        //aca va la desc del asesino
-        opcion = scanner.nextInt();
-        scanner.nextLine();
 
-        switch (opcion){
+        int eleccion = 0;
+        while (vali) {
+            try {
+                System.out.print("Por favor, ingresa un número (1, 2, 3): ");
+                eleccion = scanner.nextInt();
+
+                if (eleccion >= 1 && eleccion <= 3) {
+                    vali = false; // Salir del bucle si el número es válido
+                } else {
+                    System.out.println("❌ Solo se pueden ingresar números entre 1 y 3. Vuelve a intentarlo.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("❌ Entrada no válida. Por favor, ingresa un número.");
+                scanner.nextLine(); // Limpia el buffer
+            }
+        }
+
+        switch (eleccion) {
             case 1:
                 Guerrero guerrero = new Guerrero();
                 p = guerrero;
@@ -40,17 +56,7 @@ public class CrearPersonaje {
                 Asesino asesino = new Asesino();
                 p = asesino;
                 break;
-            default:
-                System.out.println("\u001B[31m══════════════════════════════════════════════════");
-                System.out.println("       ⚠️ * Error de Opción * ⚠️                   ");
-                System.out.println("══════════════════════════════════════════════════");
-                System.out.println("   ❌ No ingresó una opción correcta.");
-                System.out.println("══════════════════════════════════════════════════");
-
-                break;
         }
-
         return p;
-
     }
 }

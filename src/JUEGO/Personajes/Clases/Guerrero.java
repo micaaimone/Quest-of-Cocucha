@@ -6,7 +6,7 @@ import JUEGO.Personajes.Personaje;
 
 public class Guerrero extends Personaje {
 
-    public Guerrero() {super(180, 10, 100, 0, 30, Armas.espadaCorta);
+    public Guerrero() {super(200, 10, 100, 0, 30, Armas.espadaCorta);
     }
 
 
@@ -15,20 +15,20 @@ public class Guerrero extends Personaje {
         if (getResistencia() >= 20) {
             System.out.println("\n⚔️ ¡El personaje ataca con una espada poderosa! ⚔️\n");
             System.out.println(
-                            "         * \n                       " +
-                            "         ||\n          ---⚡⚡⚡---\n" +
+                            "         *                         \n" +
+                            "         ||            ---⚡⚡⚡---   \n" +
                             "        ||||          ¡Corte feroz!\n" +
-                            "        ||||\n" +
-                            "        ||||\n" +
+                            "        ||||                       \n" +
+                            "        ||||                       \n" +
                             "        ||||              ---⚡⚡⚡---\n" +
-                            "        ||||\n          \n" +
-                            "        ||||\n" +
-                            "        ||||\n" +
-                            "   <===<====>===>" +
-                            "        ||||\n" +
-                            "        ||||\n" +
-                            "        ||||\n   " +
-                            "         || \n   "
+                            "        ||||                       \n" +
+                            "        ||||                       \n" +
+                            "        ||||                       \n" +
+                            "   <===<====>===>                  \n" +
+                            "        ||||                       \n" +
+                            "        ||||                       \n" +
+                            "        ||||                       \n" +
+                            "         ||                        \n"
             );
             System.out.println("\n🔥 El enemigo recibe un impacto devastador. 🔥");
             setResistencia(getResistencia()- 20);
