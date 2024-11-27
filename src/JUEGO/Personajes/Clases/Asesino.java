@@ -4,7 +4,7 @@ import JUEGO.Armas.Armas;
 import JUEGO.Personajes.Personaje;
 import JUEGO.Exceptions.*;
 
-public class Asesino extends Personaje {
+public final class Asesino extends Personaje {
 
     public Asesino() {
         super(100, 80, 80, 0, 30, Armas.cuchillo);
