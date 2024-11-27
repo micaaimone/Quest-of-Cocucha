@@ -95,7 +95,7 @@ public class PantallaPrincipal {
                         //llevaria a mostrar punt
                         System.out.println("estas son las 5 puntuaciones mas altas");
 
-                        jugadores.limitar();
+                        jugadores.mostrarJugadores();
 
                         break;
                     case 3:

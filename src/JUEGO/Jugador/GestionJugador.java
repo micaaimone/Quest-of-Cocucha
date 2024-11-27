@@ -32,6 +32,9 @@ public class GestionJugador {
     }
 
     public void mostrarJugadores(){
+        agregarPjJson();
+        limitar();
+
         for (Map.Entry<Integer, Jugador> entry : PuntuacionJugador.entrySet()) {
             int id = entry.getKey();
             String nombre = entry.getValue().getNombre();
@@ -42,13 +45,11 @@ public class GestionJugador {
     }
 
     public void limitar (){
-        agregarPjJson();
+
 
         for (int i = 5; i < PuntuacionJugador.size(); i++) {
             eliminarJugador(PuntuacionJugador.get(i));
         }
-
-        mostrarJugadores();
 
     }
 
